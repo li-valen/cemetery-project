@@ -52,8 +52,8 @@ let Collage = () => {
     React.createElement("div", { className: "hero-body" }, 
       React.createElement("div", { className: "container" }, 
         React.createElement("div", { className: "header content" }, 
-          React.createElement("h2", { className: "subtitle is-6" }, "Code Challenge #16"),
-          React.createElement("h1", { className: "title is-1" }, "Infinite Scroll Gallery")
+          React.createElement("h2", { className: "subtitle is-6" }, "James H. Campbell"),
+          React.createElement("h1", { className: "title is-1" }, "Documents")
         ),
         React.createElement(InfiniteScroll, {
           dataLength: images.length,
