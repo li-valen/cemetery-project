@@ -1,38 +1,304 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Parallax Image Layers - Osmo</title>
-  <link rel='stylesheet' href='https://slater.app/10324/23333.css'><link rel="stylesheet" href="./style.css">
+  <title>Combined Animation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: "Montserrat", sans-serif;
+      background: #000;
+    }
 
+    .intro-animation {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      z-index: 100;
+    }
+
+    .parallax-animation {
+      position: relative;
+      opacity: 0;
+      min-height: 200vh;
+    }
+
+    /* Name animation styles */
+    .pov {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .die {
+      width: 400px;
+      height: 55px;
+      padding-bottom: 9px;
+      perspective: 999px;
+    }
+
+    .cube {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+    }
+
+    .face {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backface-visibility: hidden;
+    }
+
+    /* Parallax styles */
+    .parallax__header {
+      z-index: 2;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .parallax__visuals {
+      position: absolute;
+      width: 100%;
+      height: 120%;
+      top: 0;
+      left: 0;
+    }
+
+    .parallax__layers {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      overflow: hidden;
+    }
+
+    .parallax__layer-img {
+      pointer-events: none;
+      object-fit: cover;
+      width: 100%;
+      height: 117.5%;
+      position: absolute;
+      top: -17.5%;
+      left: 0;
+    }
+
+    .parallax__layer-title {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100vh;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .parallax__title {
+      font-size: 11vw;
+      margin: 0;
+      line-height: 1;
+      color: white;
+    }
+
+    .parallax__fade {
+      z-index: 30;
+      position: absolute;
+      width: 100%;
+      height: 20%;
+      bottom: 0;
+      left: 0;
+      background: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+    }
+
+    .parallax__content {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
 </head>
 <body>
-<!-- partial:index.partial.html -->
-<!--------- Osmo [https://osmo.supply/] --------->
-<div class="parallax">
-  <section class="parallax__header">
-    <div class="parallax__visuals">
-      <div class="parallax__black-line-overflow"></div>
-      <div data-parallax-layers class="parallax__layers">
-        <img src="https://cdn.prod.website-files.com/671752cd4027f01b1b8f1c7f/6717795be09b462b2e8ebf71_osmo-parallax-layer-3.webp" loading="eager" width="800" data-parallax-layer="1" alt="" class="parallax__layer-img">
-        <img src="https://cdn.prod.website-files.com/671752cd4027f01b1b8f1c7f/6717795b4d5ac529e7d3a562_osmo-parallax-layer-2.webp" loading="eager" width="800" data-parallax-layer="2" alt="" class="parallax__layer-img">
-        <div data-parallax-layer="3" class="parallax__layer-title">
-          <h2 class="parallax__title">Parallax</h2>
+  <div class="intro-animation">
+    <div class="pov">
+      <div class="tray">
+        <div class="die">
+          <div class="cube">
+            <div class="face" style="font-size:60px">James</div>
+            <div class="face" style="font-size:58px">H.</div>
+            <div class="face" style="font-size:55px">Campbell</div>      
+          </div>
         </div>
-        <img src="https://cdn.prod.website-files.com/671752cd4027f01b1b8f1c7f/6717795bb5aceca85011ad83_osmo-parallax-layer-1.webp" loading="eager" width="800" data-parallax-layer="4" alt="" class="parallax__layer-img">
       </div>
-      <div class="parallax__fade"></div>
     </div>
-  </section>
-  <section class="parallax__content">
-    <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewbox="0 0 160 160" fill="none" class="osmo-icon-svg"><path d="M94.8284 53.8578C92.3086 56.3776 88 54.593 88 51.0294V0H72V59.9999C72 66.6273 66.6274 71.9999 60 71.9999H0V87.9999H51.0294C54.5931 87.9999 56.3777 92.3085 53.8579 94.8283L18.3431 130.343L29.6569 141.657L65.1717 106.142C67.684 103.63 71.9745 105.396 72 108.939V160L88.0001 160L88 99.9999C88 93.3725 93.3726 87.9999 100 87.9999H160V71.9999H108.939C105.407 71.9745 103.64 67.7091 106.12 65.1938L106.142 65.1716L141.657 29.6568L130.343 18.3432L94.8284 53.8578Z" fill="currentColor"></path></svg>
-  </section>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-<script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
-<!-- partial -->
-  <script  src="./script.js"></script>
+  </div>
 
+  <div class="parallax-animation">
+    <div class="parallax">
+      <section class="parallax__header">
+        <div class="parallax__visuals">
+          <div class="parallax__layers" data-parallax-layers>
+            <img src="https://cdn.prod.website-files.com/671752cd4027f01b1b8f1c7f/6717795be09b462b2e8ebf71_osmo-parallax-layer-3.webp" loading="eager" data-parallax-layer="1" alt="" class="parallax__layer-img">
+            <img src="https://cdn.prod.website-files.com/671752cd4027f01b1b8f1c7f/6717795b4d5ac529e7d3a562_osmo-parallax-layer-2.webp" loading="eager" data-parallax-layer="2" alt="" class="parallax__layer-img">
+            <div data-parallax-layer="3" class="parallax__layer-title">
+              <h2 class="parallax__title">James H. Campbell Cemetery Project</h2>
+            </div>
+            <img src="https://cdn.prod.website-files.com/671752cd4027f01b1b8f1c7f/6717795bb5aceca85011ad83_osmo-parallax-layer-1.webp" loading="eager" data-parallax-layer="4" alt="" class="parallax__layer-img">
+          </div>
+          <div class="parallax__fade"></div>
+        </div>
+      </section>
+      <section class="parallax__content">
+        <h2>Scroll for parallax effect</h2>
+      </section>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
+  
+  <script>
+    // Animation settings
+    const n = 19;
+    const rots = [
+      { ry: 270, a:0.5 },
+      { ry: 0,   a:0.85 },
+      { ry: 90,  a:0.4 },
+      { ry: 180, a:0.0 }
+    ];
+
+    // Initial setup
+    gsap.set(".pov", { opacity: 0, scale: 0.5 });
+    gsap.set(".face", {
+      z: 200,
+      rotateY: i => rots[i].ry,
+      transformOrigin: "50% 50% -201px"
+    });
+
+    // Create name animation clones
+    for (let i=0; i<n; i++){
+      let die = document.querySelector('.die');
+      let cube = die.querySelector('.cube');
+      
+      if (i>0){    
+        let clone = document.querySelector('.die').cloneNode(true);
+        document.querySelector('.tray').append(clone);
+        cube = clone.querySelector('.cube');
+      }
+      
+      gsap.timeline({repeat:-1, yoyo:true, defaults:{ease:'power3.inOut', duration:1}})
+        .fromTo(cube, {
+          rotateY:-90
+        },{
+          rotateY:90,
+          ease:'power1.inOut',
+          duration:2
+        })
+        .fromTo(cube.querySelectorAll('.face'), {
+          color:(j)=>'hsl('+(i/n*75+130)+', 67%,'+(100*[rots[3].a, rots[0].a, rots[1].a][j])+'%)'
+        },{
+          color:(j)=>'hsl('+(i/n*75+130)+', 67%,'+(100*[rots[0].a, rots[1].a, rots[2].a][j])+'%)'
+        }, 0)
+        .to(cube.querySelectorAll('.face'), {
+          color:(j)=>'hsl('+(i/n*75+130)+', 67%,'+(100*[rots[1].a, rots[2].a, rots[3].a][j])+'%)'
+        }, 1)
+        .progress(i/n);
+    }
+
+    // Combined animation sequence
+    const mainTimeline = gsap.timeline();
+    
+    mainTimeline
+      .to(".pov", {
+        opacity: 1,
+        scale: 1,
+        duration: 2,
+        ease: "power2.inOut"
+      })
+      .from('.tray', {yPercent:-3, duration:2, ease:'power1.inOut', yoyo:true, repeat:2}, 1)
+      .fromTo('.tray', {rotate:-15},{rotate:15, duration:0, ease:'power1.inOut', yoyo:true, repeat:1}, 1)
+      .from('.die', {duration:0.01, opacity:0, stagger:{each:-0.05, ease:'power1.in'}}, 1)
+      .to('.tray', {
+        scale: 10, 
+        duration: 2, 
+        opacity: 0, 
+        ease: 'power3.inOut',
+        onStart: () => {
+          gsap.to('.parallax-animation', {
+            opacity: 1,
+            duration: 2,
+            ease: "power3.inOut",
+          });
+          document.body.style.overflow = 'auto';
+        },
+        onComplete: () => {
+          document.querySelector('.intro-animation').style.display = 'none';
+        }
+      }, "-=2");
+
+    // Parallax setup
+    gsap.registerPlugin(ScrollTrigger);
+    
+    document.querySelectorAll('[data-parallax-layers]').forEach((triggerElement) => {
+      let tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: triggerElement,
+          start: "top top",
+          end: "bottom top",
+          scrub: true
+        }
+      });
+      
+      const layers = [
+        { layer: "1", yPercent: 70 },
+        { layer: "2", yPercent: 55 },
+        { layer: "3", yPercent: 40 },
+        { layer: "4", yPercent: 10 }
+      ];
+      
+      layers.forEach((layerObj, idx) => {
+        tl.to(
+          triggerElement.querySelectorAll(`[data-parallax-layer="${layerObj.layer}"]`),
+          {
+            yPercent: layerObj.yPercent,
+            ease: "none"
+          },
+          idx === 0 ? undefined : "<"
+        );
+      });
+    });
+
+    // Smooth scroll
+    const lenis = new Lenis();
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((time) => {lenis.raf(time * 1000);});
+    gsap.ticker.lagSmoothing(0);
+
+    // Initial scroll lock
+    document.body.style.overflow = 'hidden';
+
+    // Resize handling
+    window.onload = window.onresize = ()=> {
+      const h = n*56;
+      gsap.set('.tray', {height:h});
+      gsap.set('.pov', {scale:innerHeight/h});
+    }
+  </script>
 </body>
 </html>
