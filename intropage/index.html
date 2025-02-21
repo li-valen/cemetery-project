@@ -5,133 +5,7 @@
   <title>Combined Animation</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      font-family: "Montserrat", sans-serif;
-      background: #000;
-    }
-
-    .intro-animation {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100vh;
-      z-index: 100;
-    }
-
-    .parallax-animation {
-      position: relative;
-      opacity: 0;
-      min-height: 200vh;
-    }
-
-    /* Name animation styles */
-    .pov {
-      width: 100%;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .die {
-      width: 400px;
-      height: 55px;
-      padding-bottom: 9px;
-      perspective: 999px;
-    }
-
-    .cube {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      transform-style: preserve-3d;
-    }
-
-    .face {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      backface-visibility: hidden;
-    }
-
-    /* Parallax styles */
-    .parallax__header {
-      z-index: 2;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-    }
-
-    .parallax__visuals {
-      position: absolute;
-      width: 100%;
-      height: 120%;
-      top: 0;
-      left: 0;
-    }
-
-    .parallax__layers {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      overflow: hidden;
-    }
-
-    .parallax__layer-img {
-      pointer-events: none;
-      object-fit: cover;
-      width: 100%;
-      height: 117.5%;
-      position: absolute;
-      top: -17.5%;
-      left: 0;
-    }
-
-    .parallax__layer-title {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      height: 100vh;
-      position: absolute;
-      top: 0;
-      left: 0;
-    }
-
-    .parallax__title {
-      font-size: 11vw;
-      margin: 0;
-      line-height: 1;
-      color: white;
-    }
-
-    .parallax__fade {
-      z-index: 30;
-      position: absolute;
-      width: 100%;
-      height: 20%;
-      bottom: 0;
-      left: 0;
-      background: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
-    }
-
-    .parallax__content {
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-  </style>
+  <link rel="stylesheet" href="./style.css">
 </head>
 <body>
   <div class="intro-animation">
@@ -156,7 +30,7 @@
             <img src="https://cdn.prod.website-files.com/671752cd4027f01b1b8f1c7f/6717795be09b462b2e8ebf71_osmo-parallax-layer-3.webp" loading="eager" data-parallax-layer="1" alt="" class="parallax__layer-img">
             <img src="https://cdn.prod.website-files.com/671752cd4027f01b1b8f1c7f/6717795b4d5ac529e7d3a562_osmo-parallax-layer-2.webp" loading="eager" data-parallax-layer="2" alt="" class="parallax__layer-img">
             <div data-parallax-layer="3" class="parallax__layer-title">
-              <h2 class="parallax__title">James H. Campbell Cemetery Project</h2>
+              <h2 class="parallax__title">Cemetery</h2>
             </div>
             <img src="https://cdn.prod.website-files.com/671752cd4027f01b1b8f1c7f/6717795bb5aceca85011ad83_osmo-parallax-layer-1.webp" loading="eager" data-parallax-layer="4" alt="" class="parallax__layer-img">
           </div>
@@ -164,7 +38,30 @@
         </div>
       </section>
       <section class="parallax__content">
-        <h2>Scroll for parallax effect</h2>
+        <div class="Menu">
+          <ul class="Menu-list" data-offset="10">
+            <li class="Menu-list-item" data-offset="20" onclick>
+              Home
+              <span class="Mask"><span>Home</span></span>
+              <span class="Mask"><span>Home</span></span>
+            </li>
+            <li class="Menu-list-item" data-offset="16" onclick>
+              Documents
+              <span class="Mask"><span>Documents</span></span>
+              <span class="Mask"><span>Documents</span></span>
+            </li>
+            <li class="Menu-list-item" data-offset="12" onclick>
+              Timeline
+              <span class="Mask"><span>Timeline</span></span>
+              <span class="Mask"><span>Timeline</span></span>
+            </li>
+            <li class="Menu-list-item" data-offset="8" onclick>
+              Family Tree
+              <span class="Mask"><span>Family Tree</span></span>
+              <span class="Mask"><span>Family Tree</span></span>
+            </li>
+          </ul>
+        </div>
       </section>
     </div>
   </div>
@@ -172,133 +69,6 @@
   <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
-  
-  <script>
-    // Animation settings
-    const n = 19;
-    const rots = [
-      { ry: 270, a:0.5 },
-      { ry: 0,   a:0.85 },
-      { ry: 90,  a:0.4 },
-      { ry: 180, a:0.0 }
-    ];
-
-    // Initial setup
-    gsap.set(".pov", { opacity: 0, scale: 0.5 });
-    gsap.set(".face", {
-      z: 200,
-      rotateY: i => rots[i].ry,
-      transformOrigin: "50% 50% -201px"
-    });
-
-    // Create name animation clones
-    for (let i=0; i<n; i++){
-      let die = document.querySelector('.die');
-      let cube = die.querySelector('.cube');
-      
-      if (i>0){    
-        let clone = document.querySelector('.die').cloneNode(true);
-        document.querySelector('.tray').append(clone);
-        cube = clone.querySelector('.cube');
-      }
-      
-      gsap.timeline({repeat:-1, yoyo:true, defaults:{ease:'power3.inOut', duration:1}})
-        .fromTo(cube, {
-          rotateY:-90
-        },{
-          rotateY:90,
-          ease:'power1.inOut',
-          duration:2
-        })
-        .fromTo(cube.querySelectorAll('.face'), {
-          color:(j)=>'hsl('+(i/n*75+130)+', 67%,'+(100*[rots[3].a, rots[0].a, rots[1].a][j])+'%)'
-        },{
-          color:(j)=>'hsl('+(i/n*75+130)+', 67%,'+(100*[rots[0].a, rots[1].a, rots[2].a][j])+'%)'
-        }, 0)
-        .to(cube.querySelectorAll('.face'), {
-          color:(j)=>'hsl('+(i/n*75+130)+', 67%,'+(100*[rots[1].a, rots[2].a, rots[3].a][j])+'%)'
-        }, 1)
-        .progress(i/n);
-    }
-
-    // Combined animation sequence
-    const mainTimeline = gsap.timeline();
-    
-    mainTimeline
-      .to(".pov", {
-        opacity: 1,
-        scale: 1,
-        duration: 2,
-        ease: "power2.inOut"
-      })
-      .from('.tray', {yPercent:-3, duration:2, ease:'power1.inOut', yoyo:true, repeat:2}, 1)
-      .fromTo('.tray', {rotate:-15},{rotate:15, duration:0, ease:'power1.inOut', yoyo:true, repeat:1}, 1)
-      .from('.die', {duration:0.01, opacity:0, stagger:{each:-0.05, ease:'power1.in'}}, 1)
-      .to('.tray', {
-        scale: 10, 
-        duration: 2, 
-        opacity: 0, 
-        ease: 'power3.inOut',
-        onStart: () => {
-          gsap.to('.parallax-animation', {
-            opacity: 1,
-            duration: 2,
-            ease: "power3.inOut",
-          });
-          document.body.style.overflow = 'auto';
-        },
-        onComplete: () => {
-          document.querySelector('.intro-animation').style.display = 'none';
-        }
-      }, "-=2");
-
-    // Parallax setup
-    gsap.registerPlugin(ScrollTrigger);
-    
-    document.querySelectorAll('[data-parallax-layers]').forEach((triggerElement) => {
-      let tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: triggerElement,
-          start: "top top",
-          end: "bottom top",
-          scrub: true
-        }
-      });
-      
-      const layers = [
-        { layer: "1", yPercent: 70 },
-        { layer: "2", yPercent: 55 },
-        { layer: "3", yPercent: 40 },
-        { layer: "4", yPercent: 10 }
-      ];
-      
-      layers.forEach((layerObj, idx) => {
-        tl.to(
-          triggerElement.querySelectorAll(`[data-parallax-layer="${layerObj.layer}"]`),
-          {
-            yPercent: layerObj.yPercent,
-            ease: "none"
-          },
-          idx === 0 ? undefined : "<"
-        );
-      });
-    });
-
-    // Smooth scroll
-    const lenis = new Lenis();
-    lenis.on('scroll', ScrollTrigger.update);
-    gsap.ticker.add((time) => {lenis.raf(time * 1000);});
-    gsap.ticker.lagSmoothing(0);
-
-    // Initial scroll lock
-    document.body.style.overflow = 'hidden';
-
-    // Resize handling
-    window.onload = window.onresize = ()=> {
-      const h = n*56;
-      gsap.set('.tray', {height:h});
-      gsap.set('.pov', {scale:innerHeight/h});
-    }
-  </script>
+  <script  src="./script.js"></script>
 </body>
 </html>
