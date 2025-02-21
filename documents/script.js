@@ -1,10 +1,27 @@
-const UnsplashImage = ({ url }) => {
-  return React.createElement("div", { className: "image-item" }, 
+const UnsplashImage = ({ url, onClick }) => {
+  return React.createElement("div", { className: "image-item", onClick }, 
     React.createElement("img", { src: url, alt: "Gallery item" })
   );
 };
 
-let Collage = () => {
+const Modal = ({ isOpen, onClose, content }) => {
+  if (!isOpen) return null;
+
+  const contentWithLineBreaks = content.split('\n').map((line, index) => 
+    React.createElement(React.Fragment, { key: index }, line, React.createElement("br"))
+  );
+
+  return React.createElement(
+    "div", { className: "modal is-active" }, 
+    React.createElement("div", { className: "modal-background", onClick: onClose }), 
+    React.createElement("div", { className: "modal-content" }, 
+      React.createElement("div", { className: "box" }, contentWithLineBreaks)
+    ), 
+    React.createElement("button", { className: "modal-close is-large", onClick: onClose, "aria-label": "close" })
+  );
+};
+
+const Collage = () => {
   const allImages = [
     "/images/image1.jpg",
     "/images/image2.jpg",
@@ -33,8 +50,18 @@ let Collage = () => {
     "/images/image25.jpg",
   ];
 
-  const [images, setImages] = React.useState(allImages.slice(0, 3)); // Load first 3 images
+  const imageTexts = [
+    "Text for image1 with line break\nHere is the new line",
+    "Text for image2 with line break\nAnother new line here",
+    "Text for image3 with line break\nMore text after the break",
+    "Text for image4 with line break\nHere is some more text",
+    "Text for image5 with line break\nThis is a new line",
+  ];
+
+  const [images, setImages] = React.useState(allImages.slice(0, 50)); // Load first 3 images
   const [hasMore, setHasMore] = React.useState(true);
+  const [isModalOpen, setIsModalOpen] = React.useState(false);
+  const [modalContent, setModalContent] = React.useState("");
 
   const loadMoreImages = () => {
     setTimeout(() => {
@@ -45,6 +72,15 @@ let Collage = () => {
       const nextBatch = allImages.slice(images.length, images.length + 3);
       setImages([...images, ...nextBatch]);
     }, 1000);
+  };
+
+  const openModal = (content) => {
+    setModalContent(content);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
   };
 
   return React.createElement(
@@ -62,10 +98,11 @@ let Collage = () => {
           loader: React.createElement("span", { className: "loader" }, "Loading...")
         }, 
           React.createElement("div", { className: "image-grid", style: { marginTop: "60px" } },
-            images.map((image, index) => React.createElement(UnsplashImage, { url: image, key: index }))
+            images.map((image, index) => React.createElement(UnsplashImage, { url: image, key: index, onClick: () => openModal(imageTexts[index]) }))
           )
         )
-      )
+      ),
+      React.createElement(Modal, { isOpen: isModalOpen, onClose: closeModal, content: modalContent })
     )
   );
 };
