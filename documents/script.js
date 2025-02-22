@@ -1,23 +1,41 @@
 const UnsplashImage = ({ url, onClick }) => {
-  return React.createElement("div", { className: "image-item", onClick }, 
-    React.createElement("img", { src: url, alt: "Gallery item" })
+  return React.createElement(
+    "div",
+    { className: "image-item", onClick: () => onClick(url) },
+    React.createElement("img", {
+      src: url,
+      alt: "Gallery item",
+      style: { cursor: "pointer", maxWidth: "100%", borderRadius: "8px" }
+    })
   );
 };
 
 const Modal = ({ isOpen, onClose, content }) => {
   if (!isOpen) return null;
 
-  const contentWithLineBreaks = content.split('\n').map((line, index) => 
-    React.createElement(React.Fragment, { key: index }, line, React.createElement("br"))
-  );
-
   return React.createElement(
-    "div", { className: "modal is-active" }, 
-    React.createElement("div", { className: "modal-background", onClick: onClose }), 
-    React.createElement("div", { className: "modal-content" }, 
-      React.createElement("div", { className: "box" }, contentWithLineBreaks)
-    ), 
-    React.createElement("button", { className: "modal-close is-large", onClick: onClose, "aria-label": "close" })
+    "div",
+    { className: "modal is-active" },
+    React.createElement("div", { className: "modal-background", onClick: onClose }),
+    React.createElement(
+      "div",
+      { className: "modal-content" },
+      React.createElement("div", { className: "box" },
+        content.image && React.createElement("img", {
+          src: content.image,
+          alt: "Selected",
+          style: { maxWidth: "100%", marginBottom: "10px", borderRadius: "8px" }
+        }),
+        content.content.split('\n').map((line, index) =>
+          React.createElement(React.Fragment, { key: index }, line, React.createElement("br"))
+        )
+      )
+    ),
+    React.createElement("button", {
+      className: "modal-close is-large",
+      onClick: onClose,
+      "aria-label": "close"
+    })
   );
 };
 
@@ -61,7 +79,7 @@ const Collage = () => {
   const [images, setImages] = React.useState(allImages.slice(0, 50)); // Load first 3 images
   const [hasMore, setHasMore] = React.useState(true);
   const [isModalOpen, setIsModalOpen] = React.useState(false);
-  const [modalContent, setModalContent] = React.useState("");
+  const [modalContent, setModalContent] = React.useState({ image: "", content: "" });
 
   const loadMoreImages = () => {
     setTimeout(() => {
@@ -74,8 +92,9 @@ const Collage = () => {
     }, 1000);
   };
 
-  const openModal = (content) => {
-    setModalContent(content);
+  const openModal = (image) => {
+    const index = allImages.indexOf(image);
+    setModalContent({ image, content: imageTexts[index] || "No description available" });
     setIsModalOpen(true);
   };
 
@@ -98,7 +117,11 @@ const Collage = () => {
           loader: React.createElement("span", { className: "loader" }, "Loading...")
         }, 
           React.createElement("div", { className: "image-grid", style: { marginTop: "60px" } },
-            images.map((image, index) => React.createElement(UnsplashImage, { url: image, key: index, onClick: () => openModal(imageTexts[index]) }))
+            images.map((image, index) => React.createElement(UnsplashImage, { 
+              url: image, 
+              key: index, 
+              onClick: () => openModal(image) 
+            }))
           )
         )
       ),
