@@ -1,3 +1,21 @@
+const lenis = new Lenis({
+  duration: 1.2, // Duration of the scroll animation
+  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Smooth easing function
+  direction: 'vertical', // Scroll direction
+  gestureDirection: 'vertical', // Touch gesture direction
+  smooth: true, // Enable smooth scrolling
+  mouseMultiplier: 1, // Mouse wheel multiplier
+  smoothTouch: false, // Disable smooth scrolling on touch devices
+  touchMultiplier: 2, // Touch gesture multiplier
+  infinite: false, // Infinite scrolling
+});
+function raf(time) {
+  lenis.raf(time);
+  requestAnimationFrame(raf);
+}
+
+requestAnimationFrame(raf);
+
 const UnsplashImage = ({ url, onClick }) => {
   return React.createElement(
     "div",
@@ -76,7 +94,6 @@ const Collage = () => {
     "/images/Document19a.png",
     "/images/Document20a.png",
     "/images/Document21a.png",
-    "/images/Document21b.png",
     "/images/Document22a.png",
     "/images/Document23a.png",
     "/images/Document24a.png",
