@@ -18,6 +18,14 @@
   overflow: hidden;
 }
 
+.modal-content {
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+  display: block; /* This forces a block-level behavior */
+}
+
+
 .image-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
