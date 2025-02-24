@@ -1,38 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
   start(); // Automatically start the animation when the page loads
-
-  // Initialize Lenis Smooth Scroll
-const lenis = new Lenis({
-  duration: 1.2, // Smooth scrolling duration
-  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Easing function
-  direction: "vertical", // Vertical scrolling
-  smooth: true, // Enable smooth scrolling
-  smoothTouch: true, // Enable smooth scrolling for touch devices
-  touchMultiplier: 2, // Make touch scrolling smoother
-});
-
-// RAF (requestAnimationFrame) loop to keep Lenis active
-function raf(time) {
-  lenis.raf(time);
-  requestAnimationFrame(raf);
-}
-requestAnimationFrame(raf);
-
-// Enable ScrollTrigger to work with Lenis
-lenis.on("scroll", ScrollTrigger.update);
-
-gsap.registerPlugin(ScrollTrigger);
-
-ScrollTrigger.scrollerProxy(document.body, {
-  scrollTop(value) {
-    return arguments.length ? lenis.scrollTo(value, { immediate: true }) : window.scrollY;
-  },
-  getBoundingClientRect() {
-    return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight };
-  }
-});
-
-lenis.on("scroll", ScrollTrigger.update); // Update ScrollTrigger when scrolling
+  gsap.registerPlugin(ScrollTrigger);
 
 });
 
@@ -270,31 +238,7 @@ document.querySelectorAll('[data-parallax-layers]').forEach((triggerElement) => 
 });
 
 
-
-$(window).on('mousemove', function(e) {
-  var offsetX = 0.5 - e.pageX / w, //cursor position X
-      offsetY = 0.5 - e.pageY / h, //cursor position Y
-      dy = e.pageY - h / 2, //@h/2 = center of poster
-      dx = e.pageX - w / 2, //@w/2 = center of poster
-      theta = Math.atan2(dy, dx), //angle between cursor and center of poster in RAD
-      angle = theta * 180 / Math.PI - 90, //convert rad in degrees
-      offsetPoster = $menu.data('offset'),
-      transformPoster = 'translate3d(0, ' + -offsetX * offsetPoster + 'px, 0) rotateX(' + (-offsetY * offsetPoster) + 'deg) rotateY(' + (offsetX * (offsetPoster * 2)) + 'deg)'; //poster transform
-
-  //get angle between 0-360
-  if (angle < 0) {
-    angle = angle + 360;
-  }
-
-  //poster transform
-  $menu.css('transform', transformPoster);
-
-  //parallax for each layer
-  $item.each(function() {
-    var $this = $(this),
-        offsetLayer = $this.data('offset') || 0,
-        transformLayer = 'translate3d(' + offsetX * offsetLayer + 'px, ' + offsetY * offsetLayer + 'px, 20px)';
-
-    $this.css('transform', transformLayer);
-  });
-});
+const lenis = new Lenis();
+lenis.on('scroll', ScrollTrigger.update);
+gsap.ticker.add((time) => {lenis.raf(time * 1000);});
+gsap.ticker.lagSmoothing(0);
