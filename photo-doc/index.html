@@ -6,9 +6,44 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Saira:ital@0;1&family=Sour+Gummy:wdth,wght@125,300&display=swap" rel="stylesheet"><link rel="stylesheet" href="./style.css">
+<link rel="stylesheet" href="../Scripts/menu.js">
+<link rel="stylesheet" href="../Styles/menu.css">
 
 </head>
 <body>
+  <div class="menu-wrap">
+
+    <input type="checkbox" class="toggler" onclick="displayMenu()">
+
+    <div class="hamburger"><div></div></div>
+
+    <div class="thing">
+      <ul class="Menu-list" data-offset="10">
+        <li class="Menu-list-item" data-offset="20" onclick="navigateTo('../biography/index.html')">
+          Biography
+          <span class="Mask"><span>Biography</span></span>
+          <span class="Mask"><span>Biography</span></span>
+        </li>
+        <li class="Menu-list-item" data-offset="16" onclick="navigateTo('../documents/index.html')">
+          Documents
+          <span class="Mask"><span>Documents</span></span>
+          <span class="Mask"><span>Documents</span></span>
+        </li>
+        <li class="Menu-list-item" data-offset="12" onclick="navigateTo('../timeline/index.html')">
+          Timeline
+          <span class="Mask"><span>Timeline</span></span>
+          <span class="Mask"><span>Timeline</span></span>
+        </li>
+        <li class="Menu-list-item" data-offset="8" onclick="navigateTo('../photo-doc/index.html')">
+          Photo Documentation
+          <span class="Mask"><span>Photo Documentation</span></span>
+          <span class="Mask"><span>Photo Documentation</span></span>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+  
 <!-- partial:index.partial.html -->
 <html style="--n: 18">
   <body>

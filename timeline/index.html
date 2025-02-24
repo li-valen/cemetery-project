@@ -5,12 +5,47 @@
   <title>horizontal timeline</title>
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css'>
 <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css'><link rel="stylesheet" href="./style.css">
+<link rel="stylesheet" href="../Scripts/menu.js">
+<link rel="stylesheet" href="../Styles/menu.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
 </head>
 <body>
 <!-- partial:index.partial.html -->
+<div class="menu-wrap">
+
+    <input type="checkbox" class="toggler" onclick="displayMenu()">
+
+    <div class="hamburger"><div></div></div>
+
+    <div class="thing">
+      <ul class="Menu-list" data-offset="10">
+        <li class="Menu-list-item" data-offset="20" onclick="navigateTo('../biography/index.html')">
+          Biography
+          <span class="Mask"><span>Biography</span></span>
+          <span class="Mask"><span>Biography</span></span>
+        </li>
+        <li class="Menu-list-item" data-offset="16" onclick="navigateTo('../documents/index.html')">
+          Documents
+          <span class="Mask"><span>Documents</span></span>
+          <span class="Mask"><span>Documents</span></span>
+        </li>
+        <li class="Menu-list-item" data-offset="12" onclick="navigateTo('../timeline/index.html')">
+          Timeline
+          <span class="Mask"><span>Timeline</span></span>
+          <span class="Mask"><span>Timeline</span></span>
+        </li>
+        <li class="Menu-list-item" data-offset="8" onclick="navigateTo('../photo-doc/index.html')">
+          Photo Documentation
+          <span class="Mask"><span>Photo Documentation</span></span>
+          <span class="Mask"><span>Photo Documentation</span></span>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
 <section class="cd-horizontal-timeline">
 	<div class="timeline">
 		<div class="events-wrapper">
