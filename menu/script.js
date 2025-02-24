@@ -1,3 +1,5 @@
+let check = 0;
+
 var $menu = $('.Menu-list'),
     $item = $('.Menu-list-item'),
     w = $(window).width(), //window width
@@ -30,3 +32,17 @@ $(window).on('mousemove', function(e) {
     $this.css('transform', transformLayer);
   });
 });
+
+function navigateTo(url) {
+  window.location.href = url;  // Navigate to the URL when the item is clicked
+}
+
+function displayMenu(){
+  if (check == 0) {
+    document.querySelector('.thing').style.opacity = '1';
+    check = 1;
+  } else if (check == 1){
+    document.querySelector('.thing').style.opacity = '0';
+    check = 0;
+  }
+}
