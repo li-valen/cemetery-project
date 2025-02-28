@@ -37,12 +37,17 @@ function navigateTo(url) {
   window.location.href = url;  // Navigate to the URL when the item is clicked
 }
 
+
 function displayMenu(){
   if (check == 0) {
     document.querySelector('.thing').style.scale = '1';
+    document.querySelector('.menu-wrap').style.zIndex = '300';
     check = 1;
   } else if (check == 1){
     document.querySelector('.thing').style.scale = '0';
+    setTimeout(() => {
+      document.querySelector('.menu-wrap').style.zIndex = '0';
+    }, 500);
     check = 0;
   }
 }
