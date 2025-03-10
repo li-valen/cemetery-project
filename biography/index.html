@@ -1,821 +1,783 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enhanced Document Viewer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css">
     <link rel="stylesheet" href="../Styles/menu.css">
-    <style>
-        :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
-            --text-color: #333;
-            --bg-color: #ffffff;
-            --transition-speed: 0.4s;
-        }
+    <link rel="stylesheet" href="style.css">
 
-        /* Dark mode variables */
-        [data-theme="dark"] {
-            --primary-color: #ecf0f1;
-            --secondary-color: #3498db;
-            --text-color: #ecf0f1;
-            --bg-color: #2c3e50;
-        }
-
-        /* Base reset and animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Georgia', serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--bg-color);
-            transition: background-color var(--transition-speed), color var(--transition-speed);
-        }
-
-        /* Content container with animation */
-        .content-container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: var(--bg-color);
-            padding: 40px 50px;
-            animation: fadeInUp 0.6s ease-out;
-            position: relative;
-        }
-
-        /* Staggered animations */
-        h1 { animation-delay: 0.2s; }
-        h2 { animation-delay: 0.3s; }
-        p, ul, ol { animation-delay: 0.4s; }
-        img { animation-delay: 0.5s; }
-
-        /* Enhanced typography */
-        h1 {
-            font-size: 2.5em;
-            margin-bottom: 1em;
-            color: var(--primary-color);
-            border-bottom: 2px solid rgba(0,0,0,0.1);
-            padding-bottom: 0.3em;
-        }
-
-        /* Theme toggle button */
-        .theme-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 10px;
-            border: none;
-            background: var(--secondary-color);
-            color: white;
-            border-radius: 5px;
-            cursor: pointer;
-            z-index: 1000;
-        }
-
-        /* Back to top button */
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            padding: 15px;
-            background: var(--secondary-color);
-            color: white;
-            border-radius: 50%;
-            cursor: pointer;
-            opacity: 0;
-            transition: opacity 0.3s;
-            display: none;
-        }
-
-        /* Sidebar navigation */
-        .sidebar-nav {
-            position: fixed;
-            left: 30px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255,255,255,0.9);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.1);
-        }
-
-        /* Pagination */
-        .pagination {
-            display: flex;
-            justify-content: center;
-            margin: 40px 0;
-            gap: 10px;
-        }
-
-        .page-btn {
-            padding: 8px 16px;
-            border: 1px solid #ddd;
-            background: white;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .page-btn.active {
-            background: var(--secondary-color);
-            color: white;
-            border-color: var(--secondary-color);
-        }
-
-        /* Print styles */
-        @media print {
-            .sidebar-nav, .theme-toggle, .back-to-top {
-                display: none !important;
-            }
-            
-            .content-container {
-                box-shadow: none;
-                padding: 0;
-                max-width: 100%;
-            }
-        }
-
-        /* Responsive design */
-        @media (max-width: 768px) {
-            .content-container {
-                padding: 20px;
-                margin: 10px;
-            }
-            
-            .sidebar-nav {
-                display: none;
-            }
-        }
-    </style>
 </head>
+
 <body>
     <div class="menu-wrap">
 
         <input type="checkbox" class="toggler" onclick="displayMenu()">
-    
-        <div class="hamburger"><div></div></div>
-    
+
+        <div class="hamburger">
+            <div></div>
+        </div>
+
         <div class="thing">
-          <ul class="Menu-list" data-offset="10">
-            <li class="Menu-list-item" data-offset="20" onclick="navigateTo('../biography/index.html')">
-              Biography
-              <span class="Mask"><span>Biography</span></span>
-              <span class="Mask"><span>Biography</span></span>
-            </li>
-            <li class="Menu-list-item" data-offset="16" onclick="navigateTo('../documents/index.html')">
-              Documents
-              <span class="Mask"><span>Documents</span></span>
-              <span class="Mask"><span>Documents</span></span>
-            </li>
-            <li class="Menu-list-item" data-offset="12" onclick="navigateTo('../timeline/index.html')">
-              Timeline
-              <span class="Mask"><span>Timeline</span></span>
-              <span class="Mask"><span>Timeline</span></span>
-            </li>
-            <li class="Menu-list-item" data-offset="8" onclick="navigateTo('../photo-doc/index.html')">
-              Photo Documentation
-              <span class="Mask"><span>Photo Documentation</span></span>
-              <span class="Mask"><span>Photo Documentation</span></span>
-            </li>
-          </ul>
+            <ul class="Menu-list" data-offset="10">
+                <li class="Menu-list-item" data-offset="20" onclick="navigateTo('../biography/index.html')">
+                    Biography
+                    <span class="Mask"><span>Biography</span></span>
+                    <span class="Mask"><span>Biography</span></span>
+                </li>
+                <li class="Menu-list-item" data-offset="16" onclick="navigateTo('../documents/index.html')">
+                    Documents
+                    <span class="Mask"><span>Documents</span></span>
+                    <span class="Mask"><span>Documents</span></span>
+                </li>
+                <li class="Menu-list-item" data-offset="12" onclick="navigateTo('../timeline/index.html')">
+                    Timeline
+                    <span class="Mask"><span>Timeline</span></span>
+                    <span class="Mask"><span>Timeline</span></span>
+                </li>
+                <li class="Menu-list-item" data-offset="8" onclick="navigateTo('../photo-doc/index.html')">
+                    Photo Documentation
+                    <span class="Mask"><span>Photo Documentation</span></span>
+                    <span class="Mask"><span>Photo Documentation</span></span>
+                </li>
+            </ul>
         </div>
-    
-      </div>
-
-    <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
-    <div class="back-to-top" onclick="scrollToTop()">↑</div>
-
-    <nav class="sidebar-nav">
-        <!-- Populate with JavaScript -->
-    </nav>
-
-    <div class="content-container">
-        <h1 class="animate-on-scroll">Biography</h1>
-            <p>
-            Tradition says that the name Hepburn is derived from the names of two rivers—it
-            is likely that the original Hepburn clan in Scotland lived near bodies of water
-            (Document AR). The name had multiple variations before being finalized as
-            Hepburn; these included Heborn, Hepbron, Hepborn, d’Hepburne, and even Esbron.
-            The Hepburn Campbell family was of Scottish origin and had ties with the Earls
-            of Bothwell in the Peerage of Scotland; Campbell's great-grandfather had direct
-            ancestry to Rev. John Hepburn of Keith and remote ancestry to Patrick Hepburn,
-            the third Lord Hailes and first Earl of Bothwell. It was in 1698 that Campbell's
-            great-grandfather from his maternal side, Samuel Hepburn, was born in Glasgow,
-            Scotland. In 1746 he married Janet Sinclair, a Scottish woman and soon to be
-            great-grandmother of James. Campbell.
+        <div class="c15 doc-content">
+            <h1 class="c26" id="h.w7unmcbugunn"><span class="c21">Biography</span></h1>
+            <p class="c4"><span class="c10">Tradition says that the name Hepburn is derived from the names of two
+                    rivers—it is likely that the original Hepburn clan in Scotland lived near bodies of water (Document
+                    AR). The name had multiple variations before being finalized as Hepburn; these included Heborn,
+                    Hepbron, </span><span class="c10">Hepborn</span><span class="c6">, d’Hepburne, and even Esbron. The
+                    Hepburn Campbell family was of Scottish origin and had ties with the Earls of Bothwell in the
+                    Peerage of Scotland; Campbell's great-grandfather had direct ancestry to Rev. John Hepburn of Keith
+                    and remote ancestry to Patrick Hepburn, the third Lord Hailes and first Earl of Bothwell. It was in
+                    1698 that Campbell's great-grandfather from his maternal side, Samuel Hepburn, was born in Glasgow,
+                    Scotland. In 1746 he married Janet Sinclair, a Scottish woman and soon to be great-grandmother of
+                    James. Campbell. </span></p>
+            <p class="c3 c7"><span class="c6"></span></p>
+            <p class="c4"><span class="c6">Shortly after their marriage, they left Scotland due to religious persecution
+                    and settled in Donegal, Ireland (Document AR). They resided there for many years, in that time
+                    bearing four sons and one daughter: James, William, Samuel, John, and Janet Hepburn. At one point,
+                    Campbell's grandfather and great-grandfather received news of how America was the land of
+                    opportunity. This prompted Campbell's maternal grandfather, James Hepburn (age 26 at the time), and
+                    his brother, William Hepburn (age 18 at the time), to sail from Londonderry to Philadelphia in early
+                    1773 to verify the promises of America for their father, Campbell's great grandfather. James Hepburn
+                    was satisfied with the advantages it would come to provide and settled in Philadelphia, making
+                    occasional trips back to the valley to assist with landwatching. With his wife and daughter, who
+                    unfortunately drowned during a storm, Samuel Hepburn sailed on the Faithful Steward from Londonderry
+                    to Philadelphia. His son James Hepburn and Mary Hopewell Hepburn would go on to get married on
+                    December 17, 1781, and have nine children: Samuel Hopewell Hepburn, Andrew Doz Hepburn, William
+                    Hepburn, James Hepburn, Jane Hepburn (Campbell's mother), Mary Hepburn, Hopewell Hepburn, William
+                    Hepburn and Sarah Hepburn. &nbsp;</span></p>
+            <p class="c3 c7"><span class="c6"></span></p>
+            <p class="c4"><span class="c10">James H. Campbell’s father, Francis C. </span><span class="c10">Campbell,
+                    was</span><span class="c10">&nbsp;born in 1787 and grew up in York, Pennsylvania (Document AR). He
+                    went on to pursue his education at Dickinson College, where he, alongside his close friend David
+                    Watts, studied law and laid a path for his future son to soon follow (Document AX). After earning
+                    his law degree, Francis relocated to Williamsport, Pennsylvania, where he met and married his future
+                    wife, Jane H. Campbell. While in Williamsport, he not only built a successful legal career spanning
+                    an impressive 50 years but also became a prominent and respected figure within the Lycoming County
+                    bar. He eventually died in 1867 shortly before the passing of his wife.</span><sup class="c10"><a
+                        href="#ftnt1" id="ftnt_ref1">[1]</a></sup></p>
+            <p class="c3 c7"><span class="c6"></span></p>
+            <p class="c4"><span class="c10">James H. Campbell’s mother, Jane H. </span><span class="c10">Campbell,
+                    was</span><span class="c10">&nbsp;born on March 19, 1775 to James Hepburn and Mary Hopewell
+                    (Document AR). She was the sixth child of nine and the eldest daughter of her family. Her siblings
+                    were Samuel H. Hepburn, Andrew Doz Hepburn, William Hepburn, James Hepburn, John Hepburn, Mary
+                    Hepburn, Hopewell Hepburn, and Sarah Hepburn. Little is documented about her early life. However, it
+                    is known that she married Francis C. Campbell in May of 1816 and had nine children with him before
+                    passing at the age of 72 on </span><span class="c10 c25">May 17, 1867</span><span
+                    class="c10">.</span><sup class="c10"><a href="#ftnt2" id="ftnt_ref2">[2]</a></sup></p>
+            <p class="c3 c7"><span class="c6"></span></p>
+            <p class="c4"><span class="c10">Campbell had many siblings, including Catherine C. Campbell, Elizabeth
+                    Campbell, Francis C. Campbell, Frances H. Campbell, John R. Campbell, Alfred Campbell, Mary J.
+                    Campbell, and Sarah A. Campbell, born from 1818 to 1839 (Document AR).</span><sup class="c10"><a
+                        href="#ftnt3" id="ftnt_ref3">[3]</a></sup><span class="c10">&nbsp;Although James had quite a
+                    number of siblings, many died within the first year of their lives. Besides James, Sarah Ann
+                    Campbell was the best documented of the children </span><span class="c10">with</span><span
+                    class="c10">&nbsp;the 1860 U.S. Census documenting her residence at her parent's house (Document K).
+                    Sarah resided at 2225 N 17th Street in Philadelphia for much of her life until her death in 1905
+                    (Document AW). She was buried in Laurel Hill Cemetery which indicates that while some of the
+                    Campbell family was buried in the Woodlands another portion is in the Laurel Hill
+                    Cemetery.</span><sup class="c10"><a href="#ftnt4" id="ftnt_ref4">[4]</a></sup></p>
+            <p class="c3 c7"><span class="c6"></span></p>
+            <p class="c4"><span class="c10">On February 8, 1820, James Hepburn Campbell himself was born in
+                    Williamsport, Pennsylvania to Francis C. Campbell and Jane H. Campbell (Document AR). Campbell grew
+                    up in a relatively affluent household, seeing as how his father Francis was a successful lawyer.
+                    Coincidentally, he grew up across the street from his future wife, Juliet Hamersley
+                    Lewis.</span><sup class="c10"><a href="#ftnt5" id="ftnt_ref5">[5]</a></sup><span
+                    class="c10">&nbsp;It was in Williamsport that Campbell “almost certainly” received his early
+                    education.</span><sup class="c10"><a href="#ftnt6" id="ftnt_ref6">[6]</a></sup></p>
+            <p class="c4 c24"><span class="c6"></span></p>
+            <p class="c4"><span class="c10">On June 16, 1840, Campbell enrolled in Dickinson Law School which was headed
+                    by the local Judge John Reed in Carlisle, PA (Document A). According to the Department of Archives
+                    at Dickinson College, while Campbell did not live in Dickinson College housing, it is likely
+                    Campbell lived somewhere within the city based on the distance between Williamsport and
+                    Carlisle.</span><sup class="c10"><a href="#ftnt7" id="ftnt_ref7">[7]</a></sup><span
+                    class="c6">&nbsp;Campbell received his Bachelor of Laws diploma and graduated from the 16th Class in
+                    August of 1841.</span></p>
+            <p class="c4 c24"><span class="c6"></span></p>
+            <p class="c4"><span class="c10">After he graduated from Dickinson Law College, Campbell moved to the South
+                    Ward of Pottsville and was admitted to the Bar on October 18, 1841 (Document B; Document D).
+                </span><span class="c10 c14">In June of 1843, James Hepburn Campbell married Juliet Hamersley Campbell,
+                    formerly Juliet Hamersley Lewis. Juliet was born on August 5, 1823, to her parents, Ellis Lewis and
+                    Josephine Wallis Lewis.</span><sup class="c10 c14"><a href="#ftnt8"
+                        id="ftnt_ref8">[8]</a></sup><span class="c10 c14">&nbsp;Her father, Ellis, was appointed
+                    Attorney General for the Commonwealth of Pennsylvania in 1833, and it was then that he relocated
+                    their whole family to Williamsport, Pennsylvania, where Juliet and James met. Her parents had sent
+                    her to the Moravian Seminary for Young Ladies in 1835 and later to a French Boarding School in
+                    Philadelphia. The influences of her father and her education led her to begin writing at the age of
+                    14; she eventually became an author, writing multiple full-length books and featuring her poetry in
+                    several national magazines. &nbsp;Some of Juliet's most notable works included: her novel "The Old
+                    Love and the New" and poems in </span><span class="c10 c13">Shell Music, </span><span
+                    class="c10 c14">both published in The Potter journal on August 19, 1858; her poem </span><span
+                    class="c10 c13">Hungary, </span><span class="c10 c14">published in the Lewisburg Chronicle and the
+                    West Branch Farmer on December 12, 1849; and </span><span class="c10 c13">A Story of
+                    Sunrise</span><span class="c10 c14">, which was published in T.B. Read's </span><span
+                    class="c10 c13">Female Poets of America </span><span class="c10 c14">(Document C; Document
+                    I)</span><span class="c10 c13">.</span><sup class="c10 c14"><a href="#ftnt9"
+                        id="ftnt_ref9">[9]</a></sup><span class="c10 c14 c12">,</span><sup class="c10 c14 c12"><a
+                        href="#ftnt10" id="ftnt_ref10">[10]</a></sup><span class="c10 c13">&nbsp;</span><span
+                    class="c9">Juliet balanced her successful career along with life as a mother to her four children,
+                    Julia Wharton Lewis Campbell, Ellis Lewis Campbell, James Jr. Campbell, and Francis Campbell, and as
+                    the wife to James H. Campbell. </span></p>
+            <p class="c3 c7"><span class="c9"></span></p>
+            <p class="c4"><span class="c10 c14">Juliet and James had their first son, Francis D. Campbell, in 1845; two
+                    years later, their son, James Jr. Campbell was born in 1847 (Document D). Francis was notably the
+                    Master’s Mate on the “Black Hawk” which was the flagship of the Mississippi Squadron; he resigned
+                    from his position on August 8, 1863 (Document AB). Unfortunately, both passed after fighting in the
+                    Civil War in 1864 and thus, little is documented about their lives.</span><sup class="c10 c14"><a
+                        href="#ftnt11" id="ftnt_ref11">[11]</a></sup><span class="c10 c14">&nbsp;In 1854, they welcomed
+                    another son named Ellis Lewis Campbell. Ellis became a lawyer in Philadelphia like his father,
+                    marrying Ada C. </span><span class="c10 c14">Smith </span><span class="c10 c14">and passing
+                    away</span><span class="c10 c14">&nbsp;on </span><span class="c10">May 30, 1900.</span><span
+                    class="c9">&nbsp;</span></p>
+            <p class="c3 c7"><span class="c9"></span></p>
+            <p class="c4"><span class="c10 c14">In contrast, their only daughter, Julia Wharton Lewis Keightley
+                    (formally known as Julia Wharton Lewis Campbell and Julia Wharton Lewis Ver Planck), became an
+                    author like Juliet. Julia was the most well-documented of the four Campbell children. She was born
+                    in 1851 or 1854, and her break into the literary world occurred following the deaths of her husband
+                    and two children, all of whom she lost within two years.</span><sup class="c10 c14"><a
+                        href="#ftnt12" id="ftnt_ref12">[12]</a></sup><span class="c10 c14 c12">,</span><sup
+                    class="c10 c14"><a href="#ftnt13" id="ftnt_ref13">[13]</a></sup><span class="c10 c14">&nbsp;She
+                    married her first husband, Philip William Ver Planck, on December 21, 1871, at St. Stephen's
+                    Episcopal Church, Philadelphia, Pennsylvania; he died at the age of 32 on December 15, 1876, in
+                    Colorado.</span><sup class="c10 c14"><a href="#ftnt14" id="ftnt_ref14">[14]</a></sup><span
+                    class="c10 c14 c12">,</span><sup class="c10 c14 c12"><a href="#ftnt15"
+                        id="ftnt_ref15">[15]</a></sup><span class="c10 c14">&nbsp;Her two sons, James Campbell Ver
+                    Planck, born in 1872, and Gordon Ver Planck, born in 1874, passed away in 1875.</span><sup
+                    class="c10 c14"><a href="#ftnt16" id="ftnt_ref16">[16]</a></sup></p>
+            <p class="c3 c7"><span class="c9"></span></p>
+            <p class="c4"><span class="c10 c14">After the death of her husband, she moved back home and lived with her
+                    parents for a while to aid her recovery from the illnesses she developed after the trauma of losing
+                    her husband and sons. During this period, she wrote two successful plays and learned about the Aryan
+                    Theosophical Society. On May 27, 1886, Julia officially joined the Aryan Theosophical Society,
+                    helping to write several magazines in </span><span class="c10 c13">The Path</span><span
+                    class="c10 c14">&nbsp;and writing a book called </span><span class="c10 c13">Letters That Have
+                    Helped Me </span><span class="c10 c14">during her time there.</span><sup class="c10 c14"><a
+                        href="#ftnt17" id="ftnt_ref17">[17]</a></sup><span class="c10 c14">&nbsp;Many of her works were
+                    written under the pseudonym Jasper Niemand. In 1891, Julia remarr</span><span class="c10">ied Dr.
+                    Archibald Keightley and settled on a property in New York City. They eventually moved to England
+                    following the declining health of Keightly's mother (Document AV).</span><sup class="c10"><a
+                        href="#ftnt18" id="ftnt_ref18">[18]</a></sup><span class="c10">&nbsp;There, they established a
+                    household with six servants and continued to write for the Theosophical Journals. Julia died on
+                </span><span class="c10"><a class="c0"
+                        href="https://www.google.com/url?q=https://theosophy.wiki/en/October_9&amp;sa=D&amp;source=editors&amp;ust=1741297707328255&amp;usg=AOvVaw1lw-iOOnr9WHCAt9iRrU2G">October
+                        9</a></span><span class="c10">, 1915, in Do</span><span class="c10 c14">lgelly, Merionethshire,
+                    Wales.</span><sup class="c10 c14"><a href="#ftnt19" id="ftnt_ref19">[19]</a></sup></p>
+            <p class="c3 c7"><span class="c9"></span></p>
+            <p class="c4"><span class="c6">After moving to Pottsville, Pennsylvania, he established a successful legal
+                    practice and married Juliet Lewis in 1843. Campbell's interest in politics emerged in 1844 when he
+                    attended the Whig National Convention in Baltimore, marking the beginning of his involvement in
+                    public service (Document AX). There, Campbell developed a close relationship with the influential
+                    Henry Clay whom he supported for presidency. </span></p>
+            <p class="c3 c7"><span class="c6"></span></p>
+            <p class="c4"><span class="c6">Campbell additionally served as the host of celebrations and parades due to
+                    his status as a prominent lawyer in the city. Such celebrations and parades included the celebration
+                    of the Good Intent Engine fire brigade and the victory of the Pottsville Cricket Club (Document E).
+                    Campbell’s role in hosting these celebrations indicate that Campbell was influential in the social
+                    scene and possibly owned a large property in the city.</span></p>
+            <p class="c3 c7"><span class="c6"></span></p>
+            <p class="c4"><span class="c6">In Pottsville, Campbell also joined the Miner’s Lodge of the Independent
+                    Order of Odd Fellows, a fraternal organization dedicated to community service and treatment for the
+                    sick (Document E). There, Campbell was responsible for providing the charter to the organization on
+                    December 9, 1851. As a lawyer, Campbell also assisted the organization of various companies,
+                    including the Pottsville Mutual and Joint Stock Life Insurance Company, of which he was an
+                    incorporator. </span></p>
+            <p class="c3 c7"><span class="c6"></span></p>
+            <p class="c4"><span class="c6">While presumably running a law firm in Pottsville, Campbell also mentored a
+                    number of students in law, including prominent Pottsville lawyers George Little, Christopher Little,
+                    and William Lebbeus Whitney (Document AO; Document B). In 1891, Christopher Little—the son of the
+                    aforementioned George Little—committed suicide at the American Hotel in Mauch Chunk, PA. </span></p>
+            <p class="c3 c7"><span class="c6"></span></p>
+            <p class="c4"><span class="c10">James Hepburn Campbell debuted in national politics in 1855 after being
+                    elected to the 34th Congress as an opposition Whig, representing Pennsylvania's 11th Congressional
+                    District, which included Schuylkill and Northumberland counties. (Document G). After being elected
+                    to the 34th Congress Campbell likely did not own any personal property in Washington D.C.; while
+                    keeping ownership of his Pottsville home, Campbell stayed at the National Hotel in the Capital with
+                    his wife. Although the National Hotel has long since been destroyed, the hotel was located at the
+                    northeast corner of Pennsylvania Avenue and 6th Street near the White House.</span><sup
+                    class="c10"><a href="#ftnt20" id="ftnt_ref20">[20]</a></sup></p>
+            <p class="c3 c7"><span class="c6"></span></p>
+            <p class="c4"><span class="c10">Initially, Campbell did not initially accept any committee assignments in
+                    Congress in contempt of Pennsylvania rival and House Speaker Galusha Grow whom he believed was
+                    giving him “inferior assignments” (Document AX). However, whilst in the 34th Congress, Campbell
+                    threw in his full support toward electing Nathaniel P. Banks—an American Party congressman—as the
+                    new House Speaker to succeed Grow (Document AT). As a reward, Campbell was assigned to the Committee
+                    of Ways and Means where he leveraged his position to block any efforts to lower the 1846 Walker
+                    Tariff (Document AX). In 1856, Campbell made a speech on the House floor criticizing the
+                    Kansas-Nebraska Act and the affair between Kansas and Missouri that followed (Document H). In the
+                    speech, Campbell made his support of the Democratic Governor of Kansas Andrew H. </span><span
+                    class="c10">Reeder known</span><span class="c6">, claiming that an “invading force from the State of
+                    Missouri” had illegitimately placed John Wilkins Whitfield, a pro-South politician who contested
+                    Reeder, in power. Here, Campbell showed that he did not strictly separate himself from other
+                    politicians based on party lines; it was through this speech that Campbell would begin building a
+                    reputation for himself as a talented politician and anti-slave Republican. </span></p>
+            <p class="c3 c7"><span class="c6"></span></p>
+            <p class="c4"><span class="c10">In 1856, Campbell again ran for a seat in the House of Representatives but
+                    lost reelection to the Democrat William L. Dewart.</span><sup class="c10"><a href="#ftnt21"
+                        id="ftnt_ref21">[21]</a></sup><span class="c10">&nbsp;During the period of time between the 34th
+                    and 36th Congresses, it is plausible that Campbell returned to Pottsville as he still owned the
+                    property. In 1858, Campbell defeated the incumbent Dewart and was overwhelmingly reelected to the
+                    36th Congress representing the same district as he did previously (Document J). There, Campbell was
+                    assigned to the Committee of Elections but did not contribute significantly to any larger purpose or
+                    event (Document F). During his time in the 36th Congress, Campbell resided in the Washington
+                    House—also known as the United States Hotel—near Pennsylvania Avenue between 3rd and 4 ½ street with
+                    his wife.</span><sup class="c10"><a href="#ftnt22" id="ftnt_ref22">[22]</a></sup><span
+                    class="c10 c12">,</span><sup class="c10 c12"><a href="#ftnt23" id="ftnt_ref23">[23]</a></sup><span
+                    class="c10 c12">,</span><sup class="c10 c12"><a href="#ftnt24" id="ftnt_ref24">[24]</a></sup></p>
+            <p class="c3 c7"><span class="c6"></span></p>
+            <p class="c4"><span class="c6">On January 11, Campbell, alongside George W. Scranton of Pennsylvania, made a
+                    speech on the House floor regarding the quickly shifting political landscape in America (Document
+                    L). In it, Campbell expressed his belief in the Union as a whole and indicated that he did not
+                    support regional rivalries. More importantly, Campbell directly opposed the idea of Southern
+                    secession, but also condemned the raid at Harpers Ferry by John Brown that happened a few months
+                    prior. Campbell’s reasonable stance on Southern hostility suggests that Campbell was not a so-called
+                    Radical Republican. In the speech, Campbell also detailed his friendship with the late Henry
+                    Clay—whom he supported in the 1844 Whig National Convention—and offered to support Southerner John
+                    Gilmer of North Carolina as House Speaker due to his close ties with Clay; Campbell also reflected
+                    on his support for the 1850 Compromise in his speech.</span></p>
+            <p class="c3 c7"><span class="c6"></span></p>
+            <p class="c4"><span class="c6">On April 24, 1860, Campbell made a speech on the House floor in support of
+                    Representative Justin S. Morrill’s protectionist tariff (Document M). In the speech, Campbell
+                    referenced many trade relationships with nations such as Britain to argue for the raising of tariffs
+                    that would allow American workers to be more economically independent and protected. Seeing as how
+                    Campbell conspicuously urged the house to “[protect] everything American, against everything
+                    foreign,” it could be said that Campbell was a financial conservative. In part due to Campbell’s
+                    efforts, the Morrill Tariff Act was passed in 1861, raising tariff rates and improving tariff
+                    systems. </span></p>
+            <p class="c3 c7"><span class="c6"></span></p>
+            <p class="c4"><span class="c10">As tensions between the North and South worsened in December of 1860,
+                    Campbell was appointed as the representative of Pennsylvania in the Committee of Thirty-Three
+                    following Hon. Alexander Boteler’s resolution to mediate the “perilous condition of the
+                    country.”</span><sup class="c10"><a href="#ftnt25" id="ftnt_ref25">[25]</a></sup><span
+                    class="c6">&nbsp;It was in this committee that Campbell fought against any form of compromise on
+                    slavery between the North and South, including the Crittenden Compromise and Corwin Amendment
+                    (Document AX; Document P). </span></p>
+            <p class="c3 c7"><span class="c6"></span></p>
+            <p class="c4"><span class="c6">Following the election of Lincoln, the threat of secession from the Southern
+                    states led to several compromises regarding slavery to be floated from both the North and South,
+                    such as the Crittenden Compromise. In response, Campbell made a speech on the House floor rebuking
+                    any idea of compromise to the Southern states on February 14, 1861 (Document P). In the speech,
+                    Campbell argues that the Southern states—of which six had already vowed to secede—have no right to
+                    contest the election of Lincoln, and that the people had a right to see their elected president be
+                    inaugurated “with all the usual forms and ceremonies, without terms, without negotiation, without
+                    compromise, and without apology.” Campbell proceeded to describe the Crittenden Compromise as
+                    “despotic,” insisting that the Southern states either fall in line or betray the Union.</span></p>
+            <p class="c3 c7"><span class="c6"></span></p>
+            <p class="c4"><span class="c10">In part due to Campbell’s staunch opposition to compromise, the Civil War
+                    broke out following the commencement of hostilities at Fort Sumter on April 12 of the same year.
+                    Upon hearing of the news, Campbell immediately rushed to the capital from his Pottsville home and
+                    was on the last train that passed freely through Baltimore to Washington (Document AT). After
+                    arriving in the city, Campbell enlisted in Cassius M. Clay’s battalion of volunteers (Document Q).
+                    As the battalion was initially the only troops defending Washington from Southern rebels, Clay’s
+                    battalion became known as the “Washington Guards”</span><sup class="c10"><a href="#ftnt26"
+                        id="ftnt_ref26">[26]</a></sup><span class="c10 c12">,</span><sup class="c10"><a href="#ftnt27"
+                        id="ftnt_ref27">[27]</a></sup><span class="c10 c12">,</span><sup class="c10"><a href="#ftnt28"
+                        id="ftnt_ref28">[28]</a></sup><span class="c6">&nbsp;The battalion was disbanded within a few
+                    days after being relieved by professional infantry hailing from other Northern states; only a few
+                    days after the battalion was relieved, the 6th Massachusetts who was stationed in the city came
+                    under attack from a rebel mob.</span></p>
+            <p class="c3 c7"><span class="c6"></span></p>
+            <p class="c4"><span class="c10">Following the relieving of Clay’s battalion, on April 18 of the same year,
+                    Campbell </span><span class="c10">formally</span><span class="c10">&nbsp;enlisted in the 25th
+                    Regiment of Pennslyvania Volunteers where he was elected as a Major in the F&amp;S companies
+                    (Document R).</span><sup class="c10"><a href="#ftnt29" id="ftnt_ref29">[29]</a></sup><span
+                    class="c10">&nbsp;Campbell saw little action in the 25th as the regiment was not active in direct
+                    combat against Confederate troops; the regiment existed only three months before it was mustered out
+                    of service.</span><sup class="c10"><a href="#ftnt30" id="ftnt_ref30">[30]</a></sup><span
+                    class="c10">&nbsp;This regiment, in a very similar fashion to the Washington Guards, was dubbed the
+                    ‘First Defenders’ due to its immediate response to Lincoln’s call for troops.</span><sup
+                    class="c10"><a href="#ftnt31" id="ftnt_ref31">[31]</a></sup><span class="c6">&nbsp;As the regiment
+                    had only been formed on a three-month term, Campbell was honorably discharged from the regiment in
+                    July.</span></p>
+            <p class="c3 c24"><span class="c6"></span></p>
+            <p class="c4"><span class="c6">After returning from his military service, Campbell again returned to
+                    Congress as he was elected in October of 1860 to the 37th Congress representing his usual district
+                    (Document N). In the 37th Congress, Campbell was initially appointed to the Committee of Elections,
+                    the Committee on Expenditures in the Treasury Department, and the Committee of Public Expenditures
+                    (Document F). During the 37th Congress, Campbell again resided in the Washington House hotel with
+                    his wife (Document O). </span></p>
+            <p class="c3 c7"><span class="c6"></span></p>
+            <p class="c4"><span class="c6">In March of 1862, the stalemate on the Eastern front of the Civil War near
+                    the Potomac drove many Republicans to pressure the White House for immediate and decisive action.
+                    Among them was Campbell, who, alongside William M. Davis of Pennsylvania and John Hutchins of Ohio,
+                    visited and interviewed Lincoln (Document S). In his recollection, Campbell explained how
+                    Congressmen should consult with the president instead of attacking him; Campbell also urged the
+                    President to break the Confederate presence near the Potomac and Capitol. To this, Lincoln hinted
+                    towards a possible offensive by General George McLellan. </span></p>
+            <p class="c3 c7"><span class="c6"></span></p>
+            <p class="c4"><span class="c6">Although Campbell did not do anything of significance in his other
+                    committees, he was later appointed as the Chairman of the Select Committee on the Pacific Railroad
+                    in 1862 (Document T). On the Committee, Campbell oversaw the organization of the first
+                    transcontinental railroad from Missouri to California and advocated for the adoption of the central
+                    route following Southern secession (Document AQ). On April 8, 1862, Campbell made a speech on the
+                    House floor emphasizing the importance of a transcontinental railroad, arguing that the construction
+                    of a Pacific Railroad would better unify the country (Document U). Campbell argued that both
+                    communication and transportation would be revolutionized with its construction; his familiarity with
+                    the intricate details of the railroad’s plans indicated that Campbell was closely involved with the
+                    railroad itself. </span></p>
+            <p class="c3 c7"><span class="c6"></span></p>
+            <p class="c4"><span class="c6">On June 24 of the same year, Congress, with Campbell as the sponsor of the
+                    bill, passed the Pacific Railway Act of 1862 with the Senate’s amendments (Document V); the bill was
+                    signed into law by Abraham Lincoln on July 1st of the same year. This bill, alongside Campbell’s
+                    related speech, can be reasonably viewed as the pinnacle of Campbell’s career—as the Pacific Railway
+                    Acts were among the most influential pieces of legislation regarding economics and trade in the
+                    U.S., Campbell’s efforts, although unrecognized, have had a permanent effect on the growth of
+                    America as a nation and economic powerhouse. </span></p>
+            <p class="c3 c7"><span class="c6"></span></p>
+            <p class="c4"><span class="c6">Only a week before he would pass the first Pacific Railway Act through
+                    Congress, Campbell voted in favor of the Morrill Land-Grant Acts—a bill that created land-grant
+                    colleges like Penn State and MIT from the proceeds of land sales (Document V). However, as these
+                    land sales were infamous for having been sourced from the exploitation of Native lands, it could be
+                    argued that Campbell was not particularly sensitive to the plight of the Native Americans at the
+                    time. It does show, however, that Campbell was a supporter of the expansion of higher education.
+                </span></p>
+            <p class="c3 c7"><span class="c6"></span></p>
+            <p class="c4"><span class="c6">After Campbell’s defeat in the 1862 Congressional elections, Campbell
+                    recounted in his letters to his wife how Secretary of the Senate John W. Forney notified him of
+                    Lincoln’s particular regret in Campbell’s political defeat; it can be seen here that Campbell may
+                    have held a relatively close relationship with the President (Document S). In January of 1863,
+                    Campbell was received by Mrs. Abraham Lincoln at the White House, where he, alongside General Simon
+                    Cameron, “gossiped” with the First Lady about her Southern heritage.</span></p>
+            <p class="c3 c7"><span class="c6"></span></p>
+            <p class="c4"><span class="c10">On February 25th of the same year, Campbell voted in favor of the monumental
+                    Enrollment Act; the Enrollment Act, also the Civil War Military Draft Act, was essentially the first
+                    conscription legislation passed in the U.S. Campbell’s support of this act possibly derives from his
+                    “vigorous military methods” and intolerance for secession.</span><sup class="c10"><a href="#ftnt32"
+                        id="ftnt_ref32">[32]</a></sup><span class="c6">&nbsp;</span></p>
+            <p class="c3 c24"><span class="c6"></span></p>
+            <p class="c4"><span class="c6">In June of 1863, Campbell again registered for the military draft following
+                    Governor Andrew Curtin’s call for volunteers (Document Y). He did not serve as an infantryman,
+                    however; Campbell alongside General James Nagle privately raised the 39th Regiment of Pennsylvania
+                    Volunteer Militia following General Robert E. Lee’s advance into southern Pennsylvania (Document A;
+                    Document AQ). The unit, composed mostly of men from Schuylkill County, did not actively contribute
+                    to combat as Lee’s troops had already begun a southern retreat following the decisive Northern
+                    victory at Gettysburg (Document B). The regiment merely followed the footprints of Lee’s army in the
+                    campaign to pursue and destroy Lee. Campbell was left in charge of the regiment as a lieutenant
+                    colonel after James Nagle was promoted to Brigadier General. The regiment was mustered out of
+                    service nearly a month after its formation (Document Z).</span></p>
+            <p class="c3 c7"><span class="c6"></span></p>
+            <p class="c4"><span class="c10">In the 1862 Congressional elections, the unpopularity of the Civil
+                    War—particularly in the Schuylkill and Northumberland counties he represented—led to Campbell’s
+                    failed election to the 38th Congress (Document S). Following the end of his term in the 37th
+                    Congress and service in the military, Campbell was personally recommended via letter by many highly
+                    influential figures and politicians to serve as a diplomatic mission on behalf of the U.S. (Document
+                    W; Document X). Based on the contents of such letters, Campbell had many connections to prominent
+                    politicians including former Pennsylvania </span><span class="c10">Governors</span><span
+                    class="c6">&nbsp;James Pollock and Andrew Curtin as well as former Vice President Hannibal Hamlin.
+                    As such, in 1864, Campbell was appointed by then-President Abraham Lincoln to serve as the Minister
+                    Resident to Sweden and Norway; Campbell served this station from the years 1864-1867 (Document AC;
+                    Document AJ). Campbell notably declined the offer of the Lincoln administration to be assigned as a
+                    judge on the Court for the Suppression of the Slave Trade in Cape Town, South Africa before
+                    accepting this position (Document AX).</span></p>
+            <p class="c3 c7"><span class="c6"></span></p>
+            <p class="c4"><span class="c10">On July 22, 1864, Secretary of State William H. Seward wrote a request to
+                    the relevant European nations to provide free travel for Campbell in preparation for his arrival in
+                    Stockholm (Document AD). As such, on September 17, 1864, Campbell arrived unmolested in Stockholm
+                    with his family through the German cities of Cologne and Lubeck (Document AE). There, he secured an
+                    apartment for his stay and began preparations for the assumption of duty from his predecessor Jacob
+                    S. Haldeman. Shortly after his arrival, Campbell met for an interview with the Swedish Prime
+                    Minister of Foreign Affairs Count Ludvig Manderstrom where he made a fantastic first impression
+                    while discussing the Civil War. On the 24th and 25th, Campbell met with King Charles XV and Queen
+                    Lovisa of Sweden separately in </span><span class="c10">Ulriksdale</span><span
+                    class="c6">&nbsp;Palace, remarking that he “could not have been received more kindly by any
+                    gentleman in Europe.”</span></p>
+            <p class="c3 c7"><span class="c6"></span></p>
+            <p class="c4"><span class="c6">&nbsp;While only a portion of his activities are readily documented, it is
+                    known that Campbell worked to construct greater relations between the Swedish and American states by
+                    acquiring the language and culture while touring the country as the Minister Resident (Document AE;
+                    Document AQ). To this effect, Campbell participated in various cultural and social celebrations such
+                    as the fiftieth anniversary of the union between Sweden and Norway (Document AE).</span></p>
+            <p class="c3 c7"><span class="c6"></span></p>
+            <p class="c4"><span class="c6">In December, Campbell handled his first, albeit small, diplomatic conflict
+                    where he made it known to Count Manderstrom the American government’s displeasure that Sweden had
+                    dispatched Baron Nils de Wetterstedt as an envoy to the Mexican Empire (not to be confused with the
+                    Republic of Mexico). Prior to his arrival as a Minister to the U.S., Wetterstedt had been sent on
+                    diplomatic business to the French-backed Mexican Empire that the U.S. deemed illegitimate.
+                    Nevertheless, Campbell and Manderstrom maintained a light mood throughout their meeting, with the
+                    two joking that Russia, who also dispatched an envoy to the Mexican Empire, was no better a friend
+                    to America than Sweden. This interaction likely indicates that Campbell generally handled diplomatic
+                    affairs in Sweden cordially and professionally. </span></p>
+            <p class="c3 c7"><span class="c6"></span></p>
+            <p class="c4"><span class="c6">In early 1865, it is likely that Campbell traveled across Europe,
+                    specifically France and Paris. On May 23, 1865, the Swedish Prime Minister’s Office for External
+                    Affairs requested that the nations of Prussia, Austria, Switzerland, Italy, and France grant
+                    Campbell free travel after Campbell had “communicated his desire to travel” to these countries
+                    (Document AI). Based on this desire, as well as the Office’s request, it is likely that Campbell
+                    traveled across Europe in 1865; this could possibly be related to the recent shift in the European
+                    political realm following the Second Schleswig War and its influence on Scandinavia (Document
+                    AE).</span></p>
+            <p class="c3 c7"><span class="c6"></span></p>
+            <p class="c4"><span class="c10">Before the Foreign Office issued the laissez-passer request for Campbell, it
+                    is likely he had already traveled to Paris for a short period of time (Document AI). Campbell’s
+                    presence in Paris at this time can be verified by his induction as one of the Presidents d’Honneur
+                    of the Institut d’Afrique in Paris in February of 1865 (Document AH). The Institut d’Afrique was a
+                    French organization formed in 1838 to push for the abolition of the slave trade but also advocated
+                    the colonization of Africa.</span><sup class="c10"><a href="#ftnt33"
+                        id="ftnt_ref33">[33]</a></sup><span class="c10">&nbsp;Seeing as how the Institut d’Afrique
+                    supported colonization, Campbell himself may have also supported colonization whilst opposing
+                    slavery. In the letter of his induction, the General Secretary of the Institute wrote how the
+                    organization would be “flattered” to have him as a President d’Honneur; this likely indicated that
+                    Campbell’s efforts to abolish the slave trade were recognized internationally. Based on how the
+                    Institut </span><span class="c10">d’Afrique’s</span><span class="c6">&nbsp;members were almost
+                    exclusively composed of members in Paris, and how the title of President d’Honneur had a membership
+                    fee of at least 20 francs, it can be inferred that Campbell may have stayed in Paris for a period of
+                    time in 1865.</span></p>
+            <p class="c3 c7"><span class="c6"></span></p>
+            <p class="c4"><span class="c6">A glimpse into Campbell’s ability was shown shortly before the end of the
+                    Civil War in March-April of 1865 when he potentially foiled a Confederate plot to procure a Swedish
+                    vessel for the purpose of piracy (Document AG). In the letters between Minister Resident to Denmark
+                    Bradford Wood and Campbell, it was said that Confederate agents had been “prowling” Copenhagen in
+                    search of a merchant vessel to purchase and arm. As a precaution, Campbell placed the U.S. consuls
+                    at Swedish and Norwegian ports on high alert against potential Confederate activity and offered to
+                    notify the Swedish authorities on the matter. Though it was only days later that the Confederacy
+                    would surrender and end the Civil War, this could be seen as one of the more noteworthy affairs in
+                    Campbell’s service as Resident Minister as it displayed his competence and decisiveness in a time of
+                    stress. </span></p>
+            <p class="c3 c7"><span class="c6"></span></p>
+            <p class="c4"><span class="c6">Campbell also served as the channel through which diplomatic correspondences
+                    between the two countries—such as the condolences of the Swedish king following President Abraham
+                    Lincoln’s assassination—were conveyed (Document AF). Following the assassination plot on President
+                    Lincoln and Secretary of State William H. Seward, Campbell wrote a letter to Seward where he
+                    reported the reaction of the Swedish people to the assassination and wished Seward a hasty recovery.
+                    Notably, Campbell revealed his reverence for Lincoln and wrote how Lincoln, whom he “knew and loved
+                    as a personal friend,” dedicated his life to the Union and preserved American liberty. The death of
+                    Lincoln likely deeply affected Campbell as he had interacted with the late President on more than
+                    one occasion, particularly when meeting with him in early 1862 (Document S).</span></p>
+            <p class="c3 c7"><span class="c6"></span></p>
+            <p class="c4"><span class="c6">On November 15, 1866, it was decided by the Johnson administration that John
+                    McGinnis was to replace Campbell as Minister Resident and that Campbell was to be appointed as
+                    Minister Resident to Colombia in Bogota (Document AJ). However, these decisions were yet to be
+                    passed through the Senate, and McGinnis’ appointment would ultimately be rebuffed by a Senate vote.
+                    As such, Campbell did not meet McGinnis in Paris to organize the transfer of power to his successor.
+                </span></p>
+            <p class="c3 c24"><span class="c6"></span></p>
+            <p class="c4"><span class="c10">On March 29, Campbell presented a recall and exchanged thanks with King
+                    Charles in the Royal Palace where he was afforded a ceremonious farewell by the Royal
+                    family.</span><sup class="c10"><a href="#ftnt34" id="ftnt_ref34">[34]</a></sup><span
+                    class="c10">&nbsp;After his term as Minister Resident to Sweden-Norway ended, the newly-inaugurated
+                    President Andrew Johnson offered Campbell the aforementioned second diplomatic post as the Minister
+                    Resident to Colombia in Bogota; however, Campbell rejected this position in protest of the Johnson
+                    administration which was sympathetic to the South (Document AJ; Document AQ).</span><sup
+                    class="c10"><a href="#ftnt35" id="ftnt_ref35">[35]</a></sup><span class="c6">&nbsp;</span></p>
+            <p class="c3 c7"><span class="c6"></span></p>
+            <p class="c4"><span class="c6">Before his return to America on June 14, 1867, Campbell was elected as a
+                    Companion of the First Class of the Military Order of the Loyal Legion of the United States (MOLLUS)
+                    (Document AK). MOLLUS, whilst sounding like a military award, was actually one of the first military
+                    fraternal organizations; MOLLUS was formed following the assassination of Lincoln as an organization
+                    of officers that fought in the Civil War. First Class Companions of the Order such as Campbell were
+                    composed of only veteran commissioned officers of the U.S. Army who fought in the Civil War. Notable
+                    members of MOLLUS included Ulysses S. Grant, Rutherford B. Hayes, William McKinley, and George
+                    Custer.</span></p>
+            <p class="c3 c7"><span class="c6"></span></p>
+            <p class="c4"><span class="c10">In August of 1867, Campbell officially moved back to the States and took
+                    residence in Philadelphia to resume the practice of law (Document S; Document AQ). It is probable
+                    that around this time Campbell purchased a property at 2039 Delaney Place in Philadelphia to reside
+                    with his wife and daughter, Julia Ver Planck (Document AM).</span><sup class="c10"><a href="#ftnt36"
+                        id="ftnt_ref36">[36]</a></sup><span class="c10">&nbsp;Julia initially moved away from Campbell
+                    to live with her husband, but moved back following the death of her husband and sons.</span><sup
+                    class="c10"><a href="#ftnt37" id="ftnt_ref37">[37]</a></sup></p>
+            <p class="c3 c7"><span class="c6"></span></p>
+            <p class="c4"><span class="c6">Despite a shortage of city records during the period, it is known that by
+                    1876 Campbell was working at a law firm at 130 S 6th Street—the street also known as “Lawyer’s
+                    Row”—with other prominent lawyers (Document AL). While he was working at this firm, Campbell worked
+                    on numerous prominent cases such as the 1883 Packer Estate case, which was elevated to the
+                    Pennsylvania Supreme Court (Document AN). In the case, Campbell represented the estate of Barnabas
+                    Hammett; The Supreme Court ruled that guardians, after initiating a legal case for a minor, no
+                    longer have authority after the minor becomes an adult. </span></p>
+            <p class="c3 c7"><span class="c6"></span></p>
+            <p class="c4"><span class="c10">Campbell’s life slowed down following his departure from politics, and
+                    Campbell bought a separate estate for his family in Wayne, PA. The estate, known as “</span><span
+                    class="c10">Aeola</span><span class="c6">,” was located at 705 Church Rd in Wayne (Document AU). In
+                    a photograph taken in 1898, three years after his death, the estate appeared very large and
+                    well-kept, with a path going around the house and deliberate maintenance of plants and decorations.
+                    In Allan Peskin’s “Two White House Visits,” the estate is described as a “farm,” which is
+                    corroborated by the large plot of land the house occupies on satellite imagery (Document S).</span>
             </p>
-            <p>
-            Shortly after their marriage, they left Scotland due to religious persecution
-            and settled in Donegal, Ireland (Document AR). They resided there for many
-            years, in that time bearing four sons and one daughter: James, William, Samuel,
-            John, and Janet Hepburn. At one point, Campbell's grandfather and
-            great-grandfather received news of how America was the land of opportunity. This
-            prompted Campbell's maternal grandfather, James Hepburn (age 26 at the time),
-            and his brother, William Hepburn (age 18 at the time), to sail from Londonderry
-            to Philadelphia in early 1773 to verify the promises of America for their
-            father, Campbell's great grandfather. James Hepburn was satisfied with the
-            advantages it would come to provide and settled in Philadelphia, making
-            occasional trips back to the valley to assist with landwatching. With his wife
-            and daughter, who unfortunately drowned during a storm, Samuel Hepburn sailed on
-            the Faithful Steward from Londonderry to Philadelphia. His son James Hepburn and
-            Mary Hopewell Hepburn would go on to get married on December 17, 1781, and have
-            nine children: Samuel Hopewell Hepburn, Andrew Doz Hepburn, William Hepburn,
-            James Hepburn, Jane Hepburn (Campbell's mother), Mary Hepburn, Hopewell Hepburn,
-            William Hepburn and Sarah Hepburn.
-            </p>
-            <p>
-            James H. Campbell’s father, Francis C. Campbell, was born in 1787 and grew up in
-            York, Pennsylvania (Document AR). He went on to pursue his education at
-            Dickinson College, where he, alongside his close friend David Watts, studied law
-            and laid a path for his future son to soon follow (Document AX). After earning
-            his law degree, Francis relocated to Williamsport, Pennsylvania, where he met
-            and married his future wife, Jane H. Campbell. While in Williamsport, he not
-            only built a successful legal career spanning an impressive 50 years but also
-            became a prominent and respected figure within the Lycoming County bar. He
-            eventually died in 1867 shortly before the passing of his wife.<sup
-            id="fnref1"><a href="#fn1" rel="footnote">1</a></sup>
-            </p>
-            <p>
-            James H. Campbell’s mother, Jane H. Campbell, was born on March 19, 1775 to
-            James Hepburn and Mary Hopewell (Document AR). She was the sixth child of nine
-            and the eldest daughter of her family. Her siblings were Samuel H. Hepburn,
-            Andrew Doz Hepburn, William Hepburn, James Hepburn, John Hepburn, Mary Hepburn,
-            Hopewell Hepburn, and Sarah Hepburn. Little is documented about her early life.
-            However, it is known that she married Francis C. Campbell in May of 1816 and had
-            nine children with him before passing at the age of 72 on May 17, 1867.<sup
-            id="fnref2"><a href="#fn2" rel="footnote">2</a></sup>
-            </p>
-            <p>
-            Campbell had many siblings, including Catherine C. Campbell, Elizabeth Campbell,
-            Francis C. Campbell, Frances H. Campbell, John R. Campbell, Alfred Campbell,
-            Mary J. Campbell, and Sarah A. Campbell, born from 1818 to 1839 (Document
-            AR).<sup id="fnref3"><a href="#fn3" rel="footnote">3</a></sup> Although James
-            had quite a number of siblings, many died within the first year of their lives.
-            Besides James, Sarah Ann Campbell was the best documented of the children with
-            the 1860 U.S. Census documenting her residence at her parent's house (Document
-            K). Sarah resided at 2225 N 17th Street in Philadelphia for much of her life
-            until her death in 1905 (Document AW). She was buried in Laurel Hill Cemetery
-            which indicates that while some of the Campbell family was buried in the
-            Woodlands another portion is in the Laurel Hill Cemetery.<sup id="fnref4"><a
-            href="#fn4" rel="footnote">4</a></sup>
-            </p>
-            <p>
-            On February 8, 1820, James Hepburn Campbell himself was born in Williamsport,
-            Pennsylvania to Francis C. Campbell and Jane H. Campbell (Document AR). Campbell
-            grew up in a relatively affluent household, seeing as how his father Francis was
-            a successful lawyer. Coincidentally, he grew up across the street from his
-            future wife, Juliet Hamersley Lewis.<sup id="fnref5"><a href="#fn5"
-            rel="footnote">5</a></sup> It was in Williamsport that Campbell “almost
-            certainly” received his early education.<sup id="fnref6"><a href="#fn6"
-            rel="footnote">6</a></sup>
-            </p>
-            <p>
-            On June 16, 1840, Campbell enrolled in Dickinson Law School which was headed by
-            the local Judge John Reed in Carlisle, PA (Document A). According to the
-            Department of Archives at Dickinson College, while Campbell did not live in
-            Dickinson College housing, it is likely Campbell lived somewhere within the city
-            based on the distance between Williamsport and Carlisle.<sup id="fnref7"><a
-            href="#fn7" rel="footnote">7</a></sup> Campbell received his Bachelor of Laws
-            diploma and graduated from the 16th Class in August of 1841.
-            </p>
-            <p>
-            After he graduated from Dickinson Law College, Campbell moved to the South Ward
-            of Pottsville and was admitted to the Bar on October 18, 1841 (Document B;
-            Document D). In June of 1843, James Hepburn Campbell married Juliet Hamersley
-            Campbell, formerly Juliet Hamersley Lewis. Juliet was born on August 5, 1823, to
-            her parents, Ellis Lewis and Josephine Wallis Lewis.<sup id="fnref8"><a
-            href="#fn8" rel="footnote">8</a></sup> Her father, Ellis, was appointed Attorney
-            General for the Commonwealth of Pennsylvania in 1833, and it was then that he
-            relocated their whole family to Williamsport, Pennsylvania, where Juliet and
-            James met. Her parents had sent her to the Moravian Seminary for Young Ladies in
-            1835 and later to a French Boarding School in Philadelphia. The influences of
-            her father and her education led her to begin writing at the age of 14; she
-            eventually became an author, writing multiple full-length books and featuring
-            her poetry in several national magazines.  Some of Juliet's most notable works
-            included: her novel "The Old Love and the New" and poems in <em>Shell Music,
-            </em>both published in The Potter journal on August 19, 1858; her poem
-            <em>Hungary, </em>published in the Lewisburg Chronicle and the West Branch
-            Farmer on December 12, 1849; and <em>A Story of Sunrise</em>, which was
-            published in T.B. Read's <em>Female Poets of America </em>(Document C; Document
-            I)<em>.</em><sup id="fnref9"><a href="#fn9"
-            rel="footnote">9</a></sup><sup>,</sup><sup id="fnref10"><a href="#fn10"
-            rel="footnote">10</a></sup><em> </em>Juliet balanced her successful career along
-            with life as a mother to her four children, Julia Wharton Lewis Campbell, Ellis
-            Lewis Campbell, James Jr. Campbell, and Francis Campbell, and as the wife to
-            James H. Campbell.
-            </p>
-            <p>
-            Juliet and James had their first son, Francis D. Campbell, in 1845; two years
-            later, their son, James Jr. Campbell was born in 1847 (Document D). Francis was
-            notably the Master’s Mate on the “Black Hawk” which was the flagship of the
-            Mississippi Squadron; he resigned from his position on August 8, 1863 (Document
-            AB). Unfortunately, both passed after fighting in the Civil War in 1864 and
-            thus, little is documented about their lives.<sup id="fnref11"><a href="#fn11"
-            rel="footnote">11</a></sup> In 1854, they welcomed another son named Ellis Lewis
-            Campbell. Ellis became a lawyer in Philadelphia like his father, marrying Ada C.
-            Smith and passing away on May 30, 1900.
-            </p>
-            <p>
-            In contrast, their only daughter, Julia Wharton Lewis Keightley (formally known
-            as Julia Wharton Lewis Campbell and Julia Wharton Lewis Ver Planck), became an
-            author like Juliet. Julia was the most well-documented of the four Campbell
-            children. She was born in 1851 or 1854, and her break into the literary world
-            occurred following the deaths of her husband and two children, all of whom she
-            lost within two years.<sup id="fnref12"><a href="#fn12"
-            rel="footnote">12</a></sup><sup>,</sup><sup id="fnref13"><a href="#fn13"
-            rel="footnote">13</a></sup> She married her first husband, Philip William Ver
-            Planck, on December 21, 1871, at St. Stephen's Episcopal Church, Philadelphia,
-            Pennsylvania; he died at the age of 32 on December 15, 1876, in Colorado.<sup
-            id="fnref14"><a href="#fn14" rel="footnote">14</a></sup><sup>,</sup><sup
-            id="fnref15"><a href="#fn15" rel="footnote">15</a></sup> Her two sons, James
-            Campbell Ver Planck, born in 1872, and Gordon Ver Planck, born in 1874, passed
-            away in 1875.<sup id="fnref16"><a href="#fn16" rel="footnote">16</a></sup>
-            </p>
-            <p>
-            After the death of her husband, she moved back home and lived with her parents
-            for a while to aid her recovery from the illnesses she developed after the
-            trauma of losing her husband and sons. During this period, she wrote two
-            successful plays and learned about the Aryan Theosophical Society. On May 27,
-            1886, Julia officially joined the Aryan Theosophical Society, helping to write
-            several magazines in <em>The Path</em> and writing a book called <em>Letters
-            That Have Helped Me </em>during her time there.<sup id="fnref17"><a href="#fn17"
-            rel="footnote">17</a></sup> Many of her works were written under the pseudonym
-            Jasper Niemand. In 1891, Julia remarried Dr. Archibald Keightley and settled on
-            a property in New York City. They eventually moved to England following the
-            declining health of Keightly's mother (Document AV).<sup id="fnref18"><a
-            href="#fn18" rel="footnote">18</a></sup> There, they established a household
-            with six servants and continued to write for the Theosophical Journals. Julia
-            died on <a href="https://theosophy.wiki/en/October_9">October 9</a>, 1915, in
-            Dolgelly, Merionethshire, Wales.<sup id="fnref19"><a href="#fn19"
-            rel="footnote">19</a></sup>
-            </p>
-            <p>
-            After moving to Pottsville, Pennsylvania, he established a successful legal
-            practice and married Juliet Lewis in 1843. Campbell's interest in politics
-            emerged in 1844 when he attended the Whig National Convention in Baltimore,
-            marking the beginning of his involvement in public service (Document AX). There,
-            Campbell developed a close relationship with the influential Henry Clay whom he
-            supported for presidency.
-            </p>
-            <p>
-            Campbell additionally served as the host of celebrations and parades due to his
-            status as a prominent lawyer in the city. Such celebrations and parades included
-            the celebration of the Good Intent Engine fire brigade and the victory of the
-            Pottsville Cricket Club (Document E). Campbell’s role in hosting these
-            celebrations indicate that Campbell was influential in the social scene and
-            possibly owned a large property in the city.
-            </p>
-            <p>
-            In Pottsville, Campbell also joined the Miner’s Lodge of the Independent Order
-            of Odd Fellows, a fraternal organization dedicated to community service and
-            treatment for the sick (Document E). There, Campbell was responsible for
-            providing the charter to the organization on December 9, 1851. As a lawyer,
-            Campbell also assisted the organization of various companies, including the
-            Pottsville Mutual and Joint Stock Life Insurance Company, of which he was an
-            incorporator.
-            </p>
-            <p>
-            While presumably running a law firm in Pottsville, Campbell also mentored a
-            number of students in law, including prominent Pottsville lawyers George Little,
-            Christopher Little, and William Lebbeus Whitney (Document AO; Document B). In
-            1891, Christopher Little—the son of the aforementioned George Little—committed
-            suicide at the American Hotel in Mauch Chunk, PA.
-            </p>
-            <p>
-            James Hepburn Campbell debuted in national politics in 1855 after being elected
-            to the 34th Congress as an opposition Whig, representing Pennsylvania's 11th
-            Congressional District, which included Schuylkill and Northumberland counties.
-            (Document G). After being elected to the 34th Congress Campbell likely did not
-            own any personal property in Washington D.C.; while keeping ownership of his
-            Pottsville home, Campbell stayed at the National Hotel in the Capital with his
-            wife. Although the National Hotel has long since been destroyed, the hotel was
-            located at the northeast corner of Pennsylvania Avenue and 6th Street near the
-            White House.<sup id="fnref20"><a href="#fn20" rel="footnote">20</a></sup>
-            </p>
-            <p>
-            Initially, Campbell did not initially accept any committee assignments in
-            Congress in contempt of Pennsylvania rival and House Speaker Galusha Grow whom
-            he believed was giving him “inferior assignments” (Document AX). However, whilst
-            in the 34th Congress, Campbell threw in his full support toward electing
-            Nathaniel P. Banks—an American Party congressman—as the new House Speaker to
-            succeed Grow (Document AT). As a reward, Campbell was assigned to the Committee
-            of Ways and Means where he leveraged his position to block any efforts to lower
-            the 1846 Walker Tariff (Document AX). In 1856, Campbell made a speech on the
-            House floor criticizing the Kansas-Nebraska Act and the affair between Kansas
-            and Missouri that followed (Document H). In the speech, Campbell made his
-            support of the Democratic Governor of Kansas Andrew H. Reeder known, claiming
-            that an “invading force from the State of Missouri” had illegitimately placed
-            John Wilkins Whitfield, a pro-South politician who contested Reeder, in power.
-            Here, Campbell showed that he did not strictly separate himself from other
-            politicians based on party lines; it was through this speech that Campbell would
-            begin building a reputation for himself as a talented politician and anti-slave
-            Republican.
-            </p>
-            <p>
-            In 1856, Campbell again ran for a seat in the House of Representatives but lost
-            reelection to the Democrat William L. Dewart.<sup id="fnref21"><a href="#fn21"
-            rel="footnote">21</a></sup> During the period of time between the 34th and 36th
-            Congresses, it is plausible that Campbell returned to Pottsville as he still
-            owned the property. In 1858, Campbell defeated the incumbent Dewart and was
-            overwhelmingly reelected to the 36th Congress representing the same district as
-            he did previously (Document J). There, Campbell was assigned to the Committee of
-            Elections but did not contribute significantly to any larger purpose or event
-            (Document F). During his time in the 36th Congress, Campbell resided in the
-            Washington House—also known as the United States Hotel—near Pennsylvania Avenue
-            between 3rd and 4 ½ street with his wife.<sup id="fnref22"><a href="#fn22"
-            rel="footnote">22</a></sup><sup>,</sup><sup id="fnref23"><a href="#fn23"
-            rel="footnote">23</a></sup><sup>,</sup><sup id="fnref24"><a href="#fn24"
-            rel="footnote">24</a></sup>
-            </p>
-            <p>
-            On January 11, Campbell, alongside George W. Scranton of Pennsylvania, made a
-            speech on the House floor regarding the quickly shifting political landscape in
-            America (Document L). In it, Campbell expressed his belief in the Union as a
-            whole and indicated that he did not support regional rivalries. More
-            importantly, Campbell directly opposed the idea of Southern secession, but also
-            condemned the raid at Harpers Ferry by John Brown that happened a few months
-            prior. Campbell’s reasonable stance on Southern hostility suggests that Campbell
-            was not a so-called Radical Republican. In the speech, Campbell also detailed
-            his friendship with the late Henry Clay—whom he supported in the 1844 Whig
-            National Convention—and offered to support Southerner John Gilmer of North
-            Carolina as House Speaker due to his close ties with Clay; Campbell also
-            reflected on his support for the 1850 Compromise in his speech.
-            </p>
-            <p>
-            On April 24, 1860, Campbell made a speech on the House floor in support of
-            Representative Justin S. Morrill’s protectionist tariff (Document M). In the
-            speech, Campbell referenced many trade relationships with nations such as
-            Britain to argue for the raising of tariffs that would allow American workers to
-            be more economically independent and protected. Seeing as how Campbell
-            conspicuously urged the house to “[protect] everything American, against
-            everything foreign,” it could be said that Campbell was a financial
-            conservative. In part due to Campbell’s efforts, the Morrill Tariff Act was
-            passed in 1861, raising tariff rates and improving tariff systems.
-            </p>
-            <p>
-            As tensions between the North and South worsened in December of 1860, Campbell
-            was appointed as the representative of Pennsylvania in the Committee of
-            Thirty-Three following Hon. Alexander Boteler’s resolution to mediate the
-            “perilous condition of the country.”<sup id="fnref25"><a href="#fn25"
-            rel="footnote">25</a></sup> It was in this committee that Campbell fought
-            against any form of compromise on slavery between the North and South, including
-            the Crittenden Compromise and Corwin Amendment (Document AX; Document P).
-            </p>
-            <p>
-            Following the election of Lincoln, the threat of secession from the Southern
-            states led to several compromises regarding slavery to be floated from both the
-            North and South, such as the Crittenden Compromise. In response, Campbell made a
-            speech on the House floor rebuking any idea of compromise to the Southern states
-            on February 14, 1861 (Document P). In the speech, Campbell argues that the
-            Southern states—of which six had already vowed to secede—have no right to
-            contest the election of Lincoln, and that the people had a right to see their
-            elected president be inaugurated “with all the usual forms and ceremonies,
-            without terms, without negotiation, without compromise, and without apology.”
-            Campbell proceeded to describe the Crittenden Compromise as “despotic,”
-            insisting that the Southern states either fall in line or betray the Union.
-            </p>
-            <p>
-            In part due to Campbell’s staunch opposition to compromise, the Civil War broke
-            out following the commencement of hostilities at Fort Sumter on April 12 of the
-            same year. Upon hearing of the news, Campbell immediately rushed to the capital
-            from his Pottsville home and was on the last train that passed freely through
-            Baltimore to Washington (Document AT). After arriving in the city, Campbell
-            enlisted in Cassius M. Clay’s battalion of volunteers (Document Q). As the
-            battalion was initially the only troops defending Washington from Southern
-            rebels, Clay’s battalion became known as the “Washington Guards”<sup
-            id="fnref26"><a href="#fn26" rel="footnote">26</a></sup><sup>,</sup><sup
-            id="fnref27"><a href="#fn27" rel="footnote">27</a></sup><sup>,</sup><sup
-            id="fnref28"><a href="#fn28" rel="footnote">28</a></sup> The battalion was
-            disbanded within a few days after being relieved by professional infantry
-            hailing from other Northern states; only a few days after the battalion was
-            relieved, the 6th Massachusetts who was stationed in the city came under attack
-            from a rebel mob.
-            </p>
-            <p>
-            Following the relieving of Clay’s battalion, on April 18 of the same year,
-            Campbell formally enlisted in the 25th Regiment of Pennslyvania Volunteers where
-            he was elected as a Major in the F&S companies (Document R).<sup id="fnref29"><a
-            href="#fn29" rel="footnote">29</a></sup> Campbell saw little action in the 25th
-            as the regiment was not active in direct combat against Confederate troops; the
-            regiment existed only three months before it was mustered out of service.<sup
-            id="fnref30"><a href="#fn30" rel="footnote">30</a></sup> This regiment, in a
-            very similar fashion to the Washington Guards, was dubbed the ‘First Defenders’
-            due to its immediate response to Lincoln’s call for troops.<sup id="fnref31"><a
-            href="#fn31" rel="footnote">31</a></sup> As the regiment had only been formed on
-            a three-month term, Campbell was honorably discharged from the regiment in July.
-            </p>
-            <p>
-            After returning from his military service, Campbell again returned to Congress
-            as he was elected in October of 1860 to the 37th Congress representing his usual
-            district (Document N). In the 37th Congress, Campbell was initially appointed to
-            the Committee of Elections, the Committee on Expenditures in the Treasury
-            Department, and the Committee of Public Expenditures (Document F). During the
-            37th Congress, Campbell again resided in the Washington House hotel with his
-            wife (Document O).
-            </p>
-            <p>
-            In March of 1862, the stalemate on the Eastern front of the Civil War near the
-            Potomac drove many Republicans to pressure the White House for immediate and
-            decisive action. Among them was Campbell, who, alongside William M. Davis of
-            Pennsylvania and John Hutchins of Ohio, visited and interviewed Lincoln
-            (Document S). In his recollection, Campbell explained how Congressmen should
-            consult with the president instead of attacking him; Campbell also urged the
-            President to break the Confederate presence near the Potomac and Capitol. To
-            this, Lincoln hinted towards a possible offensive by General George McLellan.
-            </p>
-            <p>
-            Although Campbell did not do anything of significance in his other committees,
-            he was later appointed as the Chairman of the Select Committee on the Pacific
-            Railroad in 1862 (Document T). On the Committee, Campbell oversaw the
-            organization of the first transcontinental railroad from Missouri to California
-            and advocated for the adoption of the central route following Southern secession
-            (Document AQ). On April 8, 1862, Campbell made a speech on the House floor
-            emphasizing the importance of a transcontinental railroad, arguing that the
-            construction of a Pacific Railroad would better unify the country (Document U).
-            Campbell argued that both communication and transportation would be
-            revolutionized with its construction; his familiarity with the intricate details
-            of the railroad’s plans indicated that Campbell was closely involved with the
-            railroad itself.
-            </p>
-            <p>
-            On June 24 of the same year, Congress, with Campbell as the sponsor of the bill,
-            passed the Pacific Railway Act of 1862 with the Senate’s amendments (Document
-            V); the bill was signed into law by Abraham Lincoln on July 1st of the same
-            year. This bill, alongside Campbell’s related speech, can be reasonably viewed
-            as the pinnacle of Campbell’s career—as the Pacific Railway Acts were among the
-            most influential pieces of legislation regarding economics and trade in the
-            U.S., Campbell’s efforts, although unrecognized, have had a permanent effect on
-            the growth of America as a nation and economic powerhouse.
-            </p>
-            <p>
-            Only a week before he would pass the first Pacific Railway Act through Congress,
-            Campbell voted in favor of the Morrill Land-Grant Acts—a bill that created
-            land-grant colleges like Penn State and MIT from the proceeds of land sales
-            (Document V). However, as these land sales were infamous for having been sourced
-            from the exploitation of Native lands, it could be argued that Campbell was not
-            particularly sensitive to the plight of the Native Americans at the time. It
-            does show, however, that Campbell was a supporter of the expansion of higher
-            education.
-            </p>
-            <p>
-            After Campbell’s defeat in the 1862 Congressional elections, Campbell recounted
-            in his letters to his wife how Secretary of the Senate John W. Forney notified
-            him of Lincoln’s particular regret in Campbell’s political defeat; it can be
-            seen here that Campbell may have held a relatively close relationship with the
-            President (Document S). In January of 1863, Campbell was received by Mrs.
-            Abraham Lincoln at the White House, where he, alongside General Simon Cameron,
-            “gossiped” with the First Lady about her Southern heritage.
-            </p>
-            <p>
-            On February 25th of the same year, Campbell voted in favor of the monumental
-            Enrollment Act; the Enrollment Act, also the Civil War Military Draft Act, was
-            essentially the first conscription legislation passed in the U.S. Campbell’s
-            support of this act possibly derives from his “vigorous military methods” and
-            intolerance for secession.<sup id="fnref32"><a href="#fn32"
-            rel="footnote">32</a></sup>
-            </p>
-            <p>
-            In June of 1863, Campbell again registered for the military draft following
-            Governor Andrew Curtin’s call for volunteers (Document Y). He did not serve as
-            an infantryman, however; Campbell alongside General James Nagle privately raised
-            the 39th Regiment of Pennsylvania Volunteer Militia following General Robert E.
-            Lee’s advance into southern Pennsylvania (Document A; Document AQ). The unit,
-            composed mostly of men from Schuylkill County, did not actively contribute to
-            combat as Lee’s troops had already begun a southern retreat following the
-            decisive Northern victory at Gettysburg (Document B). The regiment merely
-            followed the footprints of Lee’s army in the campaign to pursue and destroy Lee.
-            Campbell was left in charge of the regiment as a lieutenant colonel after James
-            Nagle was promoted to Brigadier General. The regiment was mustered out of
-            service nearly a month after its formation (Document Z).
-            </p>
-            <p>
-            In the 1862 Congressional elections, the unpopularity of the Civil
-            War—particularly in the Schuylkill and Northumberland counties he
-            represented—led to Campbell’s failed election to the 38th Congress (Document S).
-            Following the end of his term in the 37th Congress and service in the military,
-            Campbell was personally recommended via letter by many highly influential
-            figures and politicians to serve as a diplomatic mission on behalf of the U.S.
-            (Document W; Document X). Based on the contents of such letters, Campbell had
-            many connections to prominent politicians including former Pennsylvania
-            Governors James Pollock and Andrew Curtin as well as former Vice President
-            Hannibal Hamlin. As such, in 1864, Campbell was appointed by then-President
-            Abraham Lincoln to serve as the Minister Resident to Sweden and Norway; Campbell
-            served this station from the years 1864-1867 (Document AC; Document AJ).
-            Campbell notably declined the offer of the Lincoln administration to be assigned
-            as a judge on the Court for the Suppression of the Slave Trade in Cape Town,
-            South Africa before accepting this position (Document AX).
-            </p>
-            <p>
-            On July 22, 1864, Secretary of State William H. Seward wrote a request to the
-            relevant European nations to provide free travel for Campbell in preparation for
-            his arrival in Stockholm (Document AD). As such, on September 17, 1864, Campbell
-            arrived unmolested in Stockholm with his family through the German cities of
-            Cologne and Lubeck (Document AE). There, he secured an apartment for his stay
-            and began preparations for the assumption of duty from his predecessor Jacob S.
-            Haldeman. Shortly after his arrival, Campbell met for an interview with the
-            Swedish Prime Minister of Foreign Affairs Count Ludvig Manderstrom where he made
-            a fantastic first impression while discussing the Civil War. On the 24th and
-            25th, Campbell met with King Charles XV and Queen Lovisa of Sweden separately in
-            Ulriksdale Palace, remarking that he “could not have been received more kindly
-            by any gentleman in Europe.”
-            </p>
-            <p>
-             While only a portion of his activities are readily documented, it is known that
-            Campbell worked to construct greater relations between the Swedish and American
-            states by acquiring the language and culture while touring the country as the
-            Minister Resident (Document AE; Document AQ). To this effect, Campbell
-            participated in various cultural and social celebrations such as the fiftieth
-            anniversary of the union between Sweden and Norway (Document AE).
-            </p>
-            <p>
-            In December, Campbell handled his first, albeit small, diplomatic conflict where
-            he made it known to Count Manderstrom the American government’s displeasure that
-            Sweden had dispatched Baron Nils de Wetterstedt as an envoy to the Mexican
-            Empire (not to be confused with the Republic of Mexico). Prior to his arrival as
-            a Minister to the U.S., Wetterstedt had been sent on diplomatic business to the
-            French-backed Mexican Empire that the U.S. deemed illegitimate. Nevertheless,
-            Campbell and Manderstrom maintained a light mood throughout their meeting, with
-            the two joking that Russia, who also dispatched an envoy to the Mexican Empire,
-            was no better a friend to America than Sweden. This interaction likely indicates
-            that Campbell generally handled diplomatic affairs in Sweden cordially and
-            professionally.
-            </p>
-            <p>
-            In early 1865, it is likely that Campbell traveled across Europe, specifically
-            France and Paris. On May 23, 1865, the Swedish Prime Minister’s Office for
-            External Affairs requested that the nations of Prussia, Austria, Switzerland,
-            Italy, and France grant Campbell free travel after Campbell had “communicated
-            his desire to travel” to these countries (Document AI). Based on this desire, as
-            well as the Office’s request, it is likely that Campbell traveled across Europe
-            in 1865; this could possibly be related to the recent shift in the European
-            political realm following the Second Schleswig War and its influence on
-            Scandinavia (Document AE).
-            </p>
-            <p>
-            Before the Foreign Office issued the laissez-passer request for Campbell, it is
-            likely he had already traveled to Paris for a short period of time (Document
-            AI). Campbell’s presence in Paris at this time can be verified by his induction
-            as one of the Presidents d’Honneur of the Institut d’Afrique in Paris in
-            February of 1865 (Document AH). The Institut d’Afrique was a French organization
-            formed in 1838 to push for the abolition of the slave trade but also advocated
-            the colonization of Africa.<sup id="fnref33"><a href="#fn33"
-            rel="footnote">33</a></sup> Seeing as how the Institut d’Afrique supported
-            colonization, Campbell himself may have also supported colonization whilst
-            opposing slavery. In the letter of his induction, the General Secretary of the
-            Institute wrote how the organization would be “flattered” to have him as a
-            President d’Honneur; this likely indicated that Campbell’s efforts to abolish
-            the slave trade were recognized internationally. Based on how the Institut
-            d’Afrique’s members were almost exclusively composed of members in Paris, and
-            how the title of President d’Honneur had a membership fee of at least 20 francs,
-            it can be inferred that Campbell may have stayed in Paris for a period of time
-            in 1865.
-            </p>
-            <p>
-            A glimpse into Campbell’s ability was shown shortly before the end of the Civil
-            War in March-April of 1865 when he potentially foiled a Confederate plot to
-            procure a Swedish vessel for the purpose of piracy (Document AG). In the letters
-            between Minister Resident to Denmark Bradford Wood and Campbell, it was said
-            that Confederate agents had been “prowling” Copenhagen in search of a merchant
-            vessel to purchase and arm. As a precaution, Campbell placed the U.S. consuls at
-            Swedish and Norwegian ports on high alert against potential Confederate activity
-            and offered to notify the Swedish authorities on the matter. Though it was only
-            days later that the Confederacy would surrender and end the Civil War, this
-            could be seen as one of the more noteworthy affairs in Campbell’s service as
-            Resident Minister as it displayed his competence and decisiveness in a time of
-            stress.
-            </p>
-            <p>
-            Campbell also served as the channel through which diplomatic correspondences
-            between the two countries—such as the condolences of the Swedish king following
-            President Abraham Lincoln’s assassination—were conveyed (Document AF). Following
-            the assassination plot on President Lincoln and Secretary of State William H.
-            Seward, Campbell wrote a letter to Seward where he reported the reaction of the
-            Swedish people to the assassination and wished Seward a hasty recovery. Notably,
-            Campbell revealed his reverence for Lincoln and wrote how Lincoln, whom he “knew
-            and loved as a personal friend,” dedicated his life to the Union and preserved
-            American liberty. The death of Lincoln likely deeply affected Campbell as he had
-            interacted with the late President on more than one occasion, particularly when
-            meeting with him in early 1862 (Document S).
-            </p>
-            <p>
-            On November 15, 1866, it was decided by the Johnson administration that John
-            McGinnis was to replace Campbell as Minister Resident and that Campbell was to
-            be appointed as Minister Resident to Colombia in Bogota (Document AJ). However,
-            these decisions were yet to be passed through the Senate, and McGinnis’
-            appointment would ultimately be rebuffed by a Senate vote. As such, Campbell did
-            not meet McGinnis in Paris to organize the transfer of power to his successor.
-            </p>
-            <p>
-            On March 29, Campbell presented a recall and exchanged thanks with King Charles
-            in the Royal Palace where he was afforded a ceremonious farewell by the Royal
-            family.<sup id="fnref34"><a href="#fn34" rel="footnote">34</a></sup> After his
-            term as Minister Resident to Sweden-Norway ended, the newly-inaugurated
-            President Andrew Johnson offered Campbell the aforementioned second diplomatic
-            post as the Minister Resident to Colombia in Bogota; however, Campbell rejected
-            this position in protest of the Johnson administration which was sympathetic to
-            the South (Document AJ; Document AQ).<sup id="fnref35"><a href="#fn35"
-            rel="footnote">35</a></sup>
-            </p>
-            <p>
-            Before his return to America on June 14, 1867, Campbell was elected as a
-            Companion of the First Class of the Military Order of the Loyal Legion of the
-            United States (MOLLUS) (Document AK). MOLLUS, whilst sounding like a military
-            award, was actually one of the first military fraternal organizations; MOLLUS
-            was formed following the assassination of Lincoln as an organization of officers
-            that fought in the Civil War. First Class Companions of the Order such as
-            Campbell were composed of only veteran commissioned officers of the U.S. Army
-            who fought in the Civil War. Notable members of MOLLUS included Ulysses S.
-            Grant, Rutherford B. Hayes, William McKinley, and George Custer.
-            </p>
-            <p>
-            In August of 1867, Campbell officially moved back to the States and took
-            residence in Philadelphia to resume the practice of law (Document S; Document
-            AQ). It is probable that around this time Campbell purchased a property at 2039
-            Delaney Place in Philadelphia to reside with his wife and daughter, Julia Ver
-            Planck (Document AM).<sup id="fnref36"><a href="#fn36"
-            rel="footnote">36</a></sup> Julia initially moved away from Campbell to live
-            with her husband, but moved back following the death of her husband and
-            sons.<sup id="fnref37"><a href="#fn37" rel="footnote">37</a></sup>
-            </p>
-            <p>
-            Despite a shortage of city records during the period, it is known that by 1876
-            Campbell was working at a law firm at 130 S 6th Street—the street also known as
-            “Lawyer’s Row”—with other prominent lawyers (Document AL). While he was working
-            at this firm, Campbell worked on numerous prominent cases such as the 1883
-            Packer Estate case, which was elevated to the Pennsylvania Supreme Court
-            (Document AN). In the case, Campbell represented the estate of Barnabas Hammett;
-            The Supreme Court ruled that guardians, after initiating a legal case for a
-            minor, no longer have authority after the minor becomes an adult.
-            </p>
-            <p>
-            Campbell’s life slowed down following his departure from politics, and Campbell
-            bought a separate estate for his family in Wayne, PA. The estate, known as
-            “Aeola,” was located at 705 Church Rd in Wayne (Document AU). In a photograph
-            taken in 1898, three years after his death, the estate appeared very large and
-            well-kept, with a path going around the house and deliberate maintenance of
-            plants and decorations. In Allan Peskin’s “Two White House Visits,” the estate
-            is described as a “farm,” which is corroborated by the large plot of land the
-            house occupies on satellite imagery (Document S).
-            </p>
-            <p>
-                Based on Campbell’s absence in Gopsill’s 1887 Philadelphia city directory,
-            Campbell retired from his practice of law at 130 S 6th Street and dedicated the
-            rest of his years to agriculture at his Aeola estate (Document AT).<sup
-            id="fnref38"><a href="#fn38" rel="footnote">38</a></sup> In June of 1893,
-            Campbell celebrated the fiftieth anniversary of his marriage to his wife Juliet
-            at the estate (Document AP). Campbell, who was the only surviving son of Francis
-            C. Campbell by 1893, invited old friends from across the country to attend the
-            lavish celebration.
-            </p>
-            <p>
-                On April 12, 1895, James Hepburn Campbell passed away due to heart failure at
-            the age of 75 at his Aeola estate (Document AS). His daughter, Julia Wharton
-            Lewis Keightley, planned to spend the summer with her parents after arriving in
-            Philadelphia from London, but was instead met with the news of her father’s
-            passing (Document AT). His funeral was held at St. Mary’s Church in Wayne on
-            April 17 at 10:45 A.M.<sup id="fnref39"><a href="#fn39"
-            rel="footnote">39</a></sup> Campbell was interned the same day at the Woodlands
-            Cemetery where the rest of his family was also buried.<br>
-            </p>
-            <p>
-            After his death, James Hepburn Campbell left behind a remarkable legacy of
-            public service, resilience, and honor to the abolition of slavery and the Union.
-            From his admission to the Bar in 1841 to his appointment as Minister Resident to
-            Sweden-Norway, Campbell fought for justice, order, and to build harmonious
-            relations both in and outside the U.S. On countless occasions Campbell's ability
-            as an orator and politician was put on full display; his legacy was immortalized
-            in his sponsoring of the famous Pacific Railway Act of 1862. Despite setbacks
-            such as the loss of his sons and defeat in the 1862 elections, Campbell remained
-            dedicated to fulfilling his duty as a patriotic American. Campbell's life,
-            marked by both private and professional achievements, stands out in history as
-            an example of steadfast dedication and selfless service to one's nation and
-            community.
-            </p>            
-            <!-- More pages -->
-        </article>
-
-        <div class="pagination">
-            <button class="page-btn active">1</button>
-            <button class="page-btn">2</button>
-            <!-- Add more buttons -->
+            <p class="c3 c24"><span class="c6"></span></p>
+            <p class="c20"><span class="c10">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Based on Campbell’s absence
+                    in Gopsill’s 1887 Philadelphia city directory, Campbell retired from his practice of law at 130 S
+                    6th Street and dedicated the rest of his years to agriculture at his </span><span
+                    class="c10">Aeola</span><span class="c10">&nbsp;estate (Document AT).</span><sup class="c10"><a
+                        href="#ftnt38" id="ftnt_ref38">[38]</a></sup><span class="c6">&nbsp;In June of 1893, Campbell
+                    celebrated the fiftieth anniversary of his marriage to his wife Juliet at the estate (Document AP).
+                    Campbell, who was the only surviving son of Francis C. Campbell by 1893, invited old friends from
+                    across the country to attend the lavish celebration.</span></p>
+            <p class="c20 c24"><span class="c6"></span></p>
+            <p class="c20"><span class="c10">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;On April 12, 1895, James
+                    Hepburn Campbell passed away due to heart failure at the age of 75 at his </span><span
+                    class="c10">Aeola</span><span class="c10">&nbsp;estate (Document AS). His daughter, Julia Wharton
+                    Lewis Keightley, planned to spend the summer with her parents after arriving in Philadelphia from
+                    London, but was instead met with the news of her father’s passing (Document AT). His funeral was
+                    held at St. Mary’s Church in Wayne on April 17 at 10:45 A.M.</span><sup class="c10"><a
+                        href="#ftnt39" id="ftnt_ref39">[39]</a></sup><span class="c6">&nbsp;Campbell was interned the
+                    same day at the Woodlands Cemetery where the rest of his family was also buried.<br></span></p>
+            <p class="c4"><span class="c10">After his death, James Hepburn Campbell left behind a remarkable legacy of
+                    public service, resilience, and honor to the abolition of slavery and the Union. From his admission
+                    to the Bar in 1841 to his appointment as Minister Resident to Sweden-Norway, Campbell fought for
+                    justice, order, and to build harmonious relations both in and outside the U.S. On countless
+                    occasions Campbell's ability as an orator and politician was put on full display; his legacy was
+                    immortalized in his sponsoring of the famous Pacific Railway Act of 1862. Despite setbacks such as
+                    the loss of his sons and defeat in the 1862 elections, Campbell remained dedicated to fulfilling his
+                    duty as a patriotic American. Campbell's life, marked by both private and professional achievements,
+                    stands out in history as an example of steadfast dedication and selfless service to one's nation and
+                    community. </span></p>
+            <p class="c22"><span class="c8 c16"></span></p>
+            <hr class="c28">
+            <div>
+                <p class="c3"><a href="#ftnt_ref1" id="ftnt1">[1]</a><span class="c5">&nbsp;Miltonian, 1822–1932
+                        [database on-line]. Lehi, UT, USA: Ancestry.com Operations, Inc., 2025. </span><span
+                        class="c11 c5"><a class="c0"
+                            href="https://www.google.com/url?q=https://www.newspapers.com/image/363113334/?clipping_id%3D66261582&amp;sa=D&amp;source=editors&amp;ust=1741297707335600&amp;usg=AOvVaw042skhIEsrDNvIKb03sD_C">https://www.newspapers.com/image/363113334/?clipping_id=66261582</a></span><span
+                        class="c8 c5">. Last updated: February 7, 2018.</span></p>
+            </div>
+            <div>
+                <p class="c3"><a href="#ftnt_ref2" id="ftnt2">[2]</a><span class="c5">&nbsp;“Jane Hepburn.”
+                        FamilySearch, </span><span class="c11 c5"><a class="c0"
+                            href="https://www.google.com/url?q=https://ancestors.familysearch.org/en/KZS3-K8X/jane-hepburn-1795-1867&amp;sa=D&amp;source=editors&amp;ust=1741297707335807&amp;usg=AOvVaw051AusiF8iiRV3GQ1FbF5H">https://ancestors.familysearch.org/en/KZS3-K8X/jane-hepburn-1795-1867</a></span><span
+                        class="c8 c5">. Accessed 23 Feb. 2025.</span></p>
+            </div>
+            <div>
+                <p class="c3"><a href="#ftnt_ref3" id="ftnt3">[3]</a><span class="c18">&nbsp;</span><span
+                        class="c5">“James Hepburn Campbell.” FamilySearch,
+                        https://www.familysearch.org/en/tree/person/details/GZS7-ZPN. Accessed 23 Feb. 2025.</span></p>
+            </div>
+            <div>
+                <p class="c3"><a href="#ftnt_ref4" id="ftnt4">[4]</a><span class="c5">&nbsp;“Jane Hepburn,” </span><span
+                        class="c1">FamilySearch</span><span class="c5">,</span><span class="c5"><a class="c0"
+                            href="https://www.google.com/url?q=https://ancestors.familysearch.org/en/KZS3-K8X/&amp;sa=D&amp;source=editors&amp;ust=1741297707336082&amp;usg=AOvVaw0GQz-29zncVthaW48W6ZRY">&nbsp;</a></span><span
+                        class="c11 c5"><a class="c0"
+                            href="https://www.google.com/url?q=https://ancestors.familysearch.org/en/KZS3-K8X/&amp;sa=D&amp;source=editors&amp;ust=1741297707336157&amp;usg=AOvVaw0uzaAUx2dUFwuOv4ADnn8G">https://ancestors.familysearch.org/en/KZS3-K8X/</a></span><span
+                        class="c8 c5">.</span></p>
+            </div>
+            <div>
+                <p class="c3"><a href="#ftnt_ref5" id="ftnt5">[5]</a><span class="c18">&nbsp;</span><span
+                        class="c5">Lorson, Timothy R. "The Remarkable Career of </span><span
+                        class="c5">Juliet</span><span class="c8 c5">&nbsp;Lewis Campbell." The Journal of the Lycoming
+                        County Historical Society, vol. XLVIII, edited by Gary W. Parks, assistant editor Scott Sagar,
+                        Lycoming County Historical Society, Winter 2012-2013, pp. 1-3.</span></p>
+            </div>
+            <div>
+                <p class="c3"><a href="#ftnt_ref6" id="ftnt6">[6]</a><span class="c18">&nbsp;</span><span
+                        class="c8 c5">Campbell, Ada Sayen. "J. H. Campbell, Biographical Directory of the United States
+                        Congress." United States. Congress. Washington: Joint Committee on Printing, 27 Aug. 1928.
+                        Pottsville Free Public Library, Pottsville, PA.</span></p>
+            </div>
+            <div>
+                <p class="c3"><a href="#ftnt_ref7" id="ftnt7">[7]</a><span class="c18">&nbsp;</span><span
+                        class="c8 c5">This information was sourced from the testimony of Jim Gerencser—a faculty member
+                        of the Dickinson College Archive Department—in an email correspondence.</span></p>
+            </div>
+            <div>
+                <p class="c3"><a href="#ftnt_ref8" id="ftnt8">[8]</a><span class="c18">&nbsp; </span><span
+                        class="c5">Lorson, Timothy R. "The Remarkable Career of </span><span
+                        class="c5">Juliet</span><span class="c5">&nbsp;Lewis Campbell." pp. 1-3.</span></p>
+            </div>
+            <div>
+                <p class="c3"><a href="#ftnt_ref9" id="ftnt9">[9]</a><span class="c8 c5">&nbsp;The Potter journal.
+                        (Coudersport, Pa.), 19 Aug. 1858. Chronicling America: Historic American Newspapers. Lib. of
+                        Congress.
+                        &lt;https://chroniclingamerica.loc.gov/lccn/sn86081096/1858-08-19/ed-1/seq-1/&gt;.</span></p>
+            </div>
+            <div>
+                <p class="c3"><a href="#ftnt_ref10" id="ftnt10">[10]</a><span class="c18">&nbsp;</span><span
+                        class="c5">Lorson, "Remarkable Career," 1-3.</span></p>
+            </div>
+            <div>
+                <p class="c3"><a href="#ftnt_ref11" id="ftnt11">[11]</a><span class="c18">&nbsp;</span><span
+                        class="c5">Lorson, "Remarkable Career," 1-3.</span></p>
+            </div>
+            <div>
+                <p class="c3"><a href="#ftnt_ref12" id="ftnt12">[12]</a><span class="c18">&nbsp;</span><span
+                        class="c8 c5">Various reliable sources provided different years of birth.</span></p>
+            </div>
+            <div>
+                <p class="c3"><a href="#ftnt_ref13" id="ftnt13">[13]</a><span class="c18">&nbsp;</span><span
+                        class="c5">Lorson, "Remarkable Career," 1-3.</span></p>
+            </div>
+            <div>
+                <p class="c3"><a href="#ftnt_ref14" id="ftnt14">[14]</a><span class="c8 c5">&nbsp;Pennsylvania and New
+                        Jersey, U.S., Church and Town Records, 1669-2013.</span></p>
+            </div>
+            <div>
+                <p class="c3"><a href="#ftnt_ref15" id="ftnt15">[15]</a><span class="c18">&nbsp;</span><span
+                        class="c8 c5">Philadelphia Inquirer (December 23, 1876), 4.</span></p>
+            </div>
+            <div>
+                <p class="c3"><a href="#ftnt_ref16" id="ftnt16">[16]</a><span class="c18">&nbsp;</span><span
+                        class="c5">Lorson, "Remarkable Career," 1-3.</span></p>
+            </div>
+            <div>
+                <p class="c3"><a href="#ftnt_ref17" id="ftnt17">[17]</a><span class="c18">&nbsp;</span><span
+                        class="c5">Theosophical Society General Membership Register, 1875-1942 at http://tsmembers.org/.
+                    </span><span class="c1">Theosophical Society</span><span class="c8 c5">, book 1, entry 3646.
+                        Accessed 25 Feb. 2025. </span></p>
+            </div>
+            <div>
+                <p class="c3"><a href="#ftnt_ref18" id="ftnt18">[18]</a><span class="c18">&nbsp;</span><span
+                        class="c8 c5">Boris de Zirkoff, "Keightley, Julia Wharton" in H. P. Blavatsky Collected Writings
+                        Volume IV (Wheaton, Ill.: Theosophical Publishing House, 1969), 435. </span></p>
+            </div>
+            <div>
+                <p class="c3"><a href="#ftnt_ref19" id="ftnt19">[19]</a><span class="c8 c5">&nbsp;England &amp; Wales,
+                        Civil Registration Death Index, 1837-1915. Registered for Oct-Nov-Dec, 1915 in Dolgelly
+                        Registration District, Merionethshire. Volume 11b, page 491.</span></p>
+            </div>
+            <div>
+                <p class="c3"><a href="#ftnt_ref20" id="ftnt20">[20]</a><span class="c5">&nbsp;“Hotels and Other Public
+                        Buildings: The National Hotel.” Mr. Lincoln’s White House, </span><span class="c1">The Lehrman
+                        Institute</span><span class="c5">, </span><span class="c11 c5"><a class="c0"
+                            href="https://www.google.com/url?q=https://www.mrlincolnswhitehouse.org/washington/hotels-and-other-public-buildings/hotels-public-buildings-national-hotel/index.html&amp;sa=D&amp;source=editors&amp;ust=1741297707337719&amp;usg=AOvVaw0EUdWLepfhfUD5X6bGw-a3">https://www.mrlincolnswhitehouse.org/washington/hotels-and-other-public-buildings/hotels-public-buildings-national-hotel/index.html</a></span><span
+                        class="c8 c5">. </span></p>
+            </div>
+            <div>
+                <p class="c3"><a href="#ftnt_ref21" id="ftnt21">[21]</a><span class="c5">&nbsp;List of the Diplomatic
+                        and Commercial Officers of the United States. Department of State, Washington: A. O. P.
+                        Nicholson, Public Printer, 20 Apr. 1857, </span><span class="c5 c11"><a class="c0"
+                            href="https://www.google.com/url?q=https://books.google.com/books?id%3DgJ-iAAAAMAAJ%26source%3Dgbs_navlinks_s&amp;sa=D&amp;source=editors&amp;ust=1741297707337907&amp;usg=AOvVaw1uDA5tCmkt325Rp18RUjVF">https://books.google.com/books?id=gJ-iAAAAMAAJ&amp;source=gbs_navlinks_s</a></span><span
+                        class="c8 c5">. </span></p>
+            </div>
+            <div>
+                <p class="c3"><a href="#ftnt_ref22" id="ftnt22">[22]</a><span class="c5">&nbsp;Wineberger, J.A.
+                    </span><span class="c1">Department and Congressional Directory</span><span class="c5">. Washington:
+                        C. Bohn, 1861. </span><span class="c1">University of Illinois Urbana-Champaign
+                        Library</span><span class="c8 c5">,
+                        https://archive.org/details/departmentcongre00wine/page/11/mode/1up.</span></p>
+            </div>
+            <div>
+                <p class="c3"><a href="#ftnt_ref23" id="ftnt23">[23]</a><span class="c5">&nbsp;Boyd. </span><span
+                        class="c1">Boyd's Washington and Georgetown directory</span><span class="c5">. A. Boyd, 1864.
+                    </span><span class="c1">Smithsonian Libraries</span><span class="c5">,</span><span class="c5"><a
+                            class="c0"
+                            href="https://www.google.com/url?q=https://www.google.com/search?q%3Dhttps://doi.org/10.5479/2.146464&amp;sa=D&amp;source=editors&amp;ust=1741297707338251&amp;usg=AOvVaw0V1Dh9xDzpFGdKaJBj4BLB">&nbsp;</a></span><span
+                        class="c8 c5">https://archive.org/details/boydswashingtong1864wash/page/165/mode/1up.</span></p>
+            </div>
+            <div>
+                <p class="c3"><a href="#ftnt_ref24" id="ftnt24">[24]</a><span class="c18">&nbsp;</span><span
+                        class="c1">United States Hotel, Pennsylvania Avenue, between 3d and 4 1/2 streets, one square
+                        above the railroad depot, Washington, D.C., Tyler &amp; Birch, proprietors.</span><span
+                        class="c8 c5">&nbsp;[Between 1960 and 1980] Photograph. Retrieved from the Library of Congress,
+                        &lt;www.loc.gov/item/2004671505/&gt;.</span></p>
+            </div>
+            <div>
+                <p class="c3"><a href="#ftnt_ref25" id="ftnt25">[25]</a><span class="c5">&nbsp;Frost, Mrs. J. Blakeslee.
+                    </span><span class="c1">The Rebellion in the United States; or, The War of 1861; Being a Complete
+                        History of its Rise and Progress, Commencing with the Presidential Election. </span><span
+                        class="c5 c8">Hartford, 1862.</span></p>
+            </div>
+            <div>
+                <p class="c3"><a href="#ftnt_ref26" id="ftnt26">[26]</a><span class="c5">&nbsp;“General Cassius
+                        Marcellus Clay.” Richmond Cemetery, </span><span class="c11 c5"><a class="c0"
+                            href="https://www.google.com/url?q=https://richmondcemetery.com/pages/about-us/notable-graves/cassius-m.-clay.php&amp;sa=D&amp;source=editors&amp;ust=1741297707338718&amp;usg=AOvVaw3h4V4j15n8OhXncXF4I9UT">https://richmondcemetery.com/pages/about-us/notable-graves/cassius-m.-clay.php</a></span><span
+                        class="c8 c5">. Accessed 23 Feb. 2025.</span></p>
+            </div>
+            <div>
+                <p class="c3"><a href="#ftnt_ref27" id="ftnt27">[27]</a><span class="c5 c12">&nbsp;</span><span
+                        class="c5">Marcellus Clay, Cassius. “The Life of Cassius Marcellus Clay.” Cincinnati: J.
+                        Fletcher Brennan &amp; Co, 1886. https://archive.org/details/lifeofcassiusmar00inclay. </span>
+                </p>
+            </div>
+            <div>
+                <p class="c3"><a href="#ftnt_ref28" id="ftnt28">[28]</a><span class="c18">&nbsp;</span><span
+                        class="c8 c5">Emmett, Daniel Decatur, 1815-1904, Cassius Marcellus Clay, and 120th (1861-1865)
+                        United States. Army. New York Infantry Regiment. Dixie Unionized: Respectfully Dedicated to
+                        Cassius M. Clay's Washington Guards. New York: Firth, Pond &amp; Co., 1861.</span></p>
+            </div>
+            <div>
+                <p class="c3"><a href="#ftnt_ref29" id="ftnt29">[29]</a><span class="c5">&nbsp;“Campbell, James H.”
+                    </span><span class="c1">National Park Service</span><span class="c5">, U.S. Department of the
+                        Interior, </span><span class="c11 c5"><a class="c0"
+                            href="https://www.google.com/url?q=https://www.nps.gov/civilwar/search-soldiers-detail.htm?soldierId%3DB8029B8A-DC7A-DF11-BF36-B8AC6F5D926A&amp;sa=D&amp;source=editors&amp;ust=1741297707339218&amp;usg=AOvVaw2EgYr7bBQaKTOlNKH04gMe">https://www.nps.gov/civilwar/search-soldiers-detail.htm?soldierId=B8029B8A-DC7A-DF11-BF36-B8AC6F5D926A</a></span><span
+                        class="c8 c5">. Accessed 23 Feb. 2025. </span></p>
+            </div>
+            <div>
+                <p class="c3"><a href="#ftnt_ref30" id="ftnt30">[30]</a><span class="c5">&nbsp;“Union Pennsylvania
+                        Volunteers: 25th Regiment, Pennsylvania Infantry (3 months, 1861).” </span><span
+                        class="c1">National Park Service</span><span class="c8 c5">, U.S. Department of the Interior,
+                        https://www.nps.gov/civilwar/search-battle-units-detail.htm?battleUnitCode=UPA0025RI.</span></p>
+            </div>
+            <div>
+                <p class="c3"><a href="#ftnt_ref31" id="ftnt31">[31]</a><span class="c18">&nbsp;</span><span
+                        class="c5">Strohecker, John E. “The First Defenders.” Berks History Center, </span><span
+                        class="c1">Henry Janssen Library,</span><span class="c8 c5">&nbsp;Spring 1961,
+                        https://berkshistory.org/article/the-first-defenders/.</span></p>
+            </div>
+            <div>
+                <p class="c3"><a href="#ftnt_ref32" id="ftnt32">[32]</a><span class="c8 c5">&nbsp;United States,
+                        Congress, House of Representatives. Journal of the House of Representatives of the United
+                        States: Third Session of the Thirty-Seventh Congress. vol. 60. Washington: Government Printing
+                        Office, 1863. https://voteview.com/source_images/house_journal/60/0#page/483/mode/1up.</span>
+                </p>
+            </div>
+            <div>
+                <p class="c3"><a href="#ftnt_ref33" id="ftnt33">[33]</a><span class="c18">&nbsp;</span><span
+                        class="c5">Institut d'Afrique. "INSTITUT D’AFRIQUE." 13 May 1866. CORE,
+                        https://core.ac.uk/download/pdf/148101241.pdf. Accessed 19 Feb. 2025.</span></p>
+            </div>
+            <div>
+                <p class="c3"><a href="#ftnt_ref34" id="ftnt34">[34]</a><span class="c5">&nbsp;Campbell, James H. “Mr.
+                        Campbell to Mr. Seward, No. 56.” </span><span class="c1">Office of the Historian</span><span
+                        class="c8 c5">, 29 Mar. 1867, https://history.state.gov/historicaldocuments/frus1867p1/d639.
+                    </span></p>
+            </div>
+            <div>
+                <p class="c3"><a href="#ftnt_ref35" id="ftnt35">[35]</a><span class="c5">&nbsp;Campbell, James H.
+                        Rejection of Appointment as Minister Resident to Colombia. Letter to William H. Seward. 16 Jan.
+                        1867. </span><span class="c1">James H. Campbell</span><span class="c8 c5">, Historical Society
+                        of Pennsylvania, Philadelphia, PA. </span></p>
+            </div>
+            <div>
+                <p class="c3"><a href="#ftnt_ref36" id="ftnt36">[36]</a><span class="c5">&nbsp;"United States, Census,
+                        1870", </span><span class="c1">FamilySearch</span><span
+                        class="c5">&nbsp;(https://www.familysearch.org/ark:/61903/1:1:MZ5D-QZ8 : Thu Jan 16 18:44:08 UTC
+                        2025), Entry for Jas Campbell and Julia Campbell, 1870.</span></p>
+            </div>
+            <div>
+                <p class="c3"><a href="#ftnt_ref37" id="ftnt37">[37]</a><span class="c5">&nbsp;</span><span
+                        class="c27">Boris de Zirkoff, "Keightley, Julia Wharton,” 435.</span></p>
+            </div>
+            <div>
+                <p class="c3"><a href="#ftnt_ref38" id="ftnt38">[38]</a><span class="c5">&nbsp;Gopsill, James.
+                    </span><span class="c1">Gopsill's Philadelphia Business Directory for 1887</span><span class="c5">.
+                        Philadelphia: James Gopsill's Sons, 1887. </span><span class="c1">HathiTrust</span><span
+                        class="c8 c5">, https://babel.hathitrust.org/cgi/pt?id=uiug.30112004527377&amp;seq=15. </span>
+                </p>
+            </div>
+            <div>
+                <p class="c3"><a href="#ftnt_ref39" id="ftnt39">[39]</a><span class="c5">&nbsp;“Death Certificate of
+                        James Hepburn Campbell.” Historical Society of Pennsylvania; Philadelphia, Pennsylvania,
+                    </span><span class="c1">Historical Pennsylvania Church and Town Records.</span></p>
+            </div>
         </div>
+        <iframe
+            src="https://docs.google.com/document/d/e/2PACX-1vSpZGQ07AsQIumxPpxDbgdz4ukkIilPtpSPr6KlSCfXfqrEqWZvxwKr7DmIETMqWax5trotFZpiAm9z/pub?embedded=true"
+            width="100%" height="100%"></iframe>
     </div>
-    <script  src="../Scripts/menu.js"></script>
+    </div>
+    <script src="../Scripts/menu.js"></script>
     <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
     <script>
@@ -870,7 +832,7 @@
         function generateTOC() {
             const headings = document.querySelectorAll('h2, h3');
             const tocList = document.getElementById('toc-list');
-            
+
             headings.forEach(heading => {
                 const li = document.createElement('li');
                 const link = document.createElement('a');
@@ -895,4 +857,5 @@
         generateTOC();
     </script>
 </body>
+
 </html>
