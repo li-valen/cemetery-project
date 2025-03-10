@@ -3,9 +3,52 @@ ol {
     padding: 0
 }
 
+sup {
+    font-size: 0.85em;
+    vertical-align: super;
+  }
+
 a {
+    color: #0077cc;
+    text-decoration: none;
     cursor: pointer !important;
 }
+
+a:hover {
+    text-decoration: underline;
+  }
+
+  h1 {
+    font-family: 'Merriweather', serif;
+    font-size: 2.5em !important;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #222;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Georgia', serif;
+    background: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+
+  span, p {
+    margin-bottom: 1em;
+    text-align: justify;
+    font-size: 14px !important;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+  }
 table td,table th {
     padding: 0
 }
