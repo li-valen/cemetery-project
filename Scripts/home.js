@@ -160,7 +160,7 @@ document.addEventListener("DOMContentLoaded", function() {
     } else if(completedPercentage > 0.2) {
       timeoutVal = 125;
     } else if(currentIndex > 0 && currentIndex % 2 > 0) {
-      timeoutVal = 150;
+      timeoutVal = 140;
     } else {
       timeoutVal = 150;
     }
