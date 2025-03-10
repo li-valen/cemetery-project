@@ -50,6 +50,9 @@ a:hover {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
   }
 
+  p{
+    text-indent: 50px;
+  }
 table td,table th {
     padding: 0
 }
