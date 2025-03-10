@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>CSS Infinite Scroll Gallery</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Saira:ital@0;1&family=Sour+Gummy:wdth,wght@125,300&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Saira:ital@0;1&family=Sour+Gummy:wdth,wght@125,300&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="./Styles/photo-doc.css">
   <link rel="stylesheet" href="./Styles/menu.css">
 </head>
+
 <body>
   <div class="menu-wrap">
     <input type="checkbox" class="toggler" onclick="displayMenu()">
-    <div class="hamburger"><div></div></div>
+    <div class="hamburger">
+      <div></div>
+    </div>
     <div class="thing">
       <ul class="Menu-list" data-offset="10">
         <li class="Menu-list-item" style="font-size: 4.25rem;" data-offset="20" onclick="navigateTo('./index.html')">
@@ -44,8 +50,9 @@
     </div>
   </div>
 
-<!-- partial:index.partial.html -->
-<html style="--n: 12">
+  <!-- partial:index.partial.html -->
+  <html style="--n: 12">
+
   <body>
     <svg width="0" height="0" aria-hidden="true">
       <filter id="grain">
@@ -67,17 +74,20 @@
         <!-- 1. Birthplace: Williamsport, PA -->
         <article style="--i: 0; --url: url('../images/Williamsport.jpg'); --pos: 50% 50%">
           <header>
-            <h2>"Williamsport, PA (c. 1820), where James H. Campbell was born on February 8, 1820. Though his childhood home no longer stands, this area reflects the rural setting of his early life."</h2>
+            <h2>"Williamsport, PA (c. 1820), where James H. Campbell was born on February 8, 1820. Though his childhood
+              home no longer stands, this area reflects the rural setting of his early life."</h2>
           </header>
           <figure>
-            <img src="../images/Williamsport.jpg" alt="Historic marker or street view of early 19th-century Williamsport">
+            <img src="../images/Williamsport.jpg"
+              alt="Historic marker or street view of early 19th-century Williamsport">
             <figcaption>Birthplace: Williamsport, PA</figcaption>
           </figure>
         </article>
         <!-- 2. Education: Dickinson Law College, Carlisle, PA -->
         <article style="--i: 1; --url: url('../images/dickonson.jpg'); --pos: 50% 50%">
           <header>
-            <h2>"Dickinson Law College, Carlisle, PA (1840–1841). Campbell studied law here, graduating in 1841. The school’s emphasis on civic duty shaped his career in public service."</h2>
+            <h2>"Dickinson Law College, Carlisle, PA (1840–1841). Campbell studied law here, graduating in 1841. The
+              school’s emphasis on civic duty shaped his career in public service."</h2>
           </header>
           <figure>
             <img src="../images/dickonson.jpg" alt="Historic engraving of Dickinson College or modern campus photo">
@@ -87,7 +97,8 @@
         <!-- 3. Early Career: Pottsville, PA -->
         <article style="--i: 2; --url: url('images/pottsville.jpg'); --pos: 50% 50%">
           <header>
-            <h2>"Pottsville, PA (1841–1864). Campbell established his law practice here and became a prominent community figure, hosting social events and joining local organizations like the Miner’s Lodge."</h2>
+            <h2>"Pottsville, PA (1841–1864). Campbell established his law practice here and became a prominent community
+              figure, hosting social events and joining local organizations like the Miner’s Lodge."</h2>
           </header>
           <figure>
             <img src="../images/pottsville.webp" alt="19th-century lithograph of Pottsville’s South Ward">
@@ -95,66 +106,79 @@
           </figure>
         </article>
         <!-- 4. Congressional Service: Washington, D.C. -->
-        <article style="--i: 3; --url: url('images/national_hotel.jpg'); --pos: 50% 50%">
+        <article style="--i: 3; --url: url('images/capitol.jpg'); --pos: 50% 50%">
           <header>
-            <h2>"Capitol"</h2>
+            <h2>The U.S. Capitol (1855–1863)</h2>
           </header>
           <figure>
-            <img src="../images/capitol.jpg" alt="Historical print of the National Hotel and Capitol Building">
-            <figcaption>Congressional Service: Washington, D.C.</figcaption>
+            <img src="../images/capitol.jpg"
+              alt="Mid-19th century U.S. Capitol building during Campbell's congressional service">
+            <figcaption>Campbell served in the 34th, 36th, and 37th Congresses, opposing slavery compromises and
+              sponsoring the Pacific Railway Act of 1862.</figcaption>
           </figure>
         </article>
+
         <article style="--i: 4; --url: url('images/national_hotel.jpg'); --pos: 50% 50%">
           <header>
-            <h2>"The National Hotel, Washington, D.C. (1855–1857). Campbell resided here during his first Congressional term. The hotel housed many politicians near the Capitol, now replaced by modern buildings."</h2>
+            <h2>National Hotel (1855–1857)</h2>
           </header>
           <figure>
-            <img src="../images/national-hotel.jpg" alt="Historical print of the National Hotel and Capitol Building">
-            <figcaption>Congressional Service: Washington, D.C.</figcaption>
+            <img src="../images/national-hotel.jpg" alt="Historic National Hotel near Pennsylvania Avenue">
+            <figcaption>Campbell's first Washington residence during the 34th Congress. A political hub destroyed in
+              1942, now the site of the Newseum.</figcaption>
           </figure>
         </article>
-        <article style="--i: 5; --url: url('images/national_hotel.jpg'); --pos: 50% 50%">
+
+        <article style="--i: 5; --url: url('images/washington-house.png'); --pos: 50% 50%">
           <header>
-            <h2>"Washington House"</h2>
+            <h2>Washington House Hotel (1859–1863)</h2>
           </header>
           <figure>
-            <img src="../images/washington-house.png" alt="Historical print of the National Hotel and Capitol Building">
-            <figcaption>Congressional Service: Washington, D.C.</figcaption>
+            <img src="../images/washington-house.png" alt="19th-century Washington House hotel engraving">
+            <figcaption>Campbell's residence during the 36th and 37th Congresses. Located near the Capitol, it hosted
+              debates on secession and the Civil War.</figcaption>
           </figure>
         </article>
+
         <!-- 7. Diplomatic Post: Stockholm, Sweden -->
-        <article style="--i: 6; --url: url('images/stockholm_palace.jpg'); --pos: 50% 50%">
+        <article style="--i: 6; --url: url('images/royal-palace.jpg'); --pos: 50% 50%">
           <header>
-            <h2>"Legation of the United States, Stockholm (1864–1867). As Minister Resident, Campbell met King Charles XV here, strengthening U.S.-Sweden relations during the post-Civil War era."</h2>
+            <h2>Legation of the United States in Stockholm (1864–1867)</h2>
           </header>
           <figure>
-            <img src="../images/royal-palace.jpg" alt="Royal Palace of Stockholm (1860s engraving)">
-            <figcaption>Diplomatic Post: Stockholm, Sweden</figcaption>
+            <img src="../images/royal-palace.jpg" alt="Royal Palace of Stockholm in the 1860s">
+            <figcaption>As U.S. Minister Resident, Campbell met King Charles XV here, strengthened bilateral ties, and
+              thwarted Confederate naval plots.</figcaption>
           </figure>
         </article>
+
         <!-- 8. Later Life: Philadelphia, PA -->
-        <article style="--i: 7; --url: url('images/philadelphia_rowhouses.jpg'); --pos: 50% 50%">
+        <article style="--i: 7; --url: url('images/delaney.jpg'); --pos: 50% 50%">
           <header>
-            <h2>"2039 Delaney Place, Philadelphia (1867–1887). Campbell resumed his law career here.</h2>
+            <h2>2039 Delaney Place (1867–1895)</h2>
           </header>
           <figure>
-            <img src="../images/delaney.jpg" alt="19th-century row houses on Delaney Place">
-            <figcaption>Later Life: Philadelphia, PA</figcaption>
+            <img src="../images/delaney.jpg" alt="Victorian townhouse on Delaney Place">
+            <figcaption>Campbell's primary residence after diplomatic service. Hosted his daughter Julia during her
+              writing career and Theosophical studies.</figcaption>
           </figure>
         </article>
-        <article style="--i: 8; --url: url('images/philadelphia_rowhouses.jpg'); --pos: 50% 50%">
+
+        <article style="--i: 8; --url: url('images/130.JPG'); --pos: 50% 50%">
           <header>
-            <h2>working at 130 S. 6th Street, known as ‘Lawyer’s Row.’"</h2>
+            <h2>130 S. 6th Street (1876–1887)</h2>
           </header>
           <figure>
-            <img src="../images/130.JPG" alt="19th-century row houses on Delaney Place">
-            <figcaption>Later Life: Philadelphia, PA</figcaption>
+            <img src="../images/130.JPG" alt="19th-century 'Lawyer's Row' building in Philadelphia">
+            <figcaption>Campbell's law office on "Lawyer's Row." Handled landmark cases like the 1883 Packer Estate
+              guardianship dispute before the PA Supreme Court.</figcaption>
           </figure>
         </article>
         <!-- 9. Retirement: Aeola Estate, Wayne, PA -->
         <article style="--i: 9; --url: url('images/aeola_estate.jpg'); --pos: 50% 50%">
           <header>
-            <h2>"Aeola Estate, Wayne, PA (1887–1895). Campbell’s retirement home, where he hosted his 50th wedding anniversary. The property reflected his success as a lawyer and statesman."</h2>
+            <h2>"Aeola Estate, Wayne, PA (1887–1895). Campbell’s retirement home, where he hosted his 50th wedding
+              anniversary. The property reflected his success as a lawyer and statesman."</h2>
           </header>
           <figure>
             <img src="../images/aeola-estate.png" alt="1898 photograph of Aeola Estate">
@@ -164,7 +188,8 @@
         <!-- 10. Organizational Involvement: Institut d’Afrique, Paris -->
         <article style="--i: 10; --url: url('images/institut_afrique.jpg'); --pos: 50% 50%">
           <header>
-            <h2>"Sojourn in Paris (1865). Campbell was honored here for his anti-slavery efforts, reflecting his international influence."</h2>
+            <h2>"Sojourn in Paris (1865). Campbell was honored here for his anti-slavery efforts, reflecting his
+              international influence."</h2>
           </header>
           <figure>
             <img src="../images/paris.jpg" alt="1865 letterhead of the Institut d’Afrique">
@@ -174,7 +199,8 @@
         <!-- 11. Final Resting Place: Woodlands Cemetery, Philadelphia -->
         <article style="--i: 11; --url: url('images/woodlands_cemetery.jpg'); --pos: 50% 50%">
           <header>
-            <h2>"Woodlands Cemetery (1895). Campbell’s modest Celtic cross symbolizes faith and service. Buried alongside family, his legacy endures in U.S. law, politics, and diplomacy."</h2>
+            <h2>"Woodlands Cemetery (1895). Campbell’s modest Celtic cross symbolizes faith and service. Buried
+              alongside family, his legacy endures in U.S. law, politics, and diplomacy."</h2>
           </header>
           <figure>
             <img src="../images/cemetery.png" alt="Campbell’s Celtic cross monument at Woodlands Cemetery">
@@ -186,12 +212,17 @@
     <footer></footer>
     <!-- just support info-->
     <aside>
-      <p class="box-info-scrollani">Sorry, your browser does not appear to support scroll-driven animation. As of January 2025, this is supported in Firefox if the <kbd>layout.css.scroll-driven-animations.enabled</kbd> flag is set to true in <kbd>about:config</kbd> and in Chromium browsers. Safari support is coming, but it hasn't arrived yet.</p>
+      <p class="box-info-scrollani">Sorry, your browser does not appear to support scroll-driven animation. As of
+        January 2025, this is supported in Firefox if the <kbd>layout.css.scroll-driven-animations.enabled</kbd> flag is
+        set to true in <kbd>about:config</kbd> and in Chromium browsers. Safari support is coming, but it hasn't arrived
+        yet.</p>
     </aside>
   </body>
-</html>
-<!-- partial -->
-<script src="./Scripts/photo-doc.js"></script>
-<script src="./Scripts/menu.js"></script>
+
+  </html>
+  <!-- partial -->
+  <script src="./Scripts/photo-doc.js"></script>
+  <script src="./Scripts/menu.js"></script>
 </body>
+
 </html>
