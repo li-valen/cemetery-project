@@ -1,7 +1,7 @@
 .Menu-list {
   font-weight: 800;
   font-family: "Gilroy ExtraBold", system-ui, sans-serif;
-  font-size: 4.25rem;
+  font-size: 4.25rem !important;
   line-height: 1.2;
   text-transform: uppercase;
   text-align: center;

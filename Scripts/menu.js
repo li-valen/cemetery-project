@@ -42,9 +42,11 @@ function displayMenu(){
   if (check == 0) {
     document.querySelector('.thing').style.scale = '1';
     document.querySelector('.menu-wrap').style.zIndex = '300';
+    document.querySelector('.menu-wrap').style.pointerEvents = 'fill';
     check = 1;
   } else if (check == 1){
     document.querySelector('.thing').style.scale = '0';
+    document.querySelector('.menu-wrap').style.pointerEvents = 'none';
     setTimeout(() => {
       document.querySelector('.menu-wrap').style.zIndex = '0';
     }, 500);

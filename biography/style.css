@@ -43,12 +43,13 @@ a:hover {
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
   }
 
-  span, p {
+  p, p > span {
     margin-bottom: 1em;
     text-align: justify;
     font-size: 14px !important;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
   }
+
 table td,table th {
     padding: 0
 }
