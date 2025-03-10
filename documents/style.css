@@ -12,6 +12,28 @@
   overflow: hidden !important;
 }
 
+.img-magnifier-glass {
+  position: absolute;
+  border: 3px solid #000;
+  border-radius: 50%;
+  cursor: none;
+  width: 150px;
+  height: 150px;
+  z-index: 100;
+  background-repeat: no-repeat;
+}
+.family-tree-container {
+  position: relative;
+  margin: 20px 0 40px 0;
+  text-align: center;
+}
+.family-tree-image {
+  max-width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+
 .container {
   margin: 60px auto;
   text-align: center;

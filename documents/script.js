@@ -1,3 +1,4 @@
+const { useState, useEffect, useRef } = React;
 const lenis = new Lenis({
   duration: 1.2, // Duration of the scroll animation
   easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Smooth easing function
@@ -90,6 +91,89 @@ const Modal = ({ isOpen, onClose, content }) => {
 
 
 
+const FamilyTreeImage = ({ imagePath }) => {
+  // containerRef covers both the image and the magnifier glass
+  const containerRef = useRef(null);
+  const imgRef = useRef(null);
+  const glassRef = useRef(null);
+  const [isZoomActive, setIsZoomActive] = useState(false);
+  const zoom = 3; // Zoom level
+
+  // Create and activate the magnifier when hovering over the container
+  const initMagnifier = () => {
+    if (imgRef.current && !isZoomActive) {
+      const glass = document.createElement("DIV");
+      glass.setAttribute("class", "img-magnifier-glass");
+      // Append the magnifier glass as a child of the container
+      containerRef.current.appendChild(glass);
+
+      // Use the image's rendered dimensions
+      glass.style.backgroundImage = `url('${imagePath}')`;
+      glass.style.backgroundRepeat = "no-repeat";
+      glass.style.backgroundSize = `${imgRef.current.offsetWidth * zoom}px ${imgRef.current.offsetHeight * zoom}px`;
+
+      glassRef.current = glass;
+      setIsZoomActive(true);
+
+      // Attach event listeners to the container so the glass moves with the cursor
+      containerRef.current.addEventListener("mousemove", moveMagnifier);
+      containerRef.current.addEventListener("touchmove", moveMagnifier);
+    }
+  };
+
+  // Remove the magnifier when the mouse leaves the container
+  const removeMagnifier = () => {
+    if (glassRef.current && isZoomActive) {
+      containerRef.current.removeEventListener("mousemove", moveMagnifier);
+      containerRef.current.removeEventListener("touchmove", moveMagnifier);
+      if (glassRef.current.parentElement) {
+        glassRef.current.parentElement.removeChild(glassRef.current);
+      }
+      glassRef.current = null;
+      setIsZoomActive(false);
+    }
+  };
+
+  // Update the magnifier glass's position and background offset based on cursor movement
+  const moveMagnifier = (e) => {
+    e.preventDefault();
+    if (!imgRef.current || !glassRef.current) return;
+
+    const bw = 3; // Border width
+    const w = glassRef.current.offsetWidth / 2;
+    const h = glassRef.current.offsetHeight / 2;
+    const rect = imgRef.current.getBoundingClientRect();
+    let x = e.pageX - rect.left - window.pageXOffset;
+    let y = e.pageY - rect.top - window.pageYOffset;
+
+    // Constrain x and y within the image bounds
+    if (x > imgRef.current.offsetWidth - w / zoom) x = imgRef.current.offsetWidth - w / zoom;
+    if (x < w / zoom) x = w / zoom;
+    if (y > imgRef.current.offsetHeight - h / zoom) y = imgRef.current.offsetHeight - h / zoom;
+    if (y < h / zoom) y = h / zoom;
+
+    glassRef.current.style.left = `${x - w}px`;
+    glassRef.current.style.top = `${y - h}px`;
+    glassRef.current.style.backgroundPosition = `-${x * zoom - w + bw}px -${y * zoom - h + bw}px`;
+  };
+
+  return React.createElement(
+    "div",
+    {
+      className: "family-tree-container",
+      ref: containerRef,
+      onMouseEnter: initMagnifier,
+      onMouseLeave: removeMagnifier
+    },
+    React.createElement("img", {
+      src: imagePath,
+      alt: "Family Tree",
+      ref: imgRef,
+      className: "family-tree-image",
+      style: { cursor: "pointer" }
+    })
+  );
+};
 
 const Collage = () => {
   const allImages = [
@@ -286,6 +370,7 @@ const Collage = () => {
           React.createElement("h2", { className: "subtitle is-6" }, "James H. Campbell"),
           React.createElement("h1", { className: "title is-1" }, "Documents")
         ),
+        React.createElement(FamilyTreeImage, { imagePath: "../images/family-tree.png" }),
         React.createElement(InfiniteScroll, {
           dataLength: images.length,
           next: loadMoreImages,
