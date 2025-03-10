@@ -1,7 +1,9 @@
 document.addEventListener("DOMContentLoaded", function() {
+    preloadImages();
     start(); // Automatically start the animation when the page loads
     gsap.registerPlugin(ScrollTrigger);
-  
+    console.log(`Current Index: ${currentIndex}, Total Images: ${images.length}`);
+
   });
   
   const parentContainer = document.querySelector('.container');
@@ -15,7 +17,14 @@ document.addEventListener("DOMContentLoaded", function() {
   let timer = null
   let timeOut = 1000;
   let startTime;
-  
+
+  function preloadImages() {
+  imgArray.forEach((src) => {
+    const img = new Image();
+    img.src = src;
+  });
+}
+
   const imgArray = ["/images/Document1a.png",
   "/images/Document2a.png",
   "/images/Document2b.png",
@@ -128,6 +137,7 @@ document.addEventListener("DOMContentLoaded", function() {
         newImage = document.createElement('div');
         newImage.classList.add('imageContainer');
         newImage.style.backgroundImage = `url(${imgArray[i]})`;
+        newImage.onerror = () => console.error(`Failed to load image: ${imgArray[i]}`);
         parentContainer.appendChild(newImage);
       }  
     }

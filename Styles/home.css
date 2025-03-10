@@ -153,6 +153,7 @@ html, body {
     background-size: cover;
     transition: top 0.2s ease-out;
     top: -100vh;  /* starting off-screen */
+    will-change: opacity, transform;
   }
   
   /* Logo scaling when fading in */
