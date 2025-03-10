@@ -24,6 +24,17 @@ a {
   text-decoration: none;
 }
 
+.image-content {
+  text-align: center;
+}
+
+img {
+  text-align: center;
+  align-items: center;
+  height: 350px;
+  width: auto;
+}
+
 /* -------------------------------- 
 
 Main Components 
