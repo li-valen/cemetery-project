@@ -1,6 +1,6 @@
 jQuery(document).ready(function($){
 	var timelines = $('.cd-horizontal-timeline'),
-		eventsMinDistance = 60;
+		eventsMinDistance = 300;
 
 	(timelines.length > 0) && initTimeline(timelines);
 
@@ -88,8 +88,8 @@ jQuery(document).ready(function($){
 		// Translate timeline to the left/right according to the position of the selected event
 		var eventStyle = window.getComputedStyle(event.get(0), null),
 			eventLeft = Number(eventStyle.getPropertyValue("left").replace('px', '')),
-			timelineWidth = Number(timelineComponents['timelineWrapper'].css('width').replace('px', '')),
-			timelineTotWidth = Number(timelineComponents['eventsWrapper'].css('width').replace('px', ''));
+			timelineWidth = Number(timelineComponents['timelineWrapper'].css('width').replace('px', ''));
+		
 		var timelineTranslate = getTranslateValue(timelineComponents['eventsWrapper']);
 
         if( (string == 'next' && eventLeft > timelineWidth - timelineTranslate) || (string == 'prev' && eventLeft < - timelineTranslate) ) {
@@ -117,22 +117,58 @@ jQuery(document).ready(function($){
 		setTransformValue(filling.get(0), 'scaleX', scaleValue);
 	}
 
-	function setDatePosition(timelineComponents, min) {
-		for (i = 0; i < timelineComponents['timelineDates'].length; i++) { 
-		    var distance = daydiff(timelineComponents['timelineDates'][0], timelineComponents['timelineDates'][i]),
-		    	distanceNorm = Math.round(distance/timelineComponents['eventsMinLapse']) + 2;
-		    timelineComponents['timelineEvents'].eq(i).css('left', distanceNorm*min+'px');
+	function setDatePosition(timelineComponents, minDistance) {
+		var firstDate = timelineComponents['timelineDates'][0];
+		var lastDate = timelineComponents['timelineDates'][timelineComponents['timelineDates'].length - 1];
+		var totalDays = daydiff(firstDate, lastDate);
+		
+		// Calculate the distance between dots based on available space and date range
+		var distanceBetweenDates = minDistance;
+		
+		// If dates are very close, use the minimum distance
+		if (timelineComponents['eventsMinLapse'] > 0 && timelineComponents['eventsMinLapse'] < minDistance) {
+			distanceBetweenDates = minDistance;
 		}
+		
+		// Add an offset so the first dot is not flush with the left edge
+		var offset = minDistance / 2;
+		
+		timelineComponents['timelineEvents'].each(function(i) {
+			var currentDate = timelineComponents['timelineDates'][i];
+			var daysFromStart = daydiff(firstDate, currentDate);
+			
+			// Calculate position based on days difference and distance setting
+			var leftPosition = offset;
+			
+			if (totalDays > 0) {
+				// Scale the position if we have multiple dates
+				leftPosition += (daysFromStart / totalDays) * (timelineComponents['timelineEvents'].length * distanceBetweenDates);
+			} else {
+				// If all dates are the same, space them evenly
+				leftPosition += i * distanceBetweenDates;
+			}
+			
+			$(this).css('left', leftPosition + 'px');
+		});
 	}
-
-	function setTimelineWidth(timelineComponents, width) {
-		var timeSpan = daydiff(timelineComponents['timelineDates'][0], timelineComponents['timelineDates'][timelineComponents['timelineDates'].length-1]),
-			timeSpanNorm = timeSpan/timelineComponents['eventsMinLapse'],
-			timeSpanNorm = Math.round(timeSpanNorm) + 4,
-			totalWidth = timeSpanNorm*width;
-		timelineComponents['eventsWrapper'].css('width', totalWidth+'px');
-		updateFilling(timelineComponents['timelineEvents'].eq(0), timelineComponents['fillingLine'], totalWidth);
 	
+	function setTimelineWidth(timelineComponents, minDistance) {
+		var timelineEventsCount = timelineComponents['timelineEvents'].length;
+		var firstDate = timelineComponents['timelineDates'][0];
+		var lastDate = timelineComponents['timelineDates'][timelineComponents['timelineDates'].length - 1];
+		var totalDays = daydiff(firstDate, lastDate);
+		
+		// Calculate width based on the number of events and minimum distance
+		var baseWidth = timelineEventsCount * minDistance;
+		
+		// Add extra padding for the last event and to ensure there's always scrolling room
+		var extraPadding = minDistance * 2;
+		var totalWidth = Math.max(baseWidth + extraPadding, minDistance * 8);
+		
+		timelineComponents['eventsWrapper'].css('width', totalWidth + 'px');
+		
+		updateTimelinePosition('next', timelineComponents['eventsWrapper'].find('a.selected'), timelineComponents, totalWidth);
+		
 		return totalWidth;
 	}
 
@@ -190,7 +226,6 @@ jQuery(document).ready(function($){
 		element.style["transform"] = property+"("+value+")";
 	}
 
-	// Based on http://stackoverflow.com/questions/542938/how-do-i-get-the-number-of-days-between-two-dates-in-javascript
 	function parseDate(events) {
 		var dateArrays = [];
 		events.each(function(){
@@ -201,45 +236,27 @@ jQuery(document).ready(function($){
 	    return dateArrays;
 	}
 
-	function parseDate2(events) {
-		var dateArrays = [];
-		events.each(function(){
-			var singleDate = $(this),
-				dateComp = singleDate.data('date').split('T');
-			if( dateComp.length > 1 ) { // Both DD/MM/YEAR and time are provided
-				var dayComp = dateComp[0].split('/'),
-					timeComp = dateComp[1].split(':');
-			} else if( dateComp[0].indexOf(':') >=0 ) { // Only time is provided
-				var dayComp = ["2000", "0", "0"],
-					timeComp = dateComp[0].split(':');
-			} else { // Only DD/MM/YEAR
-				var dayComp = dateComp[0].split('/'),
-					timeComp = ["0", "0"];
-			}
-			var	newDate = new Date(dayComp[2], dayComp[1]-1, dayComp[0], timeComp[0], timeComp[1]);
-			dateArrays.push(newDate);
-		});
-	    return dateArrays;
-	}
-
 	function daydiff(first, second) {
-	    return Math.round((second-first));
+		return Math.round((second - first) / (1000 * 60 * 60 * 24));
 	}
 
 	function minLapse(dates) {
 		// Determine the minimum distance among events
 		var dateDistances = [];
-		for (i = 1; i < dates.length; i++) { 
+		for (var i = 1; i < dates.length; i++) { 
 		    var distance = daydiff(dates[i-1], dates[i]);
-		    dateDistances.push(distance);
+		    if (distance > 0) {
+		        dateDistances.push(distance);
+		    }
 		}
-		return Math.min.apply(null, dateDistances);
+		
+		if (dateDistances.length > 0) {
+		    return Math.min.apply(null, dateDistances);
+		} else {
+		    return 0; // If all dates are the same or in wrong order
+		}
 	}
 
-	/*
-		How to tell if a DOM element is visible in the current viewport?
-		http://stackoverflow.com/questions/123999/how-to-tell-if-a-dom-element-is-visible-in-the-current-viewport
-	*/
 	function elementInViewport(el) {
 		var top = el.offsetTop;
 		var left = el.offsetLeft;
