@@ -88,7 +88,30 @@ document.addEventListener("DOMContentLoaded", function() {
   "/images/Document47a.png",
   "/images/Document48a.png",
   "/images/Document49a.png",
-  "/images/Document50a.png"
+  "/images/Document50a.png",
+  "/images/group1.jpg",
+  "/images/group2.jpg",
+  "/images/group3.jpg",
+  "/images/group4.jpg",
+  "/images/group5.jpg",
+  "/images/group6.jpg",
+  "/images/group7.jpg",
+  "/images/group8.jpg",
+  "/images/group9.jpg",
+  "/images/group10.jpg",
+  "/images/group11.jpg",
+  "/images/group12.jpg",
+  "/images/group13.jpg",
+  "/images/group14.jpg",
+  "/images/group15.jpg",
+  "/images/group16.jpg",
+  "/images/group17.jpg",
+  "/images/group18.jpg",
+  "/images/group19.jpg",
+  "/images/group20.jpg",
+  "/images/group21.jpg",
+  "/images/group22.jpg",
+  "/images/group23.jpg"
                  ];
   loadBackgroundImages();
   
@@ -164,7 +187,7 @@ document.addEventListener("DOMContentLoaded", function() {
     
     setTimeout(() => {
         renderSubtitle();
-    }, 4000);
+    }, 5000);
   }
   
   function renderSubtitle() {
@@ -181,17 +204,17 @@ document.addEventListener("DOMContentLoaded", function() {
   mainTimeline
     .from('.logoOverlay', { duration: 3.5, opacity: 1, ease: 'power1.inOut', yoyo: true, repeat: 2 }, 1) // Fading in/out logoOverlay
     .to(['.logoOverlay', '.container'], {  // Targeting both .logoOverlay and .container
-      duration: 2,
+      duration: 3,
       opacity: 0,  // Fading them out
       ease: 'power3.inOut',
       onStart: () => {
         gsap.to('.parallax-animation', {
           opacity: 1, // Ensure the parallax section becomes visible
-          duration: 2,
+          duration: 3,
           ease: "power3.inOut",
         });      
         setTimeout(() => {
-        }, 2000);
+        }, 3000);
       },
       onComplete: () => {
         document.querySelector('.container').style.display = 'none';
@@ -202,7 +225,7 @@ document.addEventListener("DOMContentLoaded", function() {
         ScrollTrigger.refresh(); // Refresh ScrollTrigger after layout changes
       }
       
-    }, "-=2"); // Use negative offset to make them fade out at the same time
+    }, "+=1"); // Use negative offset to make them fade out at the same time
   
   
   

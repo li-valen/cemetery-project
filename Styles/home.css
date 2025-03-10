@@ -190,16 +190,16 @@ html, body {
   }
   
   @keyframes fade {
-    0% { background-color: rgba(0, 119, 182,1); }
-    25% { background-color: rgba(0, 119, 182,0.7); }
-    50% { background-color: rgba(0, 119, 182,0.7); }
-    75% { background-color: rgba(0, 119, 182,0.4); }
+    0% { background-color: rgba(0, 119, 182, 0.8); }
+    25% { background-color: rgba(0, 119, 182,0.5); }
+    50% { background-color: rgba(0, 119, 182,0.5); }
+    75% { background-color: rgba(0, 119, 182,0.2); }
     100% { background-color: rgba(0, 119, 182,0); }
   }
   
   @keyframes fadeInLogo {
     from { background-color: rgba(0, 119, 182,0); }
-    to { background-color: rgba(0, 119, 182, 0.9); }
+    to { background-color: rgba(0, 119, 182, 0.7); }
   }
   
   @keyframes opacityFade {
