@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function() {
-    preloadImages();
     start(); // Automatically start the animation when the page loads
     gsap.registerPlugin(ScrollTrigger);
     console.log(`Current Index: ${currentIndex}, Total Images: ${images.length}`);
@@ -18,12 +17,6 @@ document.addEventListener("DOMContentLoaded", function() {
   let timeOut = 1000;
   let startTime;
 
-  function preloadImages() {
-  imgArray.forEach((src) => {
-    const img = new Image();
-    img.src = src;
-  });
-}
 
   const imgArray = ["/images/Document1a.png",
   "/images/Document2a.png",
