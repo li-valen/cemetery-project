@@ -9,7 +9,7 @@ sup {
   }
 
 a {
-    color: #0077cc;
+    color: #a8a8e0;
     text-decoration: none;
     cursor: pointer !important;
 }
@@ -26,11 +26,15 @@ a:hover {
     color: #222;
   }
 
+html {
+    filter: url(#grain);
+}
+
   body {
     margin: 0;
     padding: 0;
     font-family: 'Georgia', serif;
-    background: #f9f9f9;
+    background: #19191d;
     color: #333;
     line-height: 1.6;
   }
@@ -39,7 +43,8 @@ a:hover {
     max-width: 800px;
     margin: 40px auto;
     padding: 20px;
-    background: #fff;
+    background: #19191d;
+    filter: url(#grain);
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
   }
 
@@ -48,6 +53,7 @@ a:hover {
     text-align: justify;
     font-size: 14px !important;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+    color: rgb(222, 222, 222) !important;
   }
 
   p{
@@ -225,8 +231,8 @@ table td,table th {
 }
 
 .c26 {
-    background-color: #ffffff;
-    color: #202121
+    background-color: #19191d;
+    color: white
 }
 
 .c9 {

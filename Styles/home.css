@@ -51,7 +51,7 @@ html, body {
   .overlay {
     position: absolute;
     z-index: 233;
-    background: rgba(153,14,14,1);
+    background: #a8a8e0;
     width: 100vw;
     height: 100vh;
     top: 0;
@@ -62,7 +62,7 @@ html, body {
   .logoOverlay {
     position: absolute;
     z-index: 234;
-    background: rgba(153,14,14,0);
+    background: rgba(0, 119, 182,0);
     width: 100vw;
     height: 100vh;
     top: 0;
@@ -136,7 +136,7 @@ html, body {
   }
   button {
     width: 50%;
-    background-color: red;
+    background-color: #a8a8e0;
     border: none;
     padding: 10px;
     border-radius: 5px;
@@ -190,16 +190,16 @@ html, body {
   }
   
   @keyframes fade {
-    0% { background-color: rgba(153,14,14,1); }
-    25% { background-color: rgba(153,14,14,0.7); }
-    50% { background-color: rgba(153,14,14,0.7); }
-    75% { background-color: rgba(153,14,14,0.4); }
-    100% { background-color: rgba(153,14,14,0); }
+    0% { background-color: rgba(0, 119, 182,1); }
+    25% { background-color: rgba(0, 119, 182,0.7); }
+    50% { background-color: rgba(0, 119, 182,0.7); }
+    75% { background-color: rgba(0, 119, 182,0.4); }
+    100% { background-color: rgba(0, 119, 182,0); }
   }
   
   @keyframes fadeInLogo {
-    from { background-color: rgba(153,14,14,0); }
-    to { background-color: rgba(153,14,14,0.9); }
+    from { background-color: rgba(0, 119, 182,0); }
+    to { background-color: rgba(0, 119, 182, 0.9); }
   }
   
   @keyframes opacityFade {

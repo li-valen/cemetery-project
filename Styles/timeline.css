@@ -15,12 +15,12 @@ html {
 body {
   font-size: 1.6rem;
   font-family: "Source Sans Pro", sans-serif;
-  color: #383838;
-  background-color: #f8f8f8;
+  color: rgb(255, 255, 255);
+  background-color: rgb(74, 74, 74);
 }
 
 a {
-  color: #7b9d6f;
+  color: #a8a8e0;
   text-decoration: none;
 }
 
@@ -80,13 +80,13 @@ Main Components
 }
 .cd-horizontal-timeline .events-wrapper::before {
   left: 0;
-  background-image: -webkit-linear-gradient( left , #f8f8f8, rgba(248, 248, 248, 0));
-  background-image: linear-gradient(to right, #f8f8f8, rgba(248, 248, 248, 0));
+  background-image: -webkit-linear-gradient( left , rgb(74, 74, 74), rgba(248, 248, 248, 0));
+  background-image: linear-gradient(to right, rgb(74, 74, 74), rgba(248, 248, 248, 0));
 }
 .cd-horizontal-timeline .events-wrapper::after {
   right: 0;
-  background-image: -webkit-linear-gradient( right , #f8f8f8, rgba(248, 248, 248, 0));
-  background-image: linear-gradient(to left, #f8f8f8, rgba(248, 248, 248, 0));
+  background-image: -webkit-linear-gradient( right , rgb(74, 74, 74), rgba(248, 248, 248, 0));
+  background-image: linear-gradient(to left, rgb(74, 74, 74), rgba(248, 248, 248, 0));
 }
 .cd-horizontal-timeline .events {
   /* this is the grey line/timeline */
@@ -109,7 +109,7 @@ Main Components
   top: 0;
   height: 100%;
   width: 100%;
-  background-color: #7b9d6f;
+  background-color: #a8a8e0;
   -webkit-transform: scaleX(0);
   -moz-transform: scaleX(0);
   -ms-transform: scaleX(0);
@@ -131,7 +131,7 @@ Main Components
   text-align: center;
   font-size: 1.3rem;
   padding-bottom: 15px;
-  color: #383838;
+  color: rgb(255, 255, 255);
   /* fix bug on Safari - text flickering while timeline translates */
   -webkit-transform: translateZ(0);
   -moz-transform: translateZ(0);
@@ -155,24 +155,24 @@ Main Components
   width: 12px;
   border-radius: 50%;
   border: 2px solid #dfdfdf;
-  background-color: #f8f8f8;
+  background-color: rgb(74, 74, 74);
   -webkit-transition: background-color 0.3s, border-color 0.3s;
   -moz-transition: background-color 0.3s, border-color 0.3s;
   transition: background-color 0.3s, border-color 0.3s;
 }
 .no-touch .cd-horizontal-timeline .events a:hover::after {
-  background-color: #7b9d6f;
-  border-color: #7b9d6f;
+  background-color: #a8a8e0;
+  border-color: #a8a8e0;
 }
 .cd-horizontal-timeline .events a.selected {
   pointer-events: none;
 }
 .cd-horizontal-timeline .events a.selected::after {
-  background-color: #7b9d6f;
-  border-color: #7b9d6f;
+  background-color: #a8a8e0;
+  border-color: #a8a8e0;
 }
 .cd-horizontal-timeline .events a.older-event::after {
-  border-color: #7b9d6f;
+  border-color: #a8a8e0;
 }
 @media only screen and (min-width: 1100px) {
   .cd-horizontal-timeline {
@@ -237,7 +237,7 @@ Main Components
   right: 0;
 }
 .no-touch .cd-timeline-navigation a:hover {
-  border-color: #7b9d6f;
+  border-color: #a8a8e0;
 }
 .cd-timeline-navigation a.inactive {
   cursor: not-allowed;
@@ -325,14 +325,14 @@ Main Components
 }
 .cd-horizontal-timeline .events-content p {
   font-size: 1.4rem;
-  color: #959595;
+  color: rgb(222, 222, 222);
 }
 .cd-horizontal-timeline .events-content em, .cd-horizontal-timeline .events-content p {
   line-height: 1.6;
 }
 @media only screen and (min-width: 768px) {
   .cd-horizontal-timeline .events-content h2 {
-    font-size: 7rem;
+    font-size: 6rem;
   }
   .cd-horizontal-timeline .events-content em {
     font-size: 2rem;

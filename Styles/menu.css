@@ -76,6 +76,7 @@ div > ul, div > ul > li, div > ul > li > span, div > ul > li > span > span {
 }
 
 .menu-wrap {
+  filter: none !important;
   font-family: "Gilroy ExtraBold", system-ui, sans-serif;
   top: 0;
   right: 0;
@@ -94,7 +95,7 @@ div > ul, div > ul > li, div > ul > li > span, div > ul > li > span > span {
   font-family: "Gilroy ExtraBold", system-ui, sans-serif;
   height: 100%;
   width: 100%;
-  background: linear-gradient(45deg, #02001F, #1F1B4E);
+  background: linear-gradient(45deg, #02001F, rgb(0 100 170));
   scale: 0;
   transition: scale 0.5s ease; /* Add transition for opacity */
 }

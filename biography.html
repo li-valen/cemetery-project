@@ -51,7 +51,16 @@
         </div>
         
     </div>
-    
+    <svg width="0" height="0" aria-hidden="true">
+        <filter id="grain">
+          <feTurbulence type="fractalNoise" baseFrequency="7.13"></feTurbulence>
+          <feColorMatrix type="saturate" values="0"></feColorMatrix>
+          <feComponentTransfer>
+            <feFuncA type="linear" slope=".02"></feFuncA>
+          </feComponentTransfer>
+          <feBlend in2="SourceGraphic"></feBlend>
+        </filter>
+      </svg>
     <div class="c15 container">
         <h1 class="c26" id="h.w7unmcbugunn">Biography</h1>
         <br><p class="c4"><span class="c10">Tradition says that the name Hepburn is derived from the names of two
