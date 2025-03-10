@@ -25,15 +25,15 @@ jQuery(document).ready(function($){
 			// The timeline has been initialized - show it
 			timeline.addClass('loaded');
 
-			// Detect click on the next arrow: now jump to the next event immediately.
+			// Detect click on the next arrow: jump immediately to the next event.
 			timelineComponents['timelineNavigation'].on('click', '.next', function(event){
 				event.preventDefault();
 				showNewContent(timelineComponents, timelineTotWidth, 'next');
 			});
-			// Detect click on the prev arrow remains unchanged.
+			// Detect click on the prev arrow: jump immediately to the previous event.
 			timelineComponents['timelineNavigation'].on('click', '.prev', function(event){
 				event.preventDefault();
-				updateSlide(timelineComponents, timelineTotWidth, 'prev');
+				showNewContent(timelineComponents, timelineTotWidth, 'prev');
 			});
 			// Detect click on a single event - show new event content
 			timelineComponents['eventsWrapper'].on('click', 'a', function(event){
@@ -64,16 +64,6 @@ jQuery(document).ready(function($){
 				}
 			});
 		});
-	}
-
-	function updateSlide(timelineComponents, timelineTotWidth, string) {
-		// Retrieve translateX value of timelineComponents['eventsWrapper']
-		var translateValue = getTranslateValue(timelineComponents['eventsWrapper']),
-			wrapperWidth = Number(timelineComponents['timelineWrapper'].css('width').replace('px', ''));
-		// Translate the timeline to the left('next')/right('prev') 
-		(string == 'next') 
-			? translateTimeline(timelineComponents, translateValue - wrapperWidth + eventsMinDistance, wrapperWidth - timelineTotWidth)
-			: translateTimeline(timelineComponents, translateValue + wrapperWidth - eventsMinDistance);
 	}
 
 	function showNewContent(timelineComponents, timelineTotWidth, string) {
