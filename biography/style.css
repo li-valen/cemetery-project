@@ -1,33 +1,47 @@
-iframe {
-    display: block;
-    margin: 0 auto;
-    position: absolute;
-    left: 25%;      
-    border: 0px;
-    z-index: -1;
-  }
-
-
-  ol {
+ol {
     margin: 0;
     padding: 0
-  }
+}
 
+a {
+    cursor: pointer !important;
+}
 table td,table th {
     padding: 0
 }
 
-.c8 {
+.c2 {
     padding-top: 0pt;
     text-indent: 36pt;
     padding-bottom: 0pt;
     line-height: 1.0;
     orphans: 2;
     widows: 2;
-    text-align: justify
+    text-align: left;
+    height: 11pt
 }
 
-.c0 {
+.c20 {
+    padding-top: 0pt;
+    padding-bottom: 0pt;
+    line-height: 1.15;
+    orphans: 2;
+    widows: 2;
+    text-align: left;
+    height: 11pt
+}
+
+.c4 {
+    color: #000000;
+    font-weight: 400;
+    text-decoration: none;
+    vertical-align: baseline;
+    font-size: 12pt;
+    font-family: "Times New Roman";
+    font-style: normal
+}
+
+.c6 {
     color: #000000;
     font-weight: 400;
     text-decoration: none;
@@ -37,7 +51,7 @@ table td,table th {
     font-style: normal
 }
 
-.c12 {
+.c25 {
     padding-top: 0pt;
     padding-bottom: 0pt;
     line-height: 1.0;
@@ -47,7 +61,27 @@ table td,table th {
     text-align: center
 }
 
+.c5 {
+    padding-top: 0pt;
+    text-indent: 36pt;
+    padding-bottom: 0pt;
+    line-height: 1.0;
+    orphans: 2;
+    widows: 2;
+    text-align: justify
+}
+
 .c1 {
+    color: #000000;
+    font-weight: 400;
+    text-decoration: none;
+    vertical-align: baseline;
+    font-size: 10pt;
+    font-family: "Times New Roman";
+    font-style: normal
+}
+
+.c8 {
     padding-top: 0pt;
     padding-bottom: 0pt;
     line-height: 1.0;
@@ -56,7 +90,7 @@ table td,table th {
     text-align: left
 }
 
-.c18 {
+.c23 {
     padding-top: 0pt;
     padding-bottom: 0pt;
     line-height: 1.0;
@@ -65,131 +99,117 @@ table td,table th {
     text-align: justify
 }
 
-.c19 {
-    padding-top: 0pt;
-    padding-bottom: 0pt;
-    line-height: 1.15;
-    orphans: 2;
-    widows: 2;
-    text-align: left
-}
-
-.c5 {
+.c27 {
     color: #000000;
-    text-decoration: none;
-    vertical-align: baseline;
-    font-style: normal
+    font-weight: 400;
+    font-size: 11pt;
+    font-family: "Arial"
 }
 
-.c26 {
-    color: #202122;
-    text-decoration: none;
-    vertical-align: baseline;
-    font-style: normal
+.c11 {
+    font-size: 12pt;
+    font-family: "Times New Roman";
+    color: #0e101a;
+    font-weight: 400
 }
 
-.c13 {
+.c0 {
+    font-size: 10pt;
+    font-family: "Times New Roman";
+    font-style: italic;
+    font-weight: 400
+}
+
+.c3 {
+    vertical-align: super;
+    font-size: 12pt;
+    font-family: "Times New Roman";
+    font-weight: 400
+}
+
+.c22 {
     -webkit-text-decoration-skip: none;
     color: #1155cc;
     text-decoration: underline;
     text-decoration-skip-ink: none
 }
 
-.c9 {
-    color: #0e101a;
+.c24 {
+    background-color: #ffffff;
+    font-size: 10.5pt;
+    font-family: "Times New Roman";
+    font-weight: 400
+}
+
+.c13 {
     text-decoration: none;
     vertical-align: baseline;
     font-style: normal
 }
 
-.c21 {
-    color: #000000;
-    text-decoration: none;
-    font-style: normal
-}
-
-.c3 {
+.c12 {
     font-size: 12pt;
     font-weight: 400;
     font-family: "Times New Roman"
 }
 
-.c7 {
-    font-family: "Times New Roman";
-    font-style: italic;
-    font-weight: 400
+.c16 {
+    font-size: 28pt;
+    font-weight: 400;
+    font-family: "Times New Roman"
 }
 
-.c24 {
+.c10 {
+    color: #000000;
+    text-decoration: none;
+    font-style: normal
+}
+
+.c7 {
+    font-size: 10pt;
+    font-weight: 400;
+    font-family: "Times New Roman"
+}
+
+.c18 {
     background-color: #ffffff;
     max-width: 468pt;
     padding: 72pt 72pt 72pt 72pt
 }
 
-.c23 {
-    font-weight: 400;
-    font-size: 11pt;
-    font-family: "Arial"
-}
-
-.c10 {
-    font-style: italic;
-    color: #0e101a
-}
-
-.c6 {
-    vertical-align: super;
-    color: #0e101a
-}
-
-.c11 {
-    font-weight: 400;
-    font-family: "Times New Roman"
-}
-
-.c22 {
-    background-color: #ffffff;
-    font-size: 10.5pt
-}
-
-.c2 {
-    text-indent: 36pt;
-    height: 11pt
-}
-
-.c25 {
+.c26 {
     background-color: #ffffff;
     color: #202121
 }
 
-.c16 {
+.c9 {
     color: inherit;
     text-decoration: inherit
 }
 
-.c20 {
+.c19 {
     width: 33%;
     height: 1px
 }
 
-.c4 {
-    font-size: 10pt
-}
-
-.c17 {
-    vertical-align: super
-}
-
-.c27 {
-    font-size: 28pt
+.c28 {
+    color: #202122
 }
 
 .c14 {
+    font-size: 10pt
+}
+
+.c21 {
     height: 11pt
 }
 
+.c17 {
+    font-style: italic
+}
+
 .c15 {
-    color: #0e101a
+    vertical-align: super
 }
 
 .title {
