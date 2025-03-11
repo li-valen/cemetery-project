@@ -1,54 +1,66 @@
-html, body {
-    overflow:scroll; /* Prevent scrolling */
+html,
+body {
+    overflow: scroll;
+    /* Prevent scrolling */
     height: 100%;
-  }
-  
-  .text {
-      margin-top: 5%;
-      margin-left: 5%;
-      margin-right: 5%;
-      text-align: center;
-  }
-  
-  body {
+}
+
+.text {
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+    text-align: center;
+}
+
+body {
     margin: 0;
     padding: 0;
     font-family: 'Assistant', sans-serif;
     background-color: #000;
-  }
-  .buttonText {
+}
+
+.buttonText {
     color: white;
-  }
-  
-  /* Full-screen container for the images */
-  .container {
+}
+
+/* Full-screen container for the images */
+.container {
     margin: 0;
     background-color: black;
     width: 100vw;
     height: 100vh;
-  }
-  .overlay, .container, .logoOverlay {
-    position: absolute; /* Keep it in place */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh; /* Full viewport height */
-    z-index: 10; /* Higher z-index to stay on top */
-  }
-  
-  /* Place parallax section underneath */
-  .parallax-animation {
-    position: absolute; /* Keeps it stacked behind */
+}
+
+.overlay,
+.container,
+.logoOverlay {
+    position: absolute;
+    /* Keep it in place */
     top: 0;
     left: 0;
     width: 100%;
     height: 100vh;
-    z-index: 5; /* Lower than intro section */
-    opacity: 0; /* Initially hidden */
-  }
-  
-  /* Overlay that covers the whole screen */
-  .overlay {
+    /* Full viewport height */
+    z-index: 10;
+    /* Higher z-index to stay on top */
+}
+
+/* Place parallax section underneath */
+.parallax-animation {
+    position: absolute;
+    /* Keeps it stacked behind */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 5;
+    /* Lower than intro section */
+    opacity: 0;
+    /* Initially hidden */
+}
+
+/* Overlay that covers the whole screen */
+.overlay {
     position: absolute;
     z-index: 233;
     background: #a8a8e0;
@@ -56,13 +68,13 @@ html, body {
     height: 100vh;
     top: 0;
     left: 0;
-  }
-  
-  /* Logo overlay on top of the images */
-  .logoOverlay {
+}
+
+/* Logo overlay on top of the images */
+.logoOverlay {
     position: absolute;
     z-index: 234;
-    background: rgba(0, 119, 182,0);
+    background: rgba(0, 119, 182, 0);
     width: 100vw;
     height: 100vh;
     top: 0;
@@ -70,10 +82,10 @@ html, body {
     text-align: center;
     color: white;
     overflow: hidden;
-  }
-  
-  /* Marvel logo styling */
-  .logoOverlay .logo {
+}
+
+/* Marvel logo styling */
+.logoOverlay .logo {
     font-weight: 800;
     -webkit-font-smoothing: antialiased;
     font-size: 100px;
@@ -81,12 +93,13 @@ html, body {
     opacity: 0;
     transition: transform 7s ease-out, opacity 3s ease-in;
     transform: scale(1.3, 1.8);
-    margin-top: 30vh;  /* roughly center vertically */
+    margin-top: 30vh;
+    /* roughly center vertically */
     overflow: hidden;
-  
-  }
-  
-  .logoSubtitle {
+
+}
+
+.logoSubtitle {
     margin: 0 auto;
     transition: height 2s linear;
     height: 0.1px;
@@ -94,38 +107,39 @@ html, body {
     text-align: center;
     padding-top: 8px;
     overflow: hidden;
-  
+
     margin-top: -40px;
-  }
-  
-  .borderAndHeight {
+}
+
+.borderAndHeight {
     border-top: 2px solid white;
     border-bottom: 2px solid white;
     height: 30px;
-  }
-  
-  .subtitle-text {
+}
+
+.subtitle-text {
     color: white;
     margin: 0;
     font-family: 'Raleway', sans-serif;
     letter-spacing: 5px;
-  }
-  
-  /* Black bars for stylistic effect */
-  .blackBar {
+}
+
+/* Black bars for stylistic effect */
+.blackBar {
     width: 100vw;
     height: 50px;
     background-color: black;
     position: absolute;
     top: 0;
     left: 0;
-  }
-  .blackBar.bottom {
+}
+
+.blackBar.bottom {
     top: calc(100vh - 50px);
-  }
-  
-  /* Button container at the bottom */
-  .buttonContainer {
+}
+
+/* Button container at the bottom */
+.buttonContainer {
     width: 400px;
     margin: 0 auto;
     position: absolute;
@@ -133,17 +147,18 @@ html, body {
     left: 0;
     right: 0;
     text-align: center;
-  }
-  button {
+}
+
+button {
     width: 50%;
     background-color: #a8a8e0;
     border: none;
     padding: 10px;
     border-radius: 5px;
-  }
-  
-  /* Each image container now fills the viewport */
-  .imageContainer {
+}
+
+/* Each image container now fills the viewport */
+.imageContainer {
     z-index: 1;
     position: absolute;
     opacity: 1;
@@ -152,122 +167,165 @@ html, body {
     background-repeat: no-repeat;
     background-size: cover;
     transition: top 0.2s ease-out;
-    top: -100vh;  /* starting off-screen */
-  }
-  
-  /* Logo scaling when fading in */
-  .scaleLogo {
+    top: -100vh;
+    /* starting off-screen */
+}
+
+/* Logo scaling when fading in */
+.scaleLogo {
     transform: scale(1, 1.5) !important;
-    opacity: 1 !important;  
+    opacity: 1 !important;
     letter-spacing: normal;
-  }
-  
-  /* Animation classes */
-  .fade {
+}
+
+/* Animation classes */
+.fade {
     animation: fade 8s;
     animation-fill-mode: forwards;
-  }
-  .fadeInLogo {
+}
+
+.fadeInLogo {
     animation: fadeInLogo 5s;
     animation-fill-mode: forwards;
-  }
-  .blur {
+}
+
+.blur {
     animation: blur 500ms;
-  }
-  .opacityFadeInit {
+}
+
+.opacityFadeInit {
     animation: opacityFade 1.2s;
-  }
-  .opacityFade {
+}
+
+.opacityFade {
     animation: opacityFade 0.4s;
-  }
-  
-  @keyframes blur {
-    0% { -webkit-filter: blur(20px); }
-    25% { -webkit-filter: blur(15px); }
-    50% { -webkit-filter: blur(10px); }
-    75% { -webkit-filter: blur(5px); }
-    100% { -webkit-filter: blur(0px); }
-  }
-  
-  @keyframes fade {
-    0% { background-color: rgba(0, 119, 182, 0.8); }
-    25% { background-color: rgba(0, 119, 182,0.5); }
-    50% { background-color: rgba(0, 119, 182,0.5); }
-    75% { background-color: rgba(0, 119, 182,0.2); }
-    100% { background-color: rgba(0, 119, 182,0); }
-  }
-  
-  @keyframes fadeInLogo {
-    from { background-color: rgba(0, 119, 182,0); }
-    to { background-color: rgba(0, 119, 182, 0.7); }
-  }
-  
-  @keyframes opacityFade {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-  
-  /* Ensure smooth transition for parallax section */
-  .parallax-animation {
+}
+
+@keyframes blur {
+    0% {
+        -webkit-filter: blur(20px);
+    }
+
+    25% {
+        -webkit-filter: blur(15px);
+    }
+
+    50% {
+        -webkit-filter: blur(10px);
+    }
+
+    75% {
+        -webkit-filter: blur(5px);
+    }
+
+    100% {
+        -webkit-filter: blur(0px);
+    }
+}
+
+@keyframes fade {
+    0% {
+        background-color: rgba(0, 119, 182, 0.8);
+    }
+
+    25% {
+        background-color: rgba(0, 119, 182, 0.5);
+    }
+
+    50% {
+        background-color: rgba(0, 119, 182, 0.5);
+    }
+
+    75% {
+        background-color: rgba(0, 119, 182, 0.2);
+    }
+
+    100% {
+        background-color: rgba(0, 119, 182, 0);
+    }
+}
+
+@keyframes fadeInLogo {
+    from {
+        background-color: rgba(0, 119, 182, 0);
+    }
+
+    to {
+        background-color: rgba(0, 119, 182, 0.7);
+    }
+}
+
+@keyframes opacityFade {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Ensure smooth transition for parallax section */
+.parallax-animation {
     opacity: 1;
     transition: opacity 1s ease;
     z-index: -1;
     position: relative;
-  }
-  
-  .parallax-animation.visible {
+}
+
+.parallax-animation.visible {
     opacity: 1;
-  }
-  
-  .hidden {
+}
+
+.hidden {
     display: none;
-  }
-  
-  body {
+}
+
+body {
     margin: 0;
     font-family: "Montserrat", sans-serif;
     background: #000;
-  }
-  
-  .intro-animation {
+}
+
+.intro-animation {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100vh;
     z-index: 100;
-  }
-  
-  .parallax-animation {
+}
+
+.parallax-animation {
     position: relative;
     opacity: 0;
     min-height: 200vh;
-  }
-  
-  /* Name animation styles */
-  .pov {
+}
+
+/* Name animation styles */
+.pov {
     width: 100%;
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-  
-  .die {
+}
+
+.die {
     width: 400px;
     height: 55px;
     padding-bottom: 9px;
     perspective: 999px;
-  }
-  
-  .cube {
+}
+
+.cube {
     position: absolute;
     width: 100%;
     height: 100%;
     transform-style: preserve-3d;
-  }
-  
-  .face {
+}
+
+.face {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -275,35 +333,35 @@ html, body {
     align-items: center;
     justify-content: center;
     backface-visibility: hidden;
-  }
-  
-  /* Parallax styles */
-  .parallax__header {
+}
+
+/* Parallax styles */
+.parallax__header {
     z-index: 2;
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-  }
-  
-  .parallax__visuals {
+}
+
+.parallax__visuals {
     position: absolute;
     width: 100%;
     height: 120%;
     top: 0;
     left: 0;
-  }
-  
-  .parallax__layers {
+}
+
+.parallax__layers {
     position: absolute;
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
-  }
-  
-  .parallax__layer-img {
+}
+
+.parallax__layer-img {
     pointer-events: none;
     object-fit: cover;
     width: 100%;
@@ -311,9 +369,9 @@ html, body {
     position: absolute;
     top: -17.5%;
     left: 0;
-  }
-  
-  .parallax__layer-title {
+}
+
+.parallax__layer-title {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -322,38 +380,38 @@ html, body {
     position: absolute;
     top: 0;
     left: 0;
-  }
-  
-  .parallax__title {
+}
+
+.parallax__title {
     font-size: 11vw;
     margin: 0;
     line-height: 1;
     color: white;
-  }
-  
-  .parallax__fade {
+}
+
+.parallax__fade {
     z-index: 30;
     position: absolute;
     width: 100%;
     height: 20%;
     bottom: 0;
     left: 0;
-    background: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
-  }
-  
-  .parallax__content {
+    background: linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+.parallax__content {
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 9;
-  }
-  
-  .text{
+}
+
+.text {
     font-size: 20px;
     line-height: 28px;
     margin-top: 0%;
     color: white;
     z-index: 10;
     background-color: #000;
-  }
+}

@@ -33,7 +33,7 @@ const Modal = ({ isOpen, onClose, content }) => {
   React.useEffect(() => {
     if (isOpen) {
       // Prevent body scroll and set height to prevent overflow
-      document.body.style.overflow = "hidden"; 
+      document.body.style.overflow = "hidden";
       document.body.style.position = "fixed";
       document.body.style.width = "100%";
       document.body.style.height = "100%"; // Make sure body doesn't scroll even if content is small
@@ -42,7 +42,7 @@ const Modal = ({ isOpen, onClose, content }) => {
     } else {
       // Restore normal body scrolling and position
       document.body.style.overflow = "auto";
-      document.body.style.position = "initial"; 
+      document.body.style.position = "initial";
       document.body.style.height = "auto"; // Reset height to auto for normal body scroll
 
       document.body.removeAttribute("data-lenis-prevent");
@@ -51,7 +51,7 @@ const Modal = ({ isOpen, onClose, content }) => {
     // Cleanup on unmount or when modal closes
     return () => {
       document.body.style.overflow = "auto";
-      document.body.style.position = "initial"; 
+      document.body.style.position = "initial";
       document.body.style.height = "auto";
       document.body.removeAttribute("data-lenis-prevent");
     };
@@ -334,7 +334,7 @@ const Collage = () => {
     "\nDocumentAV\n1901 England Census for Julia Wharton Lewis Keightley <quote>Julia Wharton Lewis Keightley.<quote> 1901 England Census, The National Archives, Kew, Surrey, England, RG 13. Ancestry.com, www.ancestry.com . Accessed 17 Jan. 2025.\nThis document is a 1901 census for one of Campbell’s daughters, Julia Campbell, now known as Julia Wharton Lewis Keightley. Along with her in this census is her husband Archibald Keightley along with their servant, Alice Barneby, and four daughters in 141 Wildwood North Bend. Their ages are also present in this information with Julia being 50 and her husband being 44. Archibald is also labeled as a physician on his own account  while Julia is labeled as <quote>wife.<quote>\n	This lends insight into the fact that even though some siblings like Sarah Ann Campbell stayed in the States, after Julia left her parent's house from 1880 to 1901 she managed to make her way over to England and start a family with Archibald Keightley. This does though raise some confusion as the 1880 census indicated that she had been born in 1854 while this one indicates that it was in 1851 another query that was raised was how could she have a daughter that is 32 years old but not born in the states which meant that in 1880 we would have had to already been living in England. This leads to the conclusion that either information was falsified on the US census or the England census.\nName and Surname\nRelation to Head of Family\nCondition as to Marriage\nAge last Birthday of\nProfession or Occupation\nEmployer, Worker, or Own account\nIf Working at Home\nWHERE BORN\nArchibald Keightley\nHead\nM\n44\nPhysician\nOwn account\nLancaster(?) Westmorland\nJulia Wharton Lewis Keightley\nWife\nM\n50\nWife\nAmerican\nAlice Barnsly\nServant\nS\n35\n[Illegible]\nWorker\n[Illegible]\nAlice Maud Hollis\ndo\nS\n32\n[Illegible]\ndo\n[Illegible]\nBlean Ammici Charton(?)\ndo\nS\n20\ndo\ndo\n[Illegible]\nPanel [???]\ndo\nS\n36\nCook\ndo\n[Illegible]\nDacey Welch\ndo\nS\n18\n[???]maid\ndo\n[Illegible]",
     "\nDocumentAW\n<quote>Sarah Ann Campbell.<quote> Return of a Death in the City of Philadelphia, 3 Jan. 1905, Board of Health, Philadelphia. FamilySearch, https://ancestors.familysearch.org/en/KZS3-K8X/jane-hepburn-1795-1867. Accessed 17 Jan. 2025.\nThis document is a death certificate of one of James Campbell’s sisters, Sarah Ann Campbell. From this, it can be seen that she died in 1905 at the age of 79 in her house at 2225 N 17th St. Philadelphia PA, and that the cause of her death was gangrene of her feet. It can also be seen that she was buried in Laurel Hill cemetery rather than with the rest of the family at the Woodlands. \nThis document allows us to have a better idea of where the Campbell family and their specific members resided as well as how one of them died. The cause of death was gangrene of her feet which was a relatively common way to die as the death rate of the disease at the time was a little more than 50%. A better picture can also be drawn of where the family’s final resting places are from this document because if they are not buried in the Woodlands it's most likely that they ended up in Laurel Hill.",
     "\nDocumentAX\nPeskin, Allan. <quote>Campbell, James Hepburn.<quote> American National Biography. New York: Oxford University Press, 2000.\nFrom this document, it is known that James Hepburn Campbell was indeed a U.S. Congressman who served briefly in the military and worked as a lawyer; he was a Whig, served as a diplomat to Sweden, and particularly impacted slavery and the Civil War. It is confirmed that his parents were Francis C. Campbell and Jane Hepburn and that he was born in Williamsport, PA, and initially worked as a lawyer. The facts shown in the document provide a chronological story of the general happenings of Campbell’s life.\nThis short biography of James Hepburn Campbell by Allan Peskin provides brief details about Campbell's life and what Campbell worked as throughout his life. The document corroborates numerous other sources and provides a solid foundation for Campbell's research. It can be inferred that Campbell was a Congressman who lived in Pennsylvania and also served in the army and as a lawyer. Particular details about his position as a judge in South Africa as well as alternative sources are cited; specific previously-unknown details such as his campaign in Maryland and relationship with Galusha Grow are made clear."
-    ];
+  ];
 
   const [images, setImages] = React.useState(allImages.slice(0, 71)); // Load first 3 images
   const [hasMore, setHasMore] = React.useState(true);
@@ -363,10 +363,10 @@ const Collage = () => {
   };
 
   return React.createElement(
-    "div", { className: "hero is-fullheight is-bold" }, 
-    React.createElement("div", { className: "hero-body" }, 
-      React.createElement("div", { className: "container" }, 
-        React.createElement("div", { className: "header content" }, 
+    "div", { className: "hero is-fullheight is-bold" },
+    React.createElement("div", { className: "hero-body" },
+      React.createElement("div", { className: "container" },
+        React.createElement("div", { className: "header content" },
           React.createElement("h2", { className: "subtitle is-6" }, "James H. Campbell"),
           React.createElement("h1", { className: "title is-1" }, "Documents")
         ),
@@ -376,12 +376,12 @@ const Collage = () => {
           next: loadMoreImages,
           hasMore: hasMore,
           loader: React.createElement("span", { className: "loader" }, "Loading...")
-        }, 
+        },
           React.createElement("div", { className: "image-grid", style: { marginTop: "60px" } },
-            images.map((image, index) => React.createElement(UnsplashImage, { 
-              url: image, 
-              key: index, 
-              onClick: () => openModal(image) 
+            images.map((image, index) => React.createElement(UnsplashImage, {
+              url: image,
+              key: index,
+              onClick: () => openModal(image)
             }))
           )
         )

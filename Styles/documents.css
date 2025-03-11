@@ -1,9 +1,11 @@
 #root {
   background-color: #19191d;
 }
+
 #root h1 {
   color: #efefef;
 }
+
 #root h2 {
   color: #a8a8e0;
 }
@@ -22,15 +24,17 @@
   z-index: 100;
   background-repeat: no-repeat;
 }
+
 .family-tree-container {
   position: relative;
   margin: 20px 0 40px 0;
   text-align: center;
 }
+
 .family-tree-image {
   max-width: 100%;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 
@@ -44,7 +48,8 @@
   max-height: 80vh;
   overflow-y: auto;
   position: relative;
-  display: block; /* This forces a block-level behavior */
+  display: block;
+  /* This forces a block-level behavior */
 }
 
 
@@ -54,9 +59,11 @@
   grid-auto-rows: minmax(50px, auto);
   grid-gap: 30px;
 }
+
 .image-grid .image-item:nth-child(5n) {
   grid-column-end: span 2;
 }
+
 .image-grid .image-item img {
   display: flex;
   width: 100%;
@@ -84,6 +91,7 @@
     -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
   }
+
   to {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);

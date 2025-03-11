@@ -10,15 +10,23 @@
 	inherits: false
 }
 
-* { margin: 0 }
+* {
+	margin: 0
+}
 
 html {
 	scrollbar-width: none;
 	height: calc(var(--n)*100%)
 }
 
-body, header, main, section, 
-article, figure { display: grid }
+body,
+header,
+main,
+section,
+article,
+figure {
+	display: grid
+}
 
 body {
 	--dir: 0;
@@ -31,7 +39,7 @@ body {
 	font: clamp(.625em, 3vmin, 1.5em)/ 1.25 saira, sans-serif;
 	animation: k 1s linear;
 	animation-timeline: scroll();
-	
+
 	&::before {
 		position: absolute;
 		inset: 0;
@@ -40,13 +48,21 @@ body {
 		filter: url(#grain);
 		content: ''
 	}
-	
-	@media (max-aspect-ratio: 2/ 3) { --dir: 1 }
+
+	@media (max-aspect-ratio: 2/ 3) {
+		--dir: 1
+	}
 }
 
-@keyframes k { to { --k: 1 } }
+@keyframes k {
+	to {
+		--k: 1
+	}
+}
 
-svg[height='0'][aria-hidden='true'] { position: fixed }
+svg[height='0'][aria-hidden='true'] {
+	position: fixed
+}
 
 header {
 	place-content: center;
@@ -56,14 +72,19 @@ header {
 	text-wrap: balance
 }
 
-em { max-width: 32em }
+em {
+	max-width: 32em
+}
 
 main {
 	overflow: hidden;
 	perspective: 50em
 }
 
-section, article { transform-style: preserve-3d }
+section,
+article {
+	transform-style: preserve-3d
+}
 
 section {
 	--r: calc(2 + var(--dir))/ 3;
@@ -74,7 +95,13 @@ section {
 	rotate: var(--dir) calc(1 - var(--dir)) 0 calc((var(--k) + .5)*-1turn);
 }
 
-article, header, figure, img, figcaption { grid-area: 1/ 1 }
+article,
+header,
+figure,
+img,
+figcaption {
+	grid-area: 1/ 1
+}
 
 article {
 	/* item progress value */
@@ -98,22 +125,26 @@ article {
 	--hov: 0;
 	width: var(--w);
 	aspect-ratio: var(--r);
-	transform: 
-		rotate3d(var(--dir), calc(1 - var(--dir)), 0, calc(var(--j)*1turn))
-		translatez(var(--z))
-		rotate(calc(var(--dir)*.5turn));
-	
-	header { rotate: y calc(var(--hov)*.5turn) }
-	
-	&:hover, &:focus-within { --hov: round(var(--sel)) }
-	
+	transform:
+		rotate3d(var(--dir), calc(1 - var(--dir)), 0, calc(var(--j)*1turn)) translatez(var(--z)) rotate(calc(var(--dir)*.5turn));
+
+	header {
+		rotate: y calc(var(--hov)*.5turn)
+	}
+
+	&:hover,
+	&:focus-within {
+		--hov: round(var(--sel))
+	}
+
 	@supports not (scale: abs(-1)) {
 		--abs-lin: max(var(--dif-lin), -1*var(--dif-lin));
 		--abs-mid: max(var(--dif-mid), -1*var(--dif-mid))
 	}
 }
 
-article header, figure {
+article header,
+figure {
 	--ang: calc(-45deg + var(--hov)*180deg);
 	overflow: hidden;
 	position: relative;
@@ -121,22 +152,21 @@ article header, figure {
 	border-radius: .5em;
 	backface-visibility: hidden;
 	box-shadow: 5px 5px 13px #000;
-	background: 
-		var(--url) 50%/ cover padding-box, 
-		linear-gradient(#333 0 0) padding-box, 
-		repeating-conic-gradient(from var(--ang), 
-				#0000 0% 15%, 
-				color-mix(in srgb, 
-					#f48c06 calc(var(--sel)*100%), #333) 20% 30%, 
-				#0000 35% 50%) 
-			border-box #121212;
+	background:
+		var(--url) 50%/ cover padding-box,
+		linear-gradient(#333 0 0) padding-box,
+		repeating-conic-gradient(from var(--ang),
+			#0000 0% 15%,
+			color-mix(in srgb,
+				#f48c06 calc(var(--sel)*100%), #333) 20% 30%,
+			#0000 35% 50%) border-box #121212;
 	background-blend-mode: multiply, normal, normal;
 	isolation: isolate;
 	/* prevent edge glitching on article hover */
 	pointer-events: none;
 	transition: .35s ease-out;
 	transition-property: rotate, --ang;
-	
+
 	&::after {
 		position: absolute;
 		inset: 0;
@@ -149,13 +179,25 @@ article header, figure {
 }
 
 /* reverse from parent */
-h2, em, img, a { pointer-events: auto }
+h2,
+em,
+img,
+a {
+	pointer-events: auto
+}
 
-h2, em { opacity: round(up, var(--sel)) }
+h2,
+em {
+	opacity: round(up, var(--sel))
+}
 
-h2 { font-size: 1.125em }
+h2 {
+	font-size: 1.125em
+}
 
-figure { rotate: y calc((1 + var(--hov))*.5turn) }
+figure {
+	rotate: y calc((1 + var(--hov))*.5turn)
+}
 
 img {
 	width: 100%;
@@ -174,8 +216,10 @@ figcaption {
 	text-align: right;
 	text-shadow: 1px 1px 1px #0006;
 	backdrop-filter: blur(5px) brightness(1.5);
-	
-	a { color: #370617 }
+
+	a {
+		color: #370617
+	}
 }
 
 /* just support info boxes if it lacks support */
@@ -193,8 +237,10 @@ aside {
 	background: #851d40;
 	color: #fff;
 	font: 1em/ 1.25 ubuntu, trebuchet ms, arial, sans-serif;
-	
-	@supports (animation-timeline: scroll()) { display: none }
+
+	@supports (animation-timeline: scroll()) {
+		display: none
+	}
 }
 
 kbd {

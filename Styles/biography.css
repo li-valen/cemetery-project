@@ -6,7 +6,7 @@ ol {
 sup {
     font-size: 0.85em;
     vertical-align: super;
-  }
+}
 
 a {
     color: #a8a8e0;
@@ -16,50 +16,53 @@ a {
 
 a:hover {
     text-decoration: underline;
-  }
+}
 
-  h1 {
+h1 {
     font-family: 'Merriweather', serif;
     font-size: 2.5em !important;
     margin-bottom: 20px;
     text-align: center;
     color: #222;
-  }
+}
 
 html {
     filter: url(#grain);
 }
 
-  body {
+body {
     margin: 0;
     padding: 0;
     font-family: 'Georgia', serif;
     background: #19191d;
     color: #333;
     line-height: 1.6;
-  }
+}
 
-  .container {
+.container {
     max-width: 800px;
     margin: 40px auto;
     padding: 20px;
     background: #19191d;
     filter: url(#grain);
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  }
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
-  p, p > span {
+p,
+p>span {
     margin-bottom: 1em;
     text-align: justify;
     font-size: 14px !important;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
     color: rgb(222, 222, 222) !important;
-  }
+}
 
-  p{
+p {
     text-indent: 50px;
-  }
-table td,table th {
+}
+
+table td,
+table th {
     padding: 0
 }
 

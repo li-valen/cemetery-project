@@ -12,7 +12,10 @@
   margin-top: 10%;
 }
 
-div > ul, div > ul > li, div > ul > li > span, div > ul > li > span > span {
+div>ul,
+div>ul>li,
+div>ul>li>span,
+div>ul>li>span>span {
   font-size: 4.25rem !important;
 }
 
@@ -22,6 +25,7 @@ div > ul, div > ul > li, div > ul > li > span, div > ul > li > span > span {
   color: transparent;
   cursor: pointer;
 }
+
 .Menu-list-item::before {
   transform: scale(0.01);
   transition: opacity 0s 0.1s, transform 0.8s cubic-bezier(0.16, 1.08, 0.38, 0.98);
@@ -47,15 +51,17 @@ div > ul, div > ul > li, div > ul > li > span, div > ul > li > span > span {
   height: 49%;
   transition: all 0.8s cubic-bezier(0.16, 1.08, 0.38, 0.98);
 }
+
 .Mask span {
   display: block;
 }
 
-.Mask + .Mask {
+.Mask+.Mask {
   top: 48.9%;
   height: 51.1%;
 }
-.Mask + .Mask span {
+
+.Mask+.Mask span {
   transform: translateY(-49%);
 }
 
@@ -66,10 +72,12 @@ div > ul, div > ul > li, div > ul > li > span, div > ul > li > span > span {
   color: #FFF;
   transform: skewX(12deg) translateX(5px);
 }
-.Menu-list-item:hover .Mask + .Mask,
-.Menu-list-item:active .Mask + .Mask {
+
+.Menu-list-item:hover .Mask+.Mask,
+.Menu-list-item:active .Mask+.Mask {
   transform: skewX(12deg) translateX(-5px);
 }
+
 .Menu-list-item:hover::before,
 .Menu-list-item:active::before {
   transform: scale(1);
@@ -88,7 +96,8 @@ div > ul, div > ul > li, div > ul > li > span, div > ul > li > span > span {
   display: flex;
   align-items: center;
   justify-content: center;
-  pointer-events: none; /* Disable pointer events by default */
+  pointer-events: none;
+  /* Disable pointer events by default */
 }
 
 .thing {
@@ -97,7 +106,8 @@ div > ul, div > ul > li, div > ul > li > span, div > ul > li > span > span {
   width: 100%;
   background: linear-gradient(45deg, #02001F, rgb(0 100 170));
   scale: 0;
-  transition: scale 0.5s ease; /* Add transition for opacity */
+  transition: scale 0.5s ease;
+  /* Add transition for opacity */
 }
 
 .menu-wrap .toggler {
@@ -110,7 +120,8 @@ div > ul, div > ul > li, div > ul > li > span, div > ul > li > span > span {
   height: 80px;
   opacity: 0;
   pointer-events: fill !important;
-  transition: opacity 0.5s ease; /* Add transition for opacity */
+  transition: opacity 0.5s ease;
+  /* Add transition for opacity */
 }
 
 .menu-wrap .hamburger {
@@ -126,7 +137,7 @@ div > ul, div > ul > li, div > ul > li > span, div > ul > li > span > span {
   justify-content: center;
 }
 
-.menu-wrap .hamburger > div {
+.menu-wrap .hamburger>div {
   position: relative;
   flex: none;
   width: 100%;
@@ -138,8 +149,8 @@ div > ul, div > ul > li, div > ul > li > span, div > ul > li > span > span {
   transition: all 0.4s ease;
 }
 
-.menu-wrap .hamburger > div::before,
-.menu-wrap .hamburger > div::after {
+.menu-wrap .hamburger>div::before,
+.menu-wrap .hamburger>div::after {
   content: '';
   position: absolute;
   z-index: 1;
@@ -149,22 +160,20 @@ div > ul, div > ul > li, div > ul > li > span, div > ul > li > span > span {
   background: inherit;
 }
 
-.menu-wrap .hamburger > div::after {
+.menu-wrap .hamburger>div::after {
   top: 10px;
 }
 
-.menu-wrap .toggler:checked + .hamburger > div {
+.menu-wrap .toggler:checked+.hamburger>div {
   transform: rotate(135deg);
 }
 
-.menu-wrap .toggler:checked + .hamburger > div:before,
-.menu-wrap .toggler:checked + .hamburger > div:after {
+.menu-wrap .toggler:checked+.hamburger>div:before,
+.menu-wrap .toggler:checked+.hamburger>div:after {
   top: 0;
   transform: rotate(90deg);
 }
 
-.menu-wrap .toggler:checked:hover + .hamburger > div {
+.menu-wrap .toggler:checked:hover+.hamburger>div {
   transform: rotate(225deg);
 }
-
-
