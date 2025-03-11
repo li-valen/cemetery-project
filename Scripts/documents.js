@@ -1,11 +1,11 @@
 const { useState, useEffect, useRef } = React;
 const lenis = new Lenis({
-  duration: 1.2, // Duration of the scroll animation
-  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Smooth easing function
+  duration: 2.5, // Duration of the scroll animation
+  easing: (t) => 1 - Math.pow(1 - t, 4.5), // More dramatic easing function
   direction: 'vertical', // Scroll direction
   gestureDirection: 'vertical', // Touch gesture direction
   smooth: true, // Enable smooth scrolling
-  mouseMultiplier: 1, // Mouse wheel multiplier
+  mouseMultiplier: 3, // Mouse wheel multiplier
   smoothTouch: false, // Disable smooth scrolling on touch devices
   touchMultiplier: 2, // Touch gesture multiplier
   infinite: false, // Infinite scrolling
