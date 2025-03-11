@@ -1,581 +1,786 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>horizontal timeline</title>
-  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css'>
-<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css'><link rel="stylesheet" href="./style.css">
-<link rel="stylesheet" href="./Styles/menu.css">
-<link rel="stylesheet" href="./Styles/timeline.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+	<meta charset="UTF-8">
+	<title>horizontal timeline</title>
+	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css'>
+	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css'>
+	<link rel="stylesheet" href="./style.css">
+	<link rel="stylesheet" href="./Styles/menu.css">
+	<link rel="stylesheet" href="./Styles/timeline.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
 </head>
+
 <body>
-<!-- partial:index.partial.html -->
-<div class="menu-wrap">
+	<!-- partial:index.partial.html -->
+	<div class="menu-wrap">
 
-    <input type="checkbox" class="toggler" onclick="displayMenu()">
+		<input type="checkbox" class="toggler" onclick="displayMenu()">
 
-    <div class="hamburger"><div></div></div>
+		<div class="hamburger">
+			<div></div>
+		</div>
 
-	<div class="thing" style="transform: scale(1.5);">
-		<ul class="Menu-list" style="font-size: 4.25rem; margin-top: 15%;" data-offset="10">
-			<li class="Menu-list-item" style="font-size: 4.25rem;" data-offset="20" onclick="navigateTo('./index.html')">
-				Home
-				<span class="Mask" style="font-size: 4.25rem;"><span>Home</span></span>
-				<span class="Mask" style="font-size: 4.25rem;"><span>Home</span></span>
-			</li>
-			<li class="Menu-list-item" style="font-size: 4.25rem;" data-offset="20" onclick="navigateTo('./biography.html')">
-				Biography
-				<span class="Mask" style="font-size: 4.25rem;"><span>Biography</span></span>
-				<span class="Mask" style="font-size: 4.25rem;"><span>Biography</span></span>
-			</li>
-			<li class="Menu-list-item" style="font-size: 4.25rem; transform: scale(2);" data-offset="16" onclick="navigateTo('./documents.html')">
-				Documents
-				<span class="Mask" style="font-size: 4.25rem;"><span>Documents</span></span>
-				<span class="Mask" style="font-size: 4.25rem;"><span>Documents</span></span>
-			</li>
-			<li class="Menu-list-item" style="font-size: 4.25rem;" data-offset="12" onclick="navigateTo('./timeline.html')">
-				Timeline
-				<span class="Mask" style="font-size: 4.25rem;"><span>Timeline</span></span>
-				<span class="Mask" style="font-size: 4.25rem;"><span>Timeline</span></span>
-			</li>
-			<li class="Menu-list-item" style="font-size: 4.25rem;" data-offset="8" onclick="navigateTo('./photo-doc.html')">
-				Photo Documentation
-				<span class="Mask" style="font-size: 4.25rem;"><span>Photo Documentation</span></span>
-				<span class="Mask" style="font-size: 4.25rem;"><span>Photo Documentation</span></span>
-			</li>
-		</ul>
+		<div class="thing" style="transform: scale(1.5);">
+			<ul class="Menu-list" style="font-size: 4.25rem; margin-top: 15%;" data-offset="10">
+				<li class="Menu-list-item" style="font-size: 4.25rem;" data-offset="20"
+					onclick="navigateTo('./index.html')">
+					Home
+					<span class="Mask" style="font-size: 4.25rem;"><span>Home</span></span>
+					<span class="Mask" style="font-size: 4.25rem;"><span>Home</span></span>
+				</li>
+				<li class="Menu-list-item" style="font-size: 4.25rem;" data-offset="20"
+					onclick="navigateTo('./biography.html')">
+					Biography
+					<span class="Mask" style="font-size: 4.25rem;"><span>Biography</span></span>
+					<span class="Mask" style="font-size: 4.25rem;"><span>Biography</span></span>
+				</li>
+				<li class="Menu-list-item" style="font-size: 4.25rem; transform: scale(2);" data-offset="16"
+					onclick="navigateTo('./documents.html')">
+					Documents
+					<span class="Mask" style="font-size: 4.25rem;"><span>Documents</span></span>
+					<span class="Mask" style="font-size: 4.25rem;"><span>Documents</span></span>
+				</li>
+				<li class="Menu-list-item" style="font-size: 4.25rem;" data-offset="12"
+					onclick="navigateTo('./timeline.html')">
+					Timeline
+					<span class="Mask" style="font-size: 4.25rem;"><span>Timeline</span></span>
+					<span class="Mask" style="font-size: 4.25rem;"><span>Timeline</span></span>
+				</li>
+				<li class="Menu-list-item" style="font-size: 4.25rem;" data-offset="8"
+					onclick="navigateTo('./photo-doc.html')">
+					Photo Documentation
+					<span class="Mask" style="font-size: 4.25rem;"><span>Photo Documentation</span></span>
+					<span class="Mask" style="font-size: 4.25rem;"><span>Photo Documentation</span></span>
+				</li>
+			</ul>
+		</div>
 	</div>
-  </div>
 
-<section class="cd-horizontal-timeline">
-	<div class="timeline">
-		<div class="events-wrapper">
-			<div class="events">
-				<ol>
-					<li><a href="#0" data-date="01/01/1698" class="selected">1698</a></li>
-					<li><a href="#0" data-date="01/01/1746">1746</a></li>
-					<li><a href="#0" data-date="01/01/1773">1773</a></li>
-					<li><a href="#0" data-date="01/01/1781">1781</a></li>
-					<li><a href="#0" data-date="01/01/1787">1787</a></li>
-					<li><a href="#0" data-date="01/01/1816">1816</a></li>
-					<li><a href="#0" data-date="01/01/1818">1818</a></li>
-					<li><a href="#0" data-date="08/02/1820">1820</a></li>
-					<li><a href="#0" data-date="01/01/1824">1824</a></li>
-					<li><a href="#0" data-date="01/01/1840">1840</a></li>
-					<li><a href="#0" data-date="01/01/1843">1843</a></li>
-					<li><a href="#0" data-date="01/01/1844">1844</a></li>
-					<li><a href="#0" data-date="01/01/1846">1846</a></li>
-					<li><a href="#0" data-date="01/01/1848">1848</a></li>
-					<li><a href="#0" data-date="01/01/1849">1849</a></li>
-					<li><a href="#0" data-date="01/01/1850">1850</a></li>
-					<li><a href="#0" data-date="01/01/1851">1851</a></li>
-					<li><a href="#0" data-date="01/01/1855">1855</a></li>
-					<li><a href="#0" data-date="01/01/1856">1856</a></li>
-					<li><a href="#0" data-date="01/01/1857">1857</a></li>
-					<li><a href="#0" data-date="01/01/1860">1860</a></li>
-					<li><a href="#0" data-date="01/01/1861">1861</a></li>
-					<li><a href="#0" data-date="01/01/1862">1862</a></li>
-					<li><a href="#0" data-date="01/01/1863">Dec 1862</a></li>
-					<li><a href="#0" data-date="01/01/1864">1863</a></li>
-					<li><a href="#0" data-date="01/01/1865">1863</a></li>
-					<li><a href="#0" data-date="01/01/1866">1864</a></li>
-					<li><a href="#0" data-date="01/01/1867">1865</a></li>
-					<li><a href="#0" data-date="01/01/1868">May 1865</a></li>
-					<li><a href="#0" data-date="01/01/1869">June 1865</a></li>
-					<li><a href="#0" data-date="01/01/1870">Nov 1866</a></li>
-					<li><a href="#0" data-date="01/01/1871">1867</a></li>
-					<li><a href="#0" data-date="01/01/1872">Feb 1867</a></li>
-					<li><a href="#0" data-date="01/01/1873">Feb 1867</a></li>
-					<li><a href="#0" data-date="01/01/1874">Mar 1867</a></li>
-					<li><a href="#0" data-date="01/01/1875">May 1867</a></li>
-					<li><a href="#0" data-date="01/01/1876">Aug 1867</a></li>
-					<li><a href="#0" data-date="01/01/1877">1869</a></li>
-					<li><a href="#0" data-date="01/01/1878">1873</a></li>
-					<li><a href="#0" data-date="01/01/1879">1876</a></li>
-					<li><a href="#0" data-date="01/01/1883">1883</a></li>
-					<li><a href="#0" data-date="01/01/1893">1893</a></li>
-					<li><a href="#0" data-date="01/01/1895">1895</a></li>
-				  </ol>				  
-				<span class="filling-line" aria-hidden="true"></span>
-			</div> <!-- .events -->
-		</div> <!-- .events-wrapper -->
-			
-		<ul class="cd-timeline-navigation">
-			<li><a href="#0" class="prev inactive">Prev</a></li>
-			<li><a href="#0" class="next">Next</a></li>
-		</ul> <!-- .cd-timeline-navigation -->
-	</div> <!-- .timeline -->
+	<section class="cd-horizontal-timeline">
+		<div class="timeline">
+			<div class="events-wrapper">
+				<div class="events">
+					<ol>
+						<li><a href="#0" data-date="01/01/1698" class="selected">1698</a></li>
+						<li><a href="#0" data-date="01/01/1746">1746</a></li>
+						<li><a href="#0" data-date="01/01/1773">1773</a></li>
+						<li><a href="#0" data-date="01/01/1781">1781</a></li>
+						<li><a href="#0" data-date="01/01/1787">1787</a></li>
+						<li><a href="#0" data-date="01/01/1816">1816</a></li>
+						<li><a href="#0" data-date="01/01/1818">1818</a></li>
+						<li><a href="#0" data-date="08/02/1820">1820</a></li>
+						<li><a href="#0" data-date="01/01/1824">1824</a></li>
+						<li><a href="#0" data-date="01/01/1840">1840</a></li>
+						<li><a href="#0" data-date="01/01/1843">1843</a></li>
+						<li><a href="#0" data-date="01/01/1844">1844</a></li>
+						<li><a href="#0" data-date="01/01/1846">1846</a></li>
+						<li><a href="#0" data-date="01/01/1848">1848</a></li>
+						<li><a href="#0" data-date="01/01/1849">1849</a></li>
+						<li><a href="#0" data-date="01/01/1850">1850</a></li>
+						<li><a href="#0" data-date="01/01/1851">1851</a></li>
+						<li><a href="#0" data-date="01/01/1852">1852</a></li>
+						<li><a href="#0" data-date="01/01/1855">1855</a></li>
+						<li><a href="#0" data-date="01/01/1856">1856</a></li>
+						<li><a href="#0" data-date="01/01/1857">1856</a></li>
+						<li><a href="#0" data-date="01/01/1858">1856</a></li>
+						<li><a href="#0" data-date="01/01/1859">1857</a></li>
+						<li><a href="#0" data-date="01/01/1860">1859</a></li>
+						<li><a href="#0" data-date="01/01/1861">1860</a></li>
+						<li><a href="#0" data-date="01/01/1862">1861</a></li>
+						<li><a href="#0" data-date="01/01/1863">1861</a></li>
+						<li><a href="#0" data-date="01/01/1864">1861</a></li>
+						<li><a href="#0" data-date="01/01/1865">1862</a></li>
+						<li><a href="#0" data-date="01/01/1866">1862</a></li>
+						<li><a href="#0" data-date="01/01/1867">1862</a></li>
+						<li><a href="#0" data-date="01/01/1868">1863</a></li>
+						<li><a href="#0" data-date="01/01/1869">1863</a></li>
+						<li><a href="#0" data-date="01/01/1870">1864</a></li>
+						<li><a href="#0" data-date="01/01/1871">1863</a></li>
+						<li><a href="#0" data-date="01/01/1872">1864</a></li>
+						<li><a href="#0" data-date="01/01/1873">1865</a></li>
+						<li><a href="#0" data-date="01/01/1874">1865</a></li>
+						<li><a href="#0" data-date="01/01/1875">1865</a></li>
+						<li><a href="#0" data-date="01/01/1876">1866</a></li>
+						<li><a href="#0" data-date="01/01/1877">1867</a></li>
+						<li><a href="#0" data-date="01/01/1878">1867</a></li>
+						<li><a href="#0" data-date="01/01/1879">1867</a></li>
+						<li><a href="#0" data-date="01/01/1880">1867</a></li>
+						<li><a href="#0" data-date="01/01/1881">1867</a></li>
+						<li><a href="#0" data-date="01/01/1882">1867</a></li>
+						<li><a href="#0" data-date="01/01/1883">1869</a></li>
+						<li><a href="#0" data-date="01/01/1884">1873</a></li>
+						<li><a href="#0" data-date="01/01/1885">1876</a></li>
+						<li><a href="#0" data-date="01/01/1886">1883</a></li>
+						<li><a href="#0" data-date="01/01/1893">1893</a></li>
+						<li><a href="#0" data-date="01/01/1895">1895</a></li>
+					</ol>
+					<span class="filling-line" aria-hidden="true"></span>
+				</div> <!-- .events -->
+			</div> <!-- .events-wrapper -->
 
-	<div class="events-content">
-		<ol>
-			<!-- Pre-1820 Events -->
-			<li data-date="01/01/1698">
-				<h2>Birth of Samuel Hepburn</h2>
-				<em>1698</em>
-				<div class="timeline-content-box">
-				  <div class="text-content">
-					<p>James H. Campbell’s great-grandfather, Samuel Hepburn, was born in Glasgow, Scotland. His descendants later settled in America to escape religious persecution.</p>
-				  </div>
-				</div>
-			  </li>
-			  <li data-date="01/01/1746">
-				<h2>Marriage of Samuel Hepburn and Janet Sinclair</h2>
-				<em>1746</em>
-				<div class="timeline-content-box">
-				  <div class="text-content">
-					<p>Samuel Hepburn married Janet Sinclair in Scotland before the family relocated to Ireland and eventually to America.</p>
-				  </div>
-				</div>
-			  </li>
-			  <li data-date="01/01/1773">
-				<h2>Hepburn Family Emigrates to America</h2>
-				<em>1773</em>
-				<div class="timeline-content-box">
-				  <div class="text-content">
-					<p>James Hepburn, Campbell’s grandfather, and his brother William sailed from Ireland to Philadelphia in search of new opportunities.</p>
-				  </div>
-				</div>
-			  </li>
-			  <li data-date="01/01/1781">
-				<h2>Marriage of James Hepburn and Mary Hopewell</h2>
-				<em>1781</em>
-				<div class="timeline-content-box">
-				  <div class="text-content">
-					<p>Campbell’s grandparents wed, uniting families that would eventually shape a lasting legacy in America.</p>
-				  </div>
-				</div>
-			  </li>
-			  <li data-date="01/01/1787">
-				<h2>Birth of Francis C. Campbell</h2>
-				<em>1787</em>
-				<div class="timeline-content-box">
-				  <div class="text-content">
-					<p>Francis C. Campbell, who would become a prominent lawyer, was born in York, Pennsylvania.</p>
-				  </div>
-				</div>
-			  </li>
-			  <li data-date="01/01/1816">
-				<h2>Era of Good Feelings Begins</h2>
-				<em>1816</em>
-				<div class="timeline-content-box">
-				  <div class="text-content">
-					<p>The period of national unity under President James Monroe began, coinciding with important family milestones for the Campbells.</p>
-				  </div>
-				</div>
-			  </li>
-			  <li data-date="01/01/1818">
-				<h2>First Public School in Philadelphia</h2>
-				<em>1818</em>
-				<div class="timeline-content-box">
-				  <div class="text-content">
-					<p>Philadelphia established its first public school, marking a significant step in educational reform.</p>
-				  </div>
-				</div>
-			  </li>
-			  <!-- 8th Event -->
-			  <li class="selected" data-date="08/02/1820">
-				<h2>Birth and Early Education</h2>
-				<em>February 8, 1820</em>
-				<div class="timeline-content-box">
-				  <div class="text-content">
-					<p>Born in Williamsport, PA, to Francis C. and Jane H. Campbell. Grew up in an affluent family; his father was a prominent lawyer.</p>
-					<div class="connection-section">
-					  <br>
-					  <h3>Historical Context</h3>
-					  <p>Campbell was born the same year as the Missouri Compromise, which temporarily resolved slavery disputes and would later influence his anti‑slavery stance in Congress.</p>
-					</div>
-				  </div>
-				  <br>
-				  <div class="image-content">
-					<img src="../images/Williamsport.jpg" alt="Map of early 19th-century Williamsport" />
-				  </div>
-				</div>
-			  </li>
-			  <li data-date="01/01/1824">
-				<h2>Infrastructure and Transportation Advances</h2>
-				<em>1824</em>
-				<div class="timeline-content-box">
-				  <div class="text-content">
-					<p>The Pennsylvania Railroad Company was formed and the Erie Canal opened, revolutionizing trade and transportation in the Northeast. Also, Courtland Howell’s father passed away, impacting his early life.</p>
-				  </div>
-				</div>
-			  </li>
-			  <li data-date="01/01/1840">
-				<h2>Legal Education and Career Beginnings</h2>
-				<em>1840-1841</em>
-				<div class="timeline-content-box">
-				  <div class="text-content">
-					<p>Graduated from Dickinson Law College in August 1841 and was admitted to the bar on October 18, 1841. Moved to Pottsville, PA, where he established a successful law practice and mentored future lawyers.</p>
-					<div class="connection-section">
-					  <br>
-					  <h3>Philadelphia Connection</h3>
-					  <p>During the 1840s–1870s, Philadelphia became a hub for manufacturing and railroads. Campbell's law firm at 130 S. 6th Street thrived amid this industrial boom.</p>
-					</div>
-				  </div>
-				  <br>
-				  <div class="image-content">
-					<img src="../images/dickonson.jpg" alt="Dickinson Law College campus" />
-				  </div>
-				</div>
-			  </li>
-			  <li data-date="01/01/1843">
-				<h2>Marriage and Family</h2>
-				<em>June 1843</em>
-				<div class="timeline-content-box">
-				  <div class="text-content">
-					<p>Married Juliet Hamersley Lewis, daughter of Pennsylvania Chief Justice Ellis Lewis. The couple had four children, two of whom died in the Civil War.</p>
-				  </div>
-				  <br>
-				  <div class="image-content">
-					<img src="../images/wife.jpg" alt="Victorian-era wedding scene" />
-				  </div>
-				</div>
-			  </li>
-			  <li data-date="01/01/1844">
-				<h2>Political Awakening</h2>
-				<em>1844</em>
-				<div class="timeline-content-box">
-				  <div class="text-content">
-					<p>Campbell attended the Whig National Convention supporting Henry Clay, amid anti‑immigration riots targeting Irish Catholic communities.</p>
-				  </div>
-				</div>
-			  </li>
-			  <li data-date="01/01/1846">
-				<h2>Mexican-American War</h2>
-				<em>1846–1848</em>
-				<div class="timeline-content-box">
-				  <div class="text-content">
-					<p>The United States expanded its territory during the Mexican‑American War, acquiring lands in the Southwest.</p>
-				  </div>
-				</div>
-			  </li>
-			  <li data-date="01/01/1848">
-				<h2>Seneca Falls Convention</h2>
-				<em>1848</em>
-				<div class="timeline-content-box">
-				  <div class="text-content">
-					<p>The landmark Seneca Falls Convention ignited the women’s rights movement in America.</p>
-				  </div>
-				</div>
-			  </li>
-			  <li data-date="01/01/1849">
-				<h2>Gold Rush and Cholera Outbreak</h2>
-				<em>1849</em>
-				<div class="timeline-content-box">
-				  <div class="text-content">
-					<p>The California Gold Rush spurred mass migration to the West, while a cholera outbreak in Philadelphia highlighted serious public health challenges.</p>
-				  </div>
-				</div>
-			  </li>
-			  <li data-date="01/01/1850">
-				<h2>Fugitive Slave Act Passed</h2>
-				<em>1850</em>
-				<div class="timeline-content-box">
-				  <div class="text-content">
-					<p>The controversial Fugitive Slave Act intensified national tensions over slavery.</p>
-				  </div>
-				</div>
-			  </li>
-			  <!-- Additional Events Inserted -->
-			  <li data-date="01/01/1851">
-				<h2>Hosting Local Celebrations in Pottsville</h2>
-				<em>1851</em>
-				<div class="timeline-content-box">
-				  <div class="text-content">
-					<p>Campbell hosted local celebrations, parades, and community events in Pottsville, reflecting his influence in both legal and social spheres.</p>
-				  </div>
-				</div>
-			  </li>
-			  <li data-date="01/01/1855">
-				<h2>Congressional Career</h2>
-				<em>1855–1857, 1859–1863</em>
-				<div class="timeline-content-box">
-				  <div class="text-content">
-					<p>Elected to the 34th, 36th, and 37th Congresses as a Whig/Republican, Campbell championed anti‑slavery measures, supported protective tariffs, and sponsored the Pacific Railroad Act (1862). He notably failed to secure election to the 35th Congress.</p>
-					<div class="connection-section">
-					  <br>
-					  <h3>National Context</h3>
-					  <p>His campaign against the Kansas‑Nebraska Act in 1854 took place during a period of rapid industrial expansion in Philadelphia following the Mexican‑American War.</p>
-					</div>
-				  </div>
-				  <br>
-				  <div class="image-content">
-					<img src="../images/capitol.jpg" alt="U.S. Capitol Building circa 1860" />
-				  </div>
-				</div>
-			  </li>
-			  <li data-date="01/01/1856">
-				<h2>Speech on the Kansas–Nebraska Act</h2>
-				<em>1856</em>
-				<div class="timeline-content-box">
-				  <div class="text-content">
-					<p>In a passionate address, Campbell condemned the Kansas–Nebraska Act for undermining the Missouri Compromise and expanding slavery.</p>
-				  </div>
-				</div>
-			  </li>
-			  <li data-date="01/01/1857">
-				<h2>Failed Bid for the 35th Congress</h2>
-				<em>1857</em>
-				<div class="timeline-content-box">
-				  <div class="text-content">
-					<p>Despite his growing influence, Campbell narrowly lost his bid for a seat in the 35th Congress, a setback that would shape his future political strategies.</p>
-				  </div>
-				</div>
-			  </li>
-			  <li data-date="01/01/1860">
-				<h2>Political Advocacy</h2>
-				<em>1860</em>
-				<div class="timeline-content-box">
-				  <div class="text-content">
-					<p>Campbell delivered a pivotal speech on the Morrill Tariff and served on the Committee of Thirty‑Three, firmly opposing compromises on slavery.</p>
-				  </div>
-				</div>
-			  </li>
-			  <li data-date="01/01/1861">
-				<h2>Civil War Service</h2>
-				<em>1861–1863</em>
-				<div class="timeline-content-box">
-				  <div class="text-content">
-					<p>Enlisted as a private in Cassius Clay's Washington Guards within two weeks of the first shots at Sumter, he later became Major of the 25th PA Volunteers and helped repel Lee's invasion of Pennsylvania in 1863.</p>
-					<div class="connection-section">
-					  <br>
-					  <h3>Additional Details</h3>
-					  <p>He interviewed President Lincoln and his wife in early 1862 and raised the 39th Regiment of PA Volunteers to counter Confederate advances.</p>
-					</div>
-				  </div>
-				  <br>
-				  <div class="image-content">
-					<img src="../images/uniform.jpg" alt="Civil War-era military uniform" />
-				  </div>
-				</div>
-			  </li>
-			  <!-- Additional Civil War–Related Events -->
-			  <li data-date="01/01/1862">
-				<h2>Interview with President Lincoln</h2>
-				<em>Early 1862</em>
-				<div class="timeline-content-box">
-				  <div class="text-content">
-					<p>While serving during the Civil War, Campbell interviewed President Lincoln and his wife, highlighting his close connection with the administration.</p>
-				  </div>
-				</div>
-			  </li>
+			<ul class="cd-timeline-navigation">
+				<li><a href="#0" class="prev inactive">Prev</a></li>
+				<li><a href="#0" class="next">Next</a></li>
+			</ul> <!-- .cd-timeline-navigation -->
+		</div> <!-- .timeline -->
 
-			  <li data-date="01/01/1863">
-				<h2>Letters of Defeat and Lincoln's Regret</h2>
-				<em>December 1862</em>
-				<div class="timeline-content-box">
-				  <div class="text-content">
-					<p>After his defeat in the 1862 Congressional elections, Campbell recounted in letters to his wife how Secretary of the Senate John W. Forney notified him of President Lincoln’s particular regret over his political loss, hinting at a close personal connection.</p>
-				  </div>
-				</div>
-			  </li>
-
-			  <li data-date="01/01/1864">
-				<h2>Reception at the White House</h2>
-				<em>January 1863</em>
-				<div class="timeline-content-box">
-				  <div class="text-content">
-					<p>In January 1863, Campbell was received by Mrs. Abraham Lincoln at the White House, where he, alongside General Simon Cameron, “gossiped” with the First Lady about her Southern heritage.</p>
-				  </div>
-				</div>
-			  </li>
-			  <li data-date="01/01/1865">
-				<h2>Raising the 39th Regiment of PA Volunteers</h2>
-				<em>1863</em>
-				<div class="timeline-content-box">
-				  <div class="text-content">
-					<p>Campbell organized and raised the 39th Regiment of Pennsylvania Volunteers in response to Confederate advances, demonstrating his leadership in the war effort.</p>
-				  </div>
-				</div>
-			  </li>
-			  <li data-date="01/01/1866">
-				<h2>Diplomatic Service in Sweden</h2>
-				<em>1864–1867</em>
-				<div class="timeline-content-box">
-				  <div class="text-content">
-					<p>Appointed Minister Resident to Sweden by Lincoln, Campbell strengthened U.S.–Sweden relations and thwarted Confederate plots in Europe.</p>
-				  </div>
-				  <br>
-				  <div class="image-content">
-					<img src="../images/royal-palace.jpg" alt="Stockholm's Royal Palace" />
-				  </div>
-				</div>
-			  </li>
-			  <li data-date="01/01/1867">
-				<h2>National Tragedies and Honors</h2>
-				<em>1865</em>
-				<div class="timeline-content-box">
-				  <div class="text-content">
-					<p>1865 saw Lincoln's assassination and the ratification of the 13th Amendment, which abolished slavery. That same year, Campbell was honored as a President of Honor in the Institut d’Afrique in Paris.</p>
-				  </div>
-				</div>
-			  </li>
-			  <li data-date="01/01/1868">
-				<h2>European Journey and Free Travel Request</h2>
-				<em>May 23, 1865</em>
-				<div class="timeline-content-box">
-				  <div class="text-content">
-					<p>In early 1865, it is likely that Campbell traveled across Europe—specifically France and Paris. On May 23, the Swedish Prime Minister’s Office for External Affairs requested that Prussia, Austria, Switzerland, Italy, and France grant him free travel after he expressed his desire to travel, possibly influenced by the shifting political landscape following the Second Schleswig War.</p>
-				  </div>
-				</div>
-			  </li>
-			  <!-- Additional 1865 Event -->
-			  <li data-date="01/01/1869">
-				<h2>Diplomatic Correspondence on Lincoln's Assassination</h2>
-				<em>June 1865</em>
-				<div class="timeline-content-box">
-				  <div class="text-content">
-					<p>Following Lincoln's assassination, while in Sweden, Campbell managed key diplomatic communications conveying national grief and solidarity.</p>
-				  </div>
-				</div>
-			  </li>
-			  <li data-date="01/01/1870">
-				<h2>Diplomatic Decision by the Johnson Administration</h2>
-				<em>November 15, 1866</em>
-				<div class="timeline-content-box">
-				  <div class="text-content">
-					<p>On November 15, 1866, the Johnson administration decided that John McGinnis would replace Campbell as Minister Resident and that Campbell would be appointed as Minister Resident to Colombia in Bogota. However, these decisions were not passed by the Senate, and McGinnis’ appointment was eventually rebuffed, so Campbell never met him in Paris.</p>
-				  </div>
-				</div>
-			  </li>
-			  <li data-date="01/01/1871">
-				<h2>Later Life</h2>
-				<em>1867–1895</em>
-				<div class="timeline-content-box">
-				  <div class="text-content">
-					<p>Retired to Philadelphia and later settled at the "Aeola" estate in Wayne, PA, Campbell continued his legal practice and was elected a Companion of the Military Order of the Loyal Legion of the United States.</p>
-					<div class="connection-section">
-					  <br>
-					  <h3>National Achievement</h3>
-					  <p>In 1869, the Transcontinental Railroad was completed—a milestone built on the foundation laid by his Pacific Railroad Act of 1862.</p>
+		<div class="events-content">
+			<ol>
+				<!-- Pre-1820 Events -->
+				<li class="selected" data-date="01/01/1698">
+					<h2>Birth of Samuel Hepburn</h2>
+					<em>1698</em>
+					<div class="timeline-content-box">
+						<div class="text-content">
+							<p>James H. Campbell’s great-grandfather, Samuel Hepburn, was born in Glasgow, Scotland. His
+								descendants later settled in America to escape religious persecution.</p>
+						</div>
 					</div>
-				  </div>
-				  <br>
-				  <div class="image-content">
-					<img src="../images/aeola-estate.png" alt="The Aeola estate" />
-				  </div>
-				</div>
-			  </li>
-			  <!-- Additional Post-Diplomatic Events -->
-			  <li data-date="01/01/1872">
-				<h2>Election to the Military Order of the Loyal Legion (MOLLUS)</h2>
-				<em>February 1867</em>
-				<div class="timeline-content-box">
-				  <div class="text-content">
-					<p>Upon returning to the United States, Campbell was honored by being elected a Companion of the Military Order of the Loyal Legion of the United States, acknowledging his Civil War service.</p>
-				  </div>
-				</div>
-			  </li>
-			  <li data-date="01/01/1873">
-				<h2>Enrollment Act Vote</h2>
-				<em>February 25, 1867</em>
-				<div class="timeline-content-box">
-				  <div class="text-content">
-					<p>On February 25, 1867, Campbell voted in favor of the monumental Enrollment Act (Civil War Military Draft Act), demonstrating his vigorous military methods and intolerance for secession.</p>
-				  </div>
-				</div>
-			  </li>
-			  <li data-date="01/01/1874">
-				<h2>Farewell with King Charles</h2>
-				<em>March 29, 1867</em>
-				<div class="timeline-content-box">
-				  <div class="text-content">
-					<p>On March 29, 1867, Campbell presented a recall and exchanged thanks with King Charles in the Royal Palace, receiving a ceremonious farewell from the Royal family.</p>
-				  </div>
-				</div>
-			  </li>
-			  <li data-date="01/01/1875">
-				<h2>Rejection of Colombia Appointment</h2>
-				<em>May 1867</em>
-				<div class="timeline-content-box">
-				  <div class="text-content">
-					<p>After his term as Minister Resident to Sweden-Norway ended, President Andrew Johnson offered Campbell a second diplomatic post as Minister Resident to Colombia in Bogota. Campbell rejected the offer in protest of the administration’s sympathetic stance toward the South.</p>
-				  </div>
-				</div>
-			  </li>
-			  <li data-date="01/01/1876">
-				<h2>Return to Philadelphia & Resumption of Legal Practice</h2>
-				<em>August 1867</em>
-				<div class="timeline-content-box">
-				  <div class="text-content">
-					<p>After his diplomatic service, Campbell returned to Philadelphia, establishing his law firm at 130 S. 6th Street and reinforcing his influence in local legal and political spheres.</p>
-				  </div>
-				</div>
-			  </li>
-			  <li data-date="01/01/1877">
-				<h2>Completion of the Transcontinental Railroad</h2>
-				<em>1869</em>
-				<div class="timeline-content-box">
-				  <div class="text-content">
-					<p>The completion of the Transcontinental Railroad in 1869 was a national milestone built upon the foundation of the Pacific Railroad Act, which Campbell helped champion.</p>
-				  </div>
-				</div>
-			  </li>
-			  <li data-date="01/01/1878">
-				<h2>Economic and Cultural Shifts</h2>
-				<em>1873</em>
-				<div class="timeline-content-box">
-				  <div class="text-content">
-					<p>The Panic of 1873 triggered an economic depression, while cultural milestones like the opening of the Philadelphia Zoo signaled shifting social dynamics.</p>
-				  </div>
-				</div>
-			  </li>
-			  <li data-date="01/01/1879">
-				<h2>Centennial Exposition</h2>
-				<em>1876</em>
-				<div class="timeline-content-box">
-				  <div class="text-content">
-					<p>Philadelphia hosted the World's Fair to celebrate U.S. innovation and progress during its centennial.</p>
-				  </div>
-				  <br>
-				  <div class="image-content">
-					<img src="../images/centennial-exposition.jpg" alt="Centennial Exposition grounds" />
-				  </div>
-				</div>
-			  </li>
-			  <li data-date="01/01/1883">
-				<h2>Legal Landmarks</h2>
-				<em>1883</em>
-				<div class="timeline-content-box">
-				  <div class="text-content">
-					<p>Campbell argued the landmark Packer Estate Case before the Pennsylvania Supreme Court, and the establishment of standard time zones streamlined railroad schedules.</p>
-				  </div>
-				</div>
-			  </li>
-			  <li data-date="01/01/1893">
-				<h2>50th Wedding Anniversary</h2>
-				<em>1893</em>
-				<div class="timeline-content-box">
-				  <div class="text-content">
-					<p>Campbell celebrated his 50th wedding anniversary at the Aeola estate in Wayne, PA, marking half a century of marriage.</p>
-				  </div>
-				</div>
-			  </li>
-			  <li data-date="01/01/1895">
-				<h2>Death of James Hepburn Campbell</h2>
-				<em>1895</em>
-				<div class="timeline-content-box">
-				  <div class="text-content">
-					<p>Campbell died of heart failure in 1895, marking the end of an influential era in law and politics—his passing followed the economic downturn of the Panic of 1893.</p>
-				  </div>
-				  <br>
-				  <div class="image-content">
-					<img src="../images/cemetery.png" alt="Tombstone at Woodlands Cemetery" />
-				  </div>
-				</div>
-			  </li>
-			  
-		  </ol>
-	</div> <!-- .events-content -->
-</section>
-<!-- partial -->
-  <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-mobile/1.4.5/jquery.mobile.min.js'></script><script  src="./script.js"></script>
-<script  src="./Scripts/menu.js"></script>
-<script  src="./Scripts/timeline.js"></script>
+				</li>
+				<li data-date="01/01/1746">
+					<h2>Marriage of Samuel Hepburn and Janet Sinclair</h2>
+					<em>1746</em>
+					<div class="timeline-content-box">
+						<div class="text-content">
+							<p>Samuel Hepburn married Janet Sinclair in Scotland before the family relocated to Ireland
+								and eventually to America.</p>
+						</div>
+					</div>
+				</li>
+				<li data-date="01/01/1773">
+					<h2>Hepburn Family Emigrates to America</h2>
+					<em>1773</em>
+					<div class="timeline-content-box">
+						<div class="text-content">
+							<p>James Hepburn, Campbell’s grandfather, and his brother William sailed from Ireland to
+								Philadelphia in search of new opportunities.</p>
+						</div>
+					</div>
+				</li>
+				<li data-date="01/01/1781">
+					<h2>Marriage of James Hepburn and Mary Hopewell</h2>
+					<em>1781</em>
+					<div class="timeline-content-box">
+						<div class="text-content">
+							<p>Campbell’s grandparents wed, uniting families that would eventually shape a lasting
+								legacy in America.</p>
+						</div>
+					</div>
+				</li>
+				<li data-date="01/01/1787">
+					<h2>Birth of Francis C. Campbell</h2>
+					<em>1787</em>
+					<div class="timeline-content-box">
+						<div class="text-content">
+							<p>Francis C. Campbell, who would become a prominent lawyer, was born in York, Pennsylvania.
+							</p>
+						</div>
+					</div>
+				</li>
+				<li data-date="01/01/1816">
+					<h2>Era of Good Feelings Begins</h2>
+					<em>1816</em>
+					<div class="timeline-content-box">
+						<div class="text-content">
+							<p>The period of national unity under President James Monroe began, coinciding with
+								important family milestones for the Campbells.</p>
+						</div>
+					</div>
+				</li>
+				<li data-date="01/01/1818">
+					<h2>First Public School in Philadelphia</h2>
+					<em>1818</em>
+					<div class="timeline-content-box">
+						<div class="text-content">
+							<p>Philadelphia established its first public school, marking a significant step in
+								educational reform.</p>
+						</div>
+					</div>
+				</li>
+				<!-- 8th Event -->
+				<li data-date="08/02/1820">
+					<h2>Birth and Early Education</h2>
+					<em>February 8, 1820</em>
+					<div class="timeline-content-box">
+						<div class="text-content">
+							<p>Born in Williamsport, PA, to Francis C. and Jane H. Campbell. Grew up in an affluent
+								family; his father was a prominent lawyer.</p>
+							<div class="connection-section">
+								<br>
+								<h3>Historical Context</h3>
+								<p>Campbell was born the same year as the Missouri Compromise, which temporarily
+									resolved slavery disputes and would later influence his anti‑slavery stance in
+									Congress.</p>
+							</div>
+						</div>
+						<br>
+						<div class="image-content">
+							<img src="../images/Williamsport.jpg" alt="Map of early 19th-century Williamsport" />
+						</div>
+					</div>
+				</li>
+				<li data-date="01/01/1824">
+					<h2>Infrastructure and Transportation Advances</h2>
+					<em>1824</em>
+					<div class="timeline-content-box">
+						<div class="text-content">
+							<p>The Pennsylvania Railroad Company was formed and the Erie Canal opened, revolutionizing
+								trade and transportation in the Northeast. Also, Courtland Howell’s father passed away,
+								impacting his early life.</p>
+						</div>
+					</div>
+				</li>
+				<li data-date="01/01/1840">
+					<h2>Legal Education and Career Beginnings</h2>
+					<em>1840-1841</em>
+					<div class="timeline-content-box">
+						<div class="text-content">
+							<p>Graduated from Dickinson Law College in August 1841 and was admitted to the bar on
+								October 18, 1841. Moved to Pottsville, PA, where he established a successful law
+								practice and mentored future lawyers.</p>
+							<div class="connection-section">
+								<br>
+								<h3>Philadelphia Connection</h3>
+								<p>During the 1840s–1870s, Philadelphia became a hub for manufacturing and railroads.
+									Campbell's law firm at 130 S. 6th Street thrived amid this industrial boom.</p>
+							</div>
+						</div>
+						<br>
+						<div class="image-content">
+							<img src="../images/dickonson.jpg" alt="Dickinson Law College campus" />
+						</div>
+					</div>
+				</li>
+				<li data-date="01/01/1843">
+					<h2>Marriage and Family</h2>
+					<em>June 1843</em>
+					<div class="timeline-content-box">
+						<div class="text-content">
+							<p>Married Juliet Hamersley Lewis, daughter of Pennsylvania Chief Justice Ellis Lewis. The
+								couple had four children, two of whom died in the Civil War.</p>
+						</div>
+						<br>
+						<div class="image-content">
+							<img src="../images/wife.jpg" alt="Victorian-era wedding scene" />
+						</div>
+					</div>
+				</li>
+				<li data-date="01/01/1844">
+					<h2>Political Awakening</h2>
+					<em>1844</em>
+					<div class="timeline-content-box">
+						<div class="text-content">
+							<p>Campbell attended the Whig National Convention supporting Henry Clay, amid
+								anti‑immigration riots targeting Irish Catholic communities.</p>
+						</div>
+					</div>
+				</li>
+				<li data-date="01/01/1846">
+					<h2>Mexican-American War</h2>
+					<em>1846–1848</em>
+					<div class="timeline-content-box">
+						<div class="text-content">
+							<p>The United States expanded its territory during the Mexican‑American War, acquiring lands
+								in the Southwest.</p>
+						</div>
+					</div>
+				</li>
+				<li data-date="01/01/1848">
+					<h2>Seneca Falls Convention</h2>
+					<em>1848</em>
+					<div class="timeline-content-box">
+						<div class="text-content">
+							<p>The landmark Seneca Falls Convention ignited the women’s rights movement in America.</p>
+						</div>
+					</div>
+				</li>
+				<li data-date="01/01/1849">
+					<h2>Gold Rush and Cholera Outbreak</h2>
+					<em>1849</em>
+					<div class="timeline-content-box">
+						<div class="text-content">
+							<p>The California Gold Rush spurred mass migration to the West, while a cholera outbreak in
+								Philadelphia highlighted serious public health challenges.</p>
+						</div>
+					</div>
+				</li>
+				<li data-date="01/01/1850">
+					<h2>Fugitive Slave Act Passed</h2>
+					<em>1850</em>
+					<div class="timeline-content-box">
+						<div class="text-content">
+							<p>The controversial Fugitive Slave Act intensified national tensions over slavery.</p>
+						</div>
+					</div>
+				</li>
+				<li data-date="01/01/1851">
+					<h2>Compromise of 1850 Passed</h2>
+					<em>1850</em>
+					<div class="timeline-content-box">
+						<div class="text-content">
+							<p>The controversial package including the Fugitive Slave Act became law, intensifying
+								national tensions over slavery - shaping Campbell's later anti-slavery stance.</p>
+						</div>
+					</div>
+				</li>
+
+				<!-- Additional Events Inserted -->
+				<li data-date="01/01/1852">
+					<h2>Hosting Local Celebrations in Pottsville</h2>
+					<em>1851</em>
+					<div class="timeline-content-box">
+						<div class="text-content">
+							<p>Campbell hosted local celebrations, parades, and community events in Pottsville,
+								reflecting his influence in both legal and social spheres.</p>
+						</div>
+					</div>
+				</li>
+				<li data-date="01/01/1855">
+					<h2>Election to 34th Congress</h2>
+					<em>1855-1857</em>
+					<div class="timeline-content-box">
+						<div class="text-content">
+							<p>Won election as Opposition Whig representing PA-11. Served on Ways & Means Committee,
+								blocking attempts to lower tariffs.</p>
+						</div>
+					</div>
+				</li>
+				<li data-date="01/01/1856">
+					<h2>Congressional Career</h2>
+					<em>1855–1857, 1859–1863</em>
+					<div class="timeline-content-box">
+						<div class="text-content">
+							<p>Elected to the 34th, 36th, and 37th Congresses as a Whig/Republican, Campbell championed
+								anti‑slavery measures, supported protective tariffs, and sponsored the Pacific Railroad
+								Act (1862). He notably failed to secure election to the 35th Congress.</p>
+							<div class="connection-section">
+								<br>
+								<h3>National Context</h3>
+								<p>His campaign against the Kansas‑Nebraska Act in 1854 took place during a period of
+									rapid industrial expansion in Philadelphia following the Mexican‑American War.</p>
+							</div>
+						</div>
+						<br>
+						<div class="image-content">
+							<img src="../images/capitol.jpg" alt="U.S. Capitol Building circa 1860" />
+						</div>
+					</div>
+				</li>
+				<li data-date="01/01/1857">
+					<h2>Opposition to Kansas-Nebraska Act</h2>
+					<em>March 10, 1856</em>
+					<div class="timeline-content-box">
+						<div class="text-content">
+							<p>Delivered fiery House speech condemning "Bleeding Kansas" violence and the repeal of
+								Missouri Compromise restrictions.</p>
+						</div>
+					</div>
+				</li>
+				<li data-date="01/01/1858">
+					<h2>Speech on the Kansas–Nebraska Act</h2>
+					<em>1856</em>
+					<div class="timeline-content-box">
+						<div class="text-content">
+							<p>In a passionate address, Campbell condemned the Kansas–Nebraska Act for undermining the
+								Missouri Compromise and expanding slavery.</p>
+						</div>
+					</div>
+				</li>
+				<li data-date="01/01/1859">
+					<h2>Failed Bid for the 35th Congress</h2>
+					<em>1857</em>
+					<div class="timeline-content-box">
+						<div class="text-content">
+							<p>Despite his growing influence, Campbell narrowly lost his bid for a seat in the 35th
+								Congress, a setback that would shape his future political strategies.</p>
+						</div>
+					</div>
+				</li>
+				<li data-date="01/01/1860">
+					<h2>Re-election to 36th Congress</h2>
+					<em>1859-1861</em>
+					<div class="timeline-content-box">
+						<div class="text-content">
+							<p>Defeated incumbent William Dewart, serving on Elections Committee and opposing Southern
+								secession attempts.</p>
+						</div>
+					</div>
+				</li>
+				<li data-date="01/01/1861">
+					<h2>Committee of Thirty-Three Appointment</h2>
+					<em>December 1860</em>
+					<div class="timeline-content-box">
+						<div class="text-content">
+							<p>As PA's representative, opposed Crittenden Compromise and Corwin Amendment during
+								secession crisis.</p>
+						</div>
+					</div>
+				</li>
+				<li data-date="01/01/1862">
+					<h2>Start of Civil War</h2>
+					<em>1861–1863</em>
+					<div class="timeline-content-box">
+						<div class="text-content">
+							<p>Enlisted as a private in Cassius Clay's Washington Guards within two weeks of the first
+								shots at Sumter, he later became Major of the 25th PA Volunteers and helped repel Lee's
+								invasion of Pennsylvania in 1863.</p>
+							<div class="connection-section">
+								<br>
+								<h3>Historical Context</h3>
+								<p>The Civil War began April 12, 1861 with Confederate forces firing on Fort Sumter.
+									Campbell's quick enlistment reflects the immediate Northern response to preserve the
+									Union.</p>
+							</div>
+						</div>
+					</div>
+					<br>
+					<div class="image-content">
+						<img src="../images/uniform.jpg" alt="Civil War-era military uniform" />
+					</div>
+				</li>
+				<li data-date="01/01/1863">
+					<h2>Enlistment in Washington Guards</h2>
+					<em>April 1861</em>
+					<div class="timeline-content-box">
+						<div class="text-content">
+							<p>Joined Cassius Clay's battalion within days of Fort Sumter - the first Union troops
+								defending DC.
+							</p>
+						</div>
+					</div>
+				</li>
+				<li data-date="01/01/1864">
+					<h2>Service in 25th PA Volunteers</h2>
+					<em>April-July 1861</em>
+					<div class="timeline-content-box">
+						<div class="text-content">
+							<p>Elected Major in 3-month regiment guarding Washington defenses, earning "First Defender"
+								honors.
+							</p>
+						</div>
+					</div>
+				</li>
+				<!-- Additional Civil War–Related Events -->
+				<li data-date="01/01/1865">
+					<h2>Interview with President Lincoln</h2>
+					<em>Early 1862</em>
+					<div class="timeline-content-box">
+						<div class="text-content">
+							<p>While serving during the Civil War, Campbell interviewed President Lincoln and his wife,
+								highlighting his close connection with the administration.</p>
+						</div>
+					</div>
+				</li>
+				<li data-date="01/01/1866">
+					<h2>Pacific Railroad Act Passage</h2>
+					<em>July 1, 1862</em>
+					<div class="timeline-content-box">
+						<div class="text-content">
+							<p>As House committee chairman, sponsored landmark legislation enabling transcontinental
+								railroad
+								construction.</p>
+						</div>
+					</div>
+				</li>
+				<li data-date="01/01/1867">
+					<h2>Letters of Defeat and Lincoln's Regret</h2>
+					<em>December 1862</em>
+					<div class="timeline-content-box">
+						<div class="text-content">
+							<p>After his defeat in the 1862 Congressional elections, Campbell recounted in letters to
+								his wife
+								how Secretary of the Senate John W. Forney notified him of President Lincoln’s
+								particular regret
+								over his political loss, hinting at a close personal connection.</p>
+						</div>
+					</div>
+				</li>
+				<li data-date="01/01/1868">
+					<h2>Formation of 39th PA Volunteers</h2>
+					<em>July 1863</em>
+					<div class="timeline-content-box">
+						<div class="text-content">
+							<p>Raised regiment as Lt. Colonel to pursue Lee after Gettysburg, mustered out after 1 month
+								of
+								service.</p>
+						</div>
+					</div>
+				</li>
+
+				<li data-date="01/01/1869">
+					<h2>Reception at the White House</h2>
+					<em>January 1863</em>
+					<div class="timeline-content-box">
+						<div class="text-content">
+							<p>In January 1863, Campbell was received by Mrs. Abraham Lincoln at the White House, where
+								he,
+								alongside General Simon Cameron, “gossiped” with the First Lady about her Southern
+								heritage.</p>
+						</div>
+					</div>
+				</li>
+				<li data-date="01/01/1870">
+					<h2>Appointment as Minister to Sweden</h2>
+					<em>May 18, 1864</em>
+					<div class="timeline-content-box">
+						<div class="text-content">
+							<p>Lincoln's diplomatic appointment recognizing his congressional service and anti-slavery
+								credentials.</p>
+						</div>
+					</div>
+				</li>
+				<li data-date="01/01/1871">
+					<h2>Raising the 39th Regiment of PA Volunteers</h2>
+					<em>1863</em>
+					<div class="timeline-content-box">
+						<div class="text-content">
+							<p>Campbell organized and raised the 39th Regiment of Pennsylvania Volunteers in response to
+								Confederate advances, demonstrating his leadership in the war effort.</p>
+						</div>
+					</div>
+				</li>
+				<li data-date="01/01/1872">
+					<h2>Diplomatic Service in Sweden</h2>
+					<em>1864–1867</em>
+					<div class="timeline-content-box">
+						<div class="text-content">
+							<p>Appointed Minister Resident to Sweden by Lincoln, Campbell strengthened U.S.–Sweden
+								relations and
+								thwarted Confederate plots in Europe.</p>
+						</div>
+						<br>
+						<div class="image-content">
+							<img src="../images/royal-palace.jpg" alt="Stockholm's Royal Palace" />
+						</div>
+					</div>
+				</li>
+				<li data-date="01/01/1873">
+					<h2>National Tragedies and Honors</h2>
+					<em>1865</em>
+					<div class="timeline-content-box">
+						<div class="text-content">
+							<p>1865 saw Lincoln's assassination and the ratification of the 13th Amendment, which
+								abolished
+								slavery. That same year, Campbell was honored as a President of Honor in the Institut
+								d’Afrique
+								in Paris.</p>
+						</div>
+					</div>
+				</li>
+				<li data-date="01/01/1874">
+					<h2>European Journey and Free Travel Request</h2>
+					<em>May 23, 1865</em>
+					<div class="timeline-content-box">
+						<div class="text-content">
+							<p>In early 1865, it is likely that Campbell traveled across Europe—specifically France and
+								Paris.
+								On May 23, the Swedish Prime Minister’s Office for External Affairs requested that
+								Prussia,
+								Austria, Switzerland, Italy, and France grant him free travel after he expressed his
+								desire to
+								travel, possibly influenced by the shifting political landscape following the Second
+								Schleswig
+								War.</p>
+						</div>
+					</div>
+				</li>
+				<!-- Additional 1865 Event -->
+				<li data-date="01/01/1875">
+					<h2>Diplomatic Correspondence on Lincoln's Assassination</h2>
+					<em>June 1865</em>
+					<div class="timeline-content-box">
+						<div class="text-content">
+							<p>Following Lincoln's assassination, while in Sweden, Campbell managed key diplomatic
+								communications conveying national grief and solidarity.</p>
+						</div>
+					</div>
+				</li>
+				<li data-date="01/01/1876">
+					<h2>Diplomatic Decision by the Johnson Administration</h2>
+					<em>November 15, 1866</em>
+					<div class="timeline-content-box">
+						<div class="text-content">
+							<p>On November 15, 1866, the Johnson administration decided that John McGinnis would replace
+								Campbell as Minister Resident and that Campbell would be appointed as Minister Resident
+								to
+								Colombia in Bogota. However, these decisions were not passed by the Senate, and
+								McGinnis’
+								appointment was eventually rebuffed, so Campbell never met him in Paris.</p>
+						</div>
+					</div>
+				</li>
+				<li data-date="01/01/1877">
+					<h2>Later Life</h2>
+					<em>1867–1895</em>
+					<div class="timeline-content-box">
+						<div class="text-content">
+							<p>Retired to Philadelphia and later settled at the "Aeola" estate in Wayne, PA, Campbell
+								continued
+								his legal practice and was elected a Companion of the Military Order of the Loyal Legion
+								of the
+								United States.</p>
+							<div class="connection-section">
+								<br>
+								<h3>National Achievement</h3>
+								<p>In 1869, the Transcontinental Railroad was completed—a milestone built on the
+									foundation laid
+									by his Pacific Railroad Act of 1862.</p>
+							</div>
+						</div>
+						<br>
+						<div class="image-content">
+							<img src="../images/aeola-estate.png" alt="The Aeola estate" />
+						</div>
+					</div>
+				</li>
+				<!-- Additional Post-Diplomatic Events -->
+				<li data-date="01/01/1878">
+					<h2>Election to the Military Order of the Loyal Legion (MOLLUS)</h2>
+					<em>February 1867</em>
+					<div class="timeline-content-box">
+						<div class="text-content">
+							<p>Upon returning to the United States, Campbell was honored by being elected a Companion of
+								the
+								Military Order of the Loyal Legion of the United States, acknowledging his Civil War
+								service.
+							</p>
+						</div>
+					</div>
+				</li>
+				<li data-date="01/01/1879">
+					<h2>Enrollment Act Vote</h2>
+					<em>February 25, 1867</em>
+					<div class="timeline-content-box">
+						<div class="text-content">
+							<p>On February 25, 1867, Campbell voted in favor of the monumental Enrollment Act (Civil War
+								Military Draft Act), demonstrating his vigorous military methods and intolerance for
+								secession.
+							</p>
+						</div>
+					</div>
+				</li>
+				<li data-date="01/01/1880">
+					<h2>Farewell with King Charles</h2>
+					<em>March 29, 1867</em>
+					<div class="timeline-content-box">
+						<div class="text-content">
+							<p>On March 29, 1867, Campbell presented a recall and exchanged thanks with King Charles in
+								the
+								Royal Palace, receiving a ceremonious farewell from the Royal family.</p>
+						</div>
+					</div>
+				</li>
+				<li data-date="01/01/1881">
+					<h2>Rejection of Colombia Appointment</h2>
+					<em>May 1867</em>
+					<div class="timeline-content-box">
+						<div class="text-content">
+							<p>After his term as Minister Resident to Sweden-Norway ended, President Andrew Johnson
+								offered
+								Campbell a second diplomatic post as Minister Resident to Colombia in Bogota. Campbell
+								rejected
+								the offer in protest of the administration’s sympathetic stance toward the South.</p>
+						</div>
+					</div>
+				</li>
+				<li data-date="01/01/1882">
+					<h2>Return to Philadelphia & Resumption of Legal Practice</h2>
+					<em>August 1867</em>
+					<div class="timeline-content-box">
+						<div class="text-content">
+							<p>After his diplomatic service, Campbell returned to Philadelphia, establishing his law
+								firm at 130
+								S. 6th Street and reinforcing his influence in local legal and political spheres.</p>
+						</div>
+					</div>
+				</li>
+				<li data-date="01/01/1883">
+					<h2>Completion of the Transcontinental Railroad</h2>
+					<em>1869</em>
+					<div class="timeline-content-box">
+						<div class="text-content">
+							<p>The completion of the Transcontinental Railroad in 1869 was a national milestone built
+								upon the
+								foundation of the Pacific Railroad Act, which Campbell helped champion.</p>
+						</div>
+					</div>
+				</li>
+				<li data-date="01/01/1884">
+					<h2>Economic and Cultural Shifts</h2>
+					<em>1873</em>
+					<div class="timeline-content-box">
+						<div class="text-content">
+							<p>The Panic of 1873 triggered an economic depression, while cultural milestones like the
+								opening of
+								the Philadelphia Zoo signaled shifting social dynamics.</p>
+						</div>
+					</div>
+				</li>
+				<li data-date="01/01/1885">
+					<h2>Centennial Exposition</h2>
+					<em>1876</em>
+					<div class="timeline-content-box">
+						<div class="text-content">
+							<p>Philadelphia hosted the World's Fair to celebrate U.S. innovation and progress during its
+								centennial.</p>
+						</div>
+						<br>
+						<div class="image-content">
+							<img src="../images/centennial-exposition.jpg" alt="Centennial Exposition grounds" />
+						</div>
+					</div>
+				</li>
+				<li data-date="01/01/1886">
+					<h2>Legal Landmarks</h2>
+					<em>1883</em>
+					<div class="timeline-content-box">
+						<div class="text-content">
+							<p>Campbell argued the landmark Packer Estate Case before the Pennsylvania Supreme Court,
+								and the
+								establishment of standard time zones streamlined railroad schedules.</p>
+						</div>
+					</div>
+				</li>
+				<li data-date="01/01/1893">
+					<h2>50th Wedding Anniversary</h2>
+					<em>1893</em>
+					<div class="timeline-content-box">
+						<div class="text-content">
+							<p>Campbell celebrated his 50th wedding anniversary at the Aeola estate in Wayne, PA,
+								marking half a
+								century of marriage.</p>
+						</div>
+					</div>
+				</li>
+				<li data-date="01/01/1895">
+					<h2>Death of James Hepburn Campbell</h2>
+					<em>1895</em>
+					<div class="timeline-content-box">
+						<div class="text-content">
+							<p>Campbell died of heart failure in 1895, marking the end of an influential era in law and
+								politics—his passing followed the economic downturn of the Panic of 1893.</p>
+						</div>
+						<br>
+						<div class="image-content">
+							<img src="../images/cemetery.png" alt="Tombstone at Woodlands Cemetery" />
+						</div>
+					</div>
+				</li>
+
+			</ol>
+		</div> <!-- .events-content -->
+	</section>
+	<!-- partial -->
+	<script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-mobile/1.4.5/jquery.mobile.min.js'></script>
+	<script src="./script.js"></script>
+	<script src="./Scripts/menu.js"></script>
+	<script src="./Scripts/timeline.js"></script>
 
 </body>
+
 </html>
