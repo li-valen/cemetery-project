@@ -2,8 +2,6 @@
 
 Valen Li, Andrew Trinh, Christie Ugahary, Thomas Valdez, Joanna Wei, Hana Halimitabrizi
 
-James Hepburn Campbell, February 8, 1820 - April 12, 1895
-
 The Woodlands Cemetery Project is a rigorous research project conducted alongside the A.P. United States
 History course taught at Julia R. Masterman High School. Students research and unearth the lives of deceased
 individuals who lived primarily during the nineteenth century. All individuals researched are buried in the
