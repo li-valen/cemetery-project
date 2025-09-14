@@ -30,4 +30,4 @@ practice and family including his wife, and prominent writer, Juliet Campbell.
 
 ## Project Documents
 
-- **Biography Paper**: `James Hepburn Campbell.pdf` - The complete research biography documenting the life and legacy of James Hepburn Campbell.
+- **Biography Paper**: [James Hepburn Campbell.pdf](James%20Hepburn%20Campbell.pdf) - The complete research biography documenting the life and legacy of James Hepburn Campbell.
