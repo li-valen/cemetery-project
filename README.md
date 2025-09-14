@@ -22,8 +22,12 @@ Out of a plethora of candidates to research, this group selected James Hepburn C
 representing Schuylkill and Northumberland counties in Pennsylvania. Campbell was born to Francis C. Campbell
 and Jane H. Campbell and lived most of his life as a lawyer but more importantly served in the Congress and
 the Army. A man of fiery patriotism, he enlisted in the ranks during the Civil War despite being an active
-member of Congress to defend the capital and stop General Lee’s march north into Pennsylvania. While serving
+member of Congress to defend the capital and stop General Lee's march north into Pennsylvania. While serving
 in Congress, Campbell was appointed to multiple government committees and was later appointed Resident
 Minister to Sweden; Campbell was influential to the passage of the Pacific Railroad Act of 1862 and dedicated
 much of his political career to the abolition of slavery. He dedicated the last years of his life to his law
 practice and family including his wife, and prominent writer, Juliet Campbell.
+
+## Project Documents
+
+- **Biography Paper**: `James Hepburn Campbell.pdf` - The complete research biography documenting the life and legacy of James Hepburn Campbell.
